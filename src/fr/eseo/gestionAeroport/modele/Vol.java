@@ -6,14 +6,15 @@ public class Vol {
 	public int idVol;
 	private Date heureDepart;
 	private Date heureArrivee;
-	private Aeroport aeroportDepart;//TODO
-	private Aeroport aeroportArrivee;//TODO
+	private Aeroport aeroportDepart;
+	private Aeroport aeroportArrivee;
 	private String nomPassagers;
 	private int nombrePassagers;
-	private Compagnie compagnie;//TODO
-	private Avion avion;//TODO
-	private String place;//TODO
+	private Compagnie compagnie;
+	private Avion avion;
+	private String place;
 	
+	//constructeur:
 	public Vol(int idVol, Date heureDepart, Date heureArrivee, Aeroport aeroportDepart, Aeroport aeroportArrivee,
 			String nomPassagers, int nombrePassagers, Compagnie compagnie, Avion avion, String place) {
 		super();
@@ -29,6 +30,7 @@ public class Vol {
 		this.place = place;
 	}
 
+	//getters and setters:
 	public int getIdVol() {
 		return idVol;
 	}
