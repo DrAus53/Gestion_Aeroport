@@ -13,6 +13,7 @@ public class Trajet {
 	private int nbEscales;
 	private int dureeEscales;//en minutes
 	
+	//Constructeur:
 	public Trajet(int idTrajet, float prix, Aeroport aeroportDepart, Aeroport aeroportArrivee, int temps,
 			Date dateDepart, Date dateArrivee, int nbEscales, int dureeEscales) {
 		super();
@@ -27,6 +28,7 @@ public class Trajet {
 		this.dureeEscales = dureeEscales;
 	}
 
+	//getters and setters:
 	public int getIdTrajet() {
 		return idTrajet;
 	}

@@ -4,14 +4,14 @@ public class Compagnie {
 
 	// Variables
 
-	private int id;
+	private int idCompagnie;
 	private char nom;
 	private char description;
 
 	// Constructeur
 
 	public Compagnie(int id, char nom, char description) {
-		this.id = id;
+		this.idCompagnie = id;
 		this.nom = nom;
 		this.description = description;
 	}
@@ -19,11 +19,11 @@ public class Compagnie {
 	// Accesseurs
 
 	public int getId() {
-		return id;
+		return idCompagnie;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		this.idCompagnie = id;
 	}
 
 	public char getNom() {
