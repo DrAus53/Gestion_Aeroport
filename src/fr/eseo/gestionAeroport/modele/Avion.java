@@ -4,7 +4,7 @@ public class Avion {
 
 	// Variables
 
-	private int id;
+	private int idAvion;
 	private char nom;
 	private char type;
 	private char constructeur;
@@ -14,7 +14,7 @@ public class Avion {
 	// Constructeur
 
 	public Avion(int id, char nom, char type, char constructeur, int nbPlaces, Compagnie nomCompagnie) {
-		this.id = id;
+		this.idAvion = id;
 		this.nom = nom;
 		this.type = type;
 		this.constructeur = constructeur;
@@ -25,11 +25,11 @@ public class Avion {
 	// Accesseurs
 
 	public int getId() {
-		return id;
+		return idAvion;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		this.idAvion = id;
 	}
 
 	public char getNom() {
