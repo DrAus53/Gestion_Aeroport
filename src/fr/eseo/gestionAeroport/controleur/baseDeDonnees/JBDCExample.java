@@ -27,7 +27,7 @@ public class JBDCExample {
 
 		try {
 
-			connection = DriverManager.getConnection("jdbc:postgresql://192.168.4.127:443/gestionaeroport", "damien",
+			connection = DriverManager.getConnection("jdbc:postgresql://192.168.4.127:5432/gestionaeroport", "damien",
 					"Hkos39H2");
 
 		} catch (SQLException e) {

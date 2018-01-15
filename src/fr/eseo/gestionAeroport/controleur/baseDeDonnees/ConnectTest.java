@@ -14,7 +14,7 @@ public class ConnectTest {
 
 			System.out.println("Driver OK");
 
-			String url = "jdbc:postgresql://192.168.4.127:443/gestionaeroport&ssl=true";
+			String url = "jdbc:postgresql://192.168.4.127:5432/gestionaeroport";
 			String user = "damien";
 			String passwd = "Hkos39H2";
 
@@ -25,7 +25,7 @@ public class ConnectTest {
 			// Création d'un objet Statement
 			Statement state = conn.createStatement();
 			// L'objet ResultSet contient le résultat de la requête SQL
-			ResultSet result = state.executeQuery("SELECT * FROM classe");
+			ResultSet result = state.executeQuery("SELECT * FROM vol");
 			// On récupère les MetaData
 			ResultSetMetaData resultMeta = result.getMetaData();
 
