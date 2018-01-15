@@ -24,13 +24,13 @@ public class AvionDAO extends DAO<Avion> {
 	}
 
 	public Avion find(int id) {
-		Avion Avion = new Avion();
+		Avion avion = new Avion();
 
 		try {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return Avion;
+		return avion;
 	}
 }

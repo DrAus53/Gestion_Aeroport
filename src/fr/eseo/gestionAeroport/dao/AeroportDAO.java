@@ -1,6 +1,6 @@
 package fr.eseo.gestionAeroport.dao;
 
-import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import fr.eseo.gestionAeroport.controleur.baseDeDonnees.ConnexionBDD;
 import fr.eseo.gestionAeroport.modele.baseDeDonnees.Aeroport;
@@ -23,11 +23,14 @@ public class AeroportDAO extends DAO<Aeroport> {
 		return false;
 	}
 
-	public Aeroport find (int id) {
+	public Aeroport find(int id) {
 		Aeroport aeroport = new Aeroport();
-		
+
 		try {
-			//ResultSet result = this.connect
+			// ResultSet result = this.connect
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
+		return aeroport;
 	}
 }

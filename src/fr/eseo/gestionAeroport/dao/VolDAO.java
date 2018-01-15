@@ -1,12 +1,13 @@
 package fr.eseo.gestionAeroport.dao;
-package com.sdz.dao.implement;
 
+import java.sql.SQLException;
+
+import fr.eseo.gestionAeroport.controleur.baseDeDonnees.ConnexionBDD;
 import fr.eseo.gestionAeroport.modele.baseDeDonnees.Vol;
 
 public class VolDAO extends DAO<Vol> {
-	// CTRL + SHIFT + O pour générer les imports
 
-	public VolDAO(Connection conn) {
+	public VolDAO(ConnexionBDD conn) {
 		super(conn);
 	}
 
@@ -23,13 +24,13 @@ public class VolDAO extends DAO<Vol> {
 	}
 
 	public Vol find(int id) {
-		Vol Vol = new Vol();
+		Vol vol = new Vol();
 
 		try {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return Vol;
+		return vol;
 	}
 }
