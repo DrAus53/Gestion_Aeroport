@@ -1,13 +1,15 @@
 package fr.eseo.gestionAeroport.dao;
-package com.sdz.dao.implement;
 
+import java.sql.SQLException;
+
+import fr.eseo.gestionAeroport.controleur.baseDeDonnees.ConnexionBDD;
 import fr.eseo.gestionAeroport.modele.baseDeDonnees.Avion;
 
 public class AvionDAO extends DAO<Avion> {
 
 	// CTRL + SHIFT + O pour générer les imports
 
-	public AvionDAO(Connection conn) {
+	public AvionDAO(ConnexionBDD conn) {
 		super(conn);
 	}
 
