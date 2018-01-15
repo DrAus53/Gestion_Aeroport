@@ -12,11 +12,15 @@ public class ConnectTest {
 		try {
 			Class.forName("org.postgresql.Driver");
 
-			String url = "jdbc:postgresql://192.168.4.127:22/gestionaeroport";
+			System.out.println("Driver O.K.");
+
+			String url = "jdbc:postgresql://192.168.4.127:443/gestionaeroport&ssl=true";
 			String user = "damien";
 			String passwd = "Hkos39H2";
 
 			Connection conn = DriverManager.getConnection(url, user, passwd);
+
+			System.out.print("Connexion OK");
 
 			// Création d'un objet Statement
 			Statement state = conn.createStatement();
