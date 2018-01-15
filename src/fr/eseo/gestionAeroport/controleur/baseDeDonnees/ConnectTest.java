@@ -12,7 +12,7 @@ public class ConnectTest {
 		try {
 			Class.forName("org.postgresql.Driver");
 
-			System.out.println("Driver O.K.");
+			System.out.println("Driver OK");
 
 			String url = "jdbc:postgresql://192.168.4.127:443/gestionaeroport&ssl=true";
 			String user = "damien";

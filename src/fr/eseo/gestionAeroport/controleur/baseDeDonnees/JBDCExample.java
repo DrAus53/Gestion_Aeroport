@@ -15,7 +15,6 @@ public class JBDCExample {
 			Class.forName("org.postgresql.Driver");
 
 		} catch (ClassNotFoundException e) {
-
 			System.out.println("Where is your PostgreSQL JDBC Driver? " + "Include in your library path!");
 			e.printStackTrace();
 			return;
@@ -28,8 +27,8 @@ public class JBDCExample {
 
 		try {
 
-			connection = DriverManager.getConnection("jdbc:postgresql://192.168.4.127:443/gestionaeroport", "postgres",
-					"admin");
+			connection = DriverManager.getConnection("jdbc:postgresql://192.168.4.127:443/gestionaeroport", "damien",
+					"Hkos39H2");
 
 		} catch (SQLException e) {
 
