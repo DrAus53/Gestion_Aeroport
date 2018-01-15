@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 
 public class ConnexionBDD {
 	public static void main(String[] args) {
+
 		try {
 			Class.forName("org.postgresql.Driver");
 			System.out.println("Driver O.K.");

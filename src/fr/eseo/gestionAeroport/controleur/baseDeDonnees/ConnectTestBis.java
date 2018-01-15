@@ -4,10 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-/**
- *
- * @author postgresqltutorial.com
- */
 public class ConnectTestBis {
 
 	private final String url = "jdbc:postgresql://192.168.4.127:443/gestionaeroport&ssl=true";
