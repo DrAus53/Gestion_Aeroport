@@ -9,6 +9,8 @@ public class FenetreGestionAeroport extends JFrame {
 
 	public FenetreGestionAeroport() {
 		super();
+		this.setTitle(TITRE_PAR_DEFAUT);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	}
 
