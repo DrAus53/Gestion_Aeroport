@@ -1,6 +1,6 @@
 package fr.eseo.gestionAeroport.vue.ui;
 
-import java.awt.Color;
+import java.awt.GridLayout;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -11,30 +11,30 @@ public class FenetreGestionAeroport extends JFrame {
 	private static FenetreGestionAeroport instance;
 	public static final String TITRE_PAR_DEFAUT = "Gestion d'Aeroport";
 
-	private PanneauPrincipal panneauPrincipal;
 	private PanneauBandeauOutils panneauBandeauOutils;
 	PanneauRechercheVol panneauRechercheVol;
 
 	public FenetreGestionAeroport() {
 		super();
 		this.setTitle(TITRE_PAR_DEFAUT);
+		this.setLayout(new GridLayout(5, 3));
 		this.setIconImage(new ImageIcon("icone_avion.png").getImage());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setExtendedState(MAXIMIZED_BOTH);
 		this.setResizable(true);
 		this.setLocationRelativeTo(null);
+		this.setVisible(true);
 
 		int hauteurBandeauOutil = (int) Math.max(this.getSize().getHeight() / 10, 50);
 
 		// Bandeau outils
-		this.panneauBandeauOutils = new PanneauBandeauOutils((int) this.getSize().getWidth(), hauteurBandeauOutil,
-				Color.BLACK, this);
-		this.add("North", this.panneauBandeauOutils);
+		this.panneauBandeauOutils = new PanneauBandeauOutils();
+		this.getContentPane().add(this.panneauBandeauOutils);
+		this.setVisible(true);
 
-		// ajout du panneau principal
-		this.panneauPrincipal = new PanneauPrincipal((int) this.getSize().getWidth(),
-				(int) this.getSize().getHeight() - hauteurBandeauOutil);
-		this.add(panneauPrincipal);
+		this.panneauRechercheVol = new PanneauRechercheVol();
+		this.getContentPane().add(this.panneauRechercheVol);
+		this.setVisible(true);
 
 	}
 
