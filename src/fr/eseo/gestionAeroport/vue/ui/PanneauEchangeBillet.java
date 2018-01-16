@@ -37,7 +37,7 @@ public class PanneauEchangeBillet extends JPanel {
 		/// On choisit la taille du titre
 		gbc.gridheight = 1;
 		gbc.gridwidth = 1;
-		this.add(zoneTitre);
+		this.add(zoneTitre, gbc);
 
 		// numero de vol
 		JLabel numVolTxt = new JLabel("Numéro de vol :");
@@ -47,7 +47,7 @@ public class PanneauEchangeBillet extends JPanel {
 		/// On choisit la taille
 		gbc.gridheight = 1;
 		gbc.gridwidth = 1;
-		this.add(numVolTxt);
+		this.add(numVolTxt, gbc);
 
 		JTextField numVolJtf = new JTextField();
 		numVolJtf.setColumns(20);
@@ -57,7 +57,7 @@ public class PanneauEchangeBillet extends JPanel {
 		/// On choisit la taille
 		gbc.gridheight = 1;
 		gbc.gridwidth = 1;
-		this.add(numVolJtf);
+		this.add(numVolJtf, gbc);
 
 		// nom du passager
 		JLabel nomPasTxt = new JLabel("Nom du passager :");
@@ -67,7 +67,7 @@ public class PanneauEchangeBillet extends JPanel {
 		/// On choisit la taille
 		gbc.gridheight = 1;
 		gbc.gridwidth = 1;
-		this.add(nomPasTxt);
+		this.add(nomPasTxt, gbc);
 
 		JTextField nomPasJtf = new JTextField();
 		numVolJtf.setColumns(20);
@@ -77,7 +77,7 @@ public class PanneauEchangeBillet extends JPanel {
 		/// On choisit la taille
 		gbc.gridheight = 1;
 		gbc.gridwidth = 1;
-		this.add(nomPasJtf);
+		this.add(nomPasJtf, gbc);
 
 		// remboursement
 		JCheckBox rembChB = new JCheckBox("Remboursement");
@@ -87,7 +87,7 @@ public class PanneauEchangeBillet extends JPanel {
 		/// On choisit la taille
 		gbc.gridheight = 1;
 		gbc.gridwidth = 1;
-		this.add(rembChB);
+		this.add(rembChB, gbc);
 
 	}
 

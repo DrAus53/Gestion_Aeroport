@@ -13,11 +13,15 @@ public class FenetreGestionAeroport extends JFrame {
 	private static FenetreGestionAeroport instance;
 	public static final String TITRE_PAR_DEFAUT = "Gestion d'Aeroport";
 
+	public static final int LARGEUR_PANNEAU_PAR_DEFAUT = 300;
+	public static final int HAUTEUR_PANNEAU_PAR_DEFAUT = 30;
+
 	private PanneauBandeauOutils panneauBandeauOutils;
 	private PanneauRechercheVol panneauRechercheVol;
 	private PanneauProposerVol panneauProposerVol;
 	private PanneauEnregistrerUnNouvelAvion panneauEnregistrerUnNouvelAvion;
 	private PanneauModifierUnCompteClient panneauModifierUnCompteClient;
+	private PanneauEchangeBillet panneauEchangeBillet;
 
 	public FenetreGestionAeroport() {
 		super();
@@ -66,6 +70,11 @@ public class FenetreGestionAeroport extends JFrame {
 		constraints.gridx = 1;
 		constraints.gridy = 2;
 		this.add(this.panneauModifierUnCompteClient, constraints);
+
+		this.panneauEchangeBillet = new PanneauEchangeBillet();
+		constraints.gridx = 0;
+		constraints.gridy = 3;
+		this.add(panneauEchangeBillet, constraints);
 
 		this.setVisible(true);
 
