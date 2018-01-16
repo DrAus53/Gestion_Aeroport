@@ -1,26 +1,20 @@
 package fr.eseo.gestionAeroport.vue.ui;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 
-import javax.swing.BoxLayout;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-public class PanneauBandeauOutils extends javax.swing.JPanel {
+public class BarreOutils extends JMenuBar {
 
 	private static final long serialVersionUID = 1L;
 
-	public static final int LARGEUR_PAR_DEFAUT = 1350;
-	public static final int HAUTEUR_PAR_DEFAUT = 75;
-	public static final Color COULEUR_FOND_PAR_DEFAUT = Color.black;
+	private static final int LARGEUR_PAR_DEFAUT = 1350;
+	private static final int HAUTEUR_PAR_DEFAUT = 75;
+	private static final Color COULEUR_FOND_PAR_DEFAUT = Color.black;
 
-	public int largeur;
-	public int hauteur;
-
-	private JMenuBar menuBar = new JMenuBar();
 	private JMenu menuProfil = new JMenu("Profil");
 	private JMenuItem itemNom = new JMenuItem("Nom");
 	private JMenuItem itemPrenom = new JMenuItem("Prenom");
@@ -29,19 +23,15 @@ public class PanneauBandeauOutils extends javax.swing.JPanel {
 	private JMenuItem itemModifer = new JMenuItem("Modifer");
 	private JMenuItem itemDeconexion = new JMenuItem("Deconexion");
 
-	public PanneauBandeauOutils(int largeur, int hauteur, Color fond, FenetreGestionAeroport fenetre) {
-		this.largeur = largeur;
-		this.hauteur = hauteur;
+	public BarreOutils(int largeur, int hauteur, Color fond) {
 
 		this.setBackground(fond);
-		this.setPreferredSize(new Dimension(this.largeur, this.hauteur));
-		BoxLayout box = new BoxLayout(this, BoxLayout.Y_AXIS);
-		this.setLayout(box);
+		this.setPreferredSize(new Dimension(largeur, hauteur));
 		initComponents();
 	}
 
-	public PanneauBandeauOutils() {
-		this(LARGEUR_PAR_DEFAUT, HAUTEUR_PAR_DEFAUT, COULEUR_FOND_PAR_DEFAUT, null);
+	public BarreOutils() {
+		this(LARGEUR_PAR_DEFAUT, HAUTEUR_PAR_DEFAUT, COULEUR_FOND_PAR_DEFAUT);
 	}
 
 	private void initComponents() {
@@ -54,8 +44,7 @@ public class PanneauBandeauOutils extends javax.swing.JPanel {
 		this.menuProfil.addSeparator();
 		this.menuProfil.add(itemDeconexion);
 
-		menuBar.add(menuProfil);
-		this.add(menuBar, BorderLayout.EAST);
+		this.add(menuProfil);
 
 		/*
 		 * boutonProfil.setMaximumSize(new Dimension(100, 50));
