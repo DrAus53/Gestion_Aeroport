@@ -1,17 +1,17 @@
 package fr.eseo.gestionAeroport.vue.ui;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.BoxLayout;
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 
 public class PanneauBandeauOutils extends javax.swing.JPanel {
 
 	private static final long serialVersionUID = 1L;
-
-	FenetreGestionAeroport fenetre;
 
 	public static final int LARGEUR_PAR_DEFAUT = 100;
 	public static final int HAUTEUR_PAR_DEFAUT = 75;
@@ -20,12 +20,18 @@ public class PanneauBandeauOutils extends javax.swing.JPanel {
 	public int largeur;
 	public int hauteur;
 
-	private ButtonGroup buttonGroup = new ButtonGroup();
+	private JMenuBar menuBar = new JMenuBar();
+	private JMenu menuProfil = new JMenu("Profil");
+	private JMenuItem itemNom = new JMenuItem("Nom");
+	private JMenuItem itemPrenom = new JMenuItem("Prenom");
+	private JMenuItem itemLogin = new JMenuItem("Login");
+	private JMenuItem itemAdresseMail = new JMenuItem("AdresseMail");
+	private JMenuItem itemModifer = new JMenuItem("Modifer");
+	private JMenuItem itemDeconexion = new JMenuItem("Deconexion");
 
 	public PanneauBandeauOutils(int largeur, int hauteur, Color fond, FenetreGestionAeroport fenetre) {
 		this.largeur = largeur;
 		this.hauteur = hauteur;
-		this.fenetre = fenetre;
 
 		this.setBackground(fond);
 		this.setPreferredSize(new Dimension(this.largeur, this.hauteur));
@@ -40,9 +46,21 @@ public class PanneauBandeauOutils extends javax.swing.JPanel {
 
 	private void initComponents() {
 
-		JButton boutonProfil = new JButton();
-		this.add(boutonProfil);
+		this.menuProfil.add(itemNom);
+		this.menuProfil.add(itemPrenom);
+		this.menuProfil.add(itemLogin);
+		this.menuProfil.add(itemAdresseMail);
+		this.menuProfil.add(itemModifer);
+		this.menuProfil.addSeparator();
+		this.menuProfil.add(itemDeconexion);
 
+		menuBar.add(menuProfil);
+		this.add(menuBar, BorderLayout.EAST);
+
+		/*
+		 * boutonProfil.setMaximumSize(new Dimension(100, 50));
+		 * boutonProfil.setAlignmentX(RIGHT_ALIGNMENT); this.add(boutonProfil);
+		 */
 		repaint();
 	}
 }
