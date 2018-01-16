@@ -17,7 +17,7 @@ public class FenetreGestionAeroport extends JFrame {
 	private PanneauPrincipal panneauPrincipal;
 	private PanneauBandeauOutils panneauBandeauOutils;
 	private PanneauEchangeBillet panneauEchangeBillet;
-
+	PanneauRechercheVol panneauRechercheVol;
 	public FenetreGestionAeroport() {
 		super();
 		this.setTitle(TITRE_PAR_DEFAUT);
