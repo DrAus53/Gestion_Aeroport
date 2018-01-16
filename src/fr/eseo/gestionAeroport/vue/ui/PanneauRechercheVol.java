@@ -61,16 +61,6 @@ public class PanneauRechercheVol extends JPanel {
 		constraints.gridy = 1;
 		add(jtf, constraints);
 
-		JButton confirmer = new JButton("confirmer");
-		constraints.weightx = 0.5;
-		constraints.gridwidth = 1;
-		constraints.gridheight = 3;
-		constraints.gridx = 2;
-		constraints.gridy = 1;
-		confirmer.setActionCommand("confirmer");
-		group.add(confirmer);
-		add(confirmer, constraints);
-
 		JLabel labelarrive = new JLabel("arrivee");
 		constraints.gridwidth = 1;
 		constraints.gridx = 0;
@@ -89,21 +79,21 @@ public class PanneauRechercheVol extends JPanel {
 		JLabel labeldate = new JLabel("date");
 		constraints.gridwidth = 1;
 		constraints.gridx = 0;
-		constraints.gridy = 5;
+		constraints.gridy = 3;
 		this.add(labeldate, constraints);
 
 		JTextField jtfdate = new JTextField("JJ/MM/AAAA");
 		jtfa.setColumns(10);
 		constraints.weightx = 0.5;
 		constraints.gridwidth = 1;
-		constraints.gridx = 2;
+		constraints.gridx = 1;
 		constraints.gridy = 3;
 		add(jtfdate, constraints);
 
 		JLabel labelheure = new JLabel("heure");
 		constraints.gridwidth = 1;
 		constraints.gridx = 0;
-		constraints.gridy = 8;
+		constraints.gridy = 4;
 		this.add(labelheure, constraints);
 
 		JTextField jtfheure = new JTextField("H/MIN");
@@ -111,8 +101,18 @@ public class PanneauRechercheVol extends JPanel {
 		constraints.weightx = 1;
 		constraints.gridwidth = 1;
 		constraints.gridx = 1;
-		constraints.gridy = 8;
+		constraints.gridy = 4;
 		add(jtfheure, constraints);
+
+		JButton confirmer = new JButton("confirmer");
+		constraints.weightx = 0.5;
+		constraints.gridwidth = 1;
+		constraints.gridheight = 3;
+		constraints.gridx = 2;
+		constraints.gridy = 1;
+		confirmer.setActionCommand("confirmer");
+		group.add(confirmer);
+		add(confirmer, constraints);
 
 	}
 

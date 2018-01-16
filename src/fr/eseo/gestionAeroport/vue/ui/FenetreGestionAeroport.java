@@ -14,6 +14,10 @@ public class FenetreGestionAeroport extends JFrame {
 	private PanneauBandeauOutils panneauBandeauOutils;
 	PanneauRechercheVol panneauRechercheVol;
 
+	PanneauEnregistrerUnNouvelAvion panneauEnregistrerUnNouvelAvion;
+
+	PanneauModifierUnCompteClient panneauModifierUnCompteClient;
+
 	public FenetreGestionAeroport() {
 		super();
 		this.setTitle(TITRE_PAR_DEFAUT);
@@ -34,6 +38,14 @@ public class FenetreGestionAeroport extends JFrame {
 
 		this.panneauRechercheVol = new PanneauRechercheVol();
 		this.getContentPane().add(this.panneauRechercheVol);
+		this.setVisible(true);
+
+		this.panneauEnregistrerUnNouvelAvion = new PanneauEnregistrerUnNouvelAvion();
+		this.getContentPane().add(this.panneauEnregistrerUnNouvelAvion);
+		this.setVisible(true);
+
+		this.panneauModifierUnCompteClient = new PanneauModifierUnCompteClient();
+		this.getContentPane().add(this.panneauModifierUnCompteClient);
 		this.setVisible(true);
 
 	}
