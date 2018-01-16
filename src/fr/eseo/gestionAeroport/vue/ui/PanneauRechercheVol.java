@@ -3,14 +3,14 @@ package fr.eseo.gestionAeroport.vue.ui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.text.MessageFormat;
+import java.awt.FlowLayout;
 
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
-import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class PanneauRechercheVol extends JPanel {
 
@@ -44,10 +44,9 @@ public class PanneauRechercheVol extends JPanel {
 
 	private void initComponents() {
 		ButtonGroup group = new ButtonGroup();
-		JFormattedTextField jtf = new JFormattedTextField(MessageFormat.class);
-		jtf.setPreferredSize(new Dimension(150, 30));
-		JLabel label = new JLabel("depart");
-		add(label, BorderLayout.EAST);
+		setLayout(new FlowLayout());
+		JTextField jtf = new JTextField();
+		jtf.setColumns(10);
 		add(jtf, BorderLayout.CENTER);
 
 		JButton confirmer = new JButton("confirmer");
