@@ -11,11 +11,12 @@ public class FenetreGestionAeroport extends JFrame {
 	private static FenetreGestionAeroport instance;
 	public static final String TITRE_PAR_DEFAUT = "Gestion d'Aeroport";
 
-	private PanneauBandeauOutils panneauBandeauOutils;
+	public static final int LARGEUR_PANNEAU_PAR_DEFAUT = 300;
+	public static final int HAUTEUR_PANNEAU_PAR_DEFAUT = 30;
+
+	PanneauBandeauOutils panneauBandeauOutils;
 	PanneauRechercheVol panneauRechercheVol;
-
 	PanneauEnregistrerUnNouvelAvion panneauEnregistrerUnNouvelAvion;
-
 	PanneauModifierUnCompteClient panneauModifierUnCompteClient;
 
 	public FenetreGestionAeroport() {

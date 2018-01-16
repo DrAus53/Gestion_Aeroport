@@ -20,7 +20,7 @@ public class PanneauEchangeBillet extends JPanel {
 	}
 
 	public PanneauEchangeBillet() {
-		this(FenetreGestionAeroport.LARGEUR_PANNEAU_PAR_DEFAUT, FenetreGestionAeroport.LARGEUR_PANNEAU_PAR_DEFAUT);
+		this(FenetreGestionAeroport.LARGEUR_PANNEAU_PAR_DEFAUT, FenetreGestionAeroport.HAUTEUR_PANNEAU_PAR_DEFAUT);
 	}
 
 	private void initialisation() {
