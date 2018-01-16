@@ -27,7 +27,7 @@ public class FenetreGestionAeroport extends JFrame {
 
 		int hauteurBandeauOutil = (int) Math.max(this.getSize().getHeight() / 10, 50);
 
-		// Bandeau outils
+		// Bandeau outils a
 		this.panneauBandeauOutils = new PanneauBandeauOutils();
 		this.getContentPane().add(this.panneauBandeauOutils);
 		this.setVisible(true);

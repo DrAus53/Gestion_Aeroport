@@ -96,8 +96,8 @@ public class PanneauRechercheVol extends JPanel {
 		jtfa.setColumns(10);
 		constraints.weightx = 0.5;
 		constraints.gridwidth = 1;
-		constraints.gridx = 1;
-		constraints.gridy = 5;
+		constraints.gridx = 2;
+		constraints.gridy = 3;
 		add(jtfdate, constraints);
 
 		JLabel labelheure = new JLabel("heure");
