@@ -11,8 +11,12 @@ public class FenetreGestionAeroport extends JFrame {
 	private static FenetreGestionAeroport instance;
 	public static final String TITRE_PAR_DEFAUT = "Gestion d'Aeroport";
 
+	public static int HAUTEUR_PANNEAU_PAR_DEFAUT = 150;
+	public static int LARGEUR_PANNEAU_PAR_DEFAUT = 400;
+
 	private PanneauPrincipal panneauPrincipal;
 	private PanneauBandeauOutils panneauBandeauOutils;
+	private PanneauEchangeBillet panneauEchangeBillet;
 
 	public FenetreGestionAeroport() {
 		super();
@@ -34,6 +38,9 @@ public class FenetreGestionAeroport extends JFrame {
 		this.panneauPrincipal = new PanneauPrincipal((int) this.getSize().getWidth(),
 				(int) this.getSize().getHeight() - hauteurBandeauOutil);
 		this.add(panneauPrincipal);
+		// AJout du panneau échange billet
+		this.panneauEchangeBillet = new PanneauEchangeBillet();
+		this.add(panneauEchangeBillet);
 	}
 
 	public static FenetreGestionAeroport getInstance() {
