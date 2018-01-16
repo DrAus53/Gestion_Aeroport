@@ -13,6 +13,7 @@ public class FenetreGestionAeroport extends JFrame {
 
 	private PanneauPrincipal panneauPrincipal;
 	private PanneauBandeauOutils panneauBandeauOutils;
+	PanneauRechercheVol panneauRechercheVol;
 
 	public FenetreGestionAeroport() {
 		super();
@@ -34,6 +35,7 @@ public class FenetreGestionAeroport extends JFrame {
 		this.panneauPrincipal = new PanneauPrincipal((int) this.getSize().getWidth(),
 				(int) this.getSize().getHeight() - hauteurBandeauOutil);
 		this.add(panneauPrincipal);
+
 	}
 
 	public static FenetreGestionAeroport getInstance() {
