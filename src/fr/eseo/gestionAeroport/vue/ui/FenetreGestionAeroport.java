@@ -7,6 +7,7 @@ public class FenetreGestionAeroport extends JFrame {
 
 	private static FenetreGestionAeroport instance;
 	public static final String TITRE_PAR_DEFAUT = "Gestion d'Aeroport";
+	private static PanneauPrincipal panneauPrincipal;
 
 	public FenetreGestionAeroport() {
 		super();
@@ -16,6 +17,11 @@ public class FenetreGestionAeroport extends JFrame {
 		this.setExtendedState(MAXIMIZED_BOTH);
 		this.setResizable(true);
 		this.setLocationRelativeTo(null);
+
+		// ajout du panneau principal
+		this.panneauPrincipal = new PanneauPrincipal((int) this.getSize().getWidth(),
+				(int) this.getSize().getHeight() - 75);
+		this.add(panneauPrincipal);
 	}
 
 	public static FenetreGestionAeroport getInstance() {
