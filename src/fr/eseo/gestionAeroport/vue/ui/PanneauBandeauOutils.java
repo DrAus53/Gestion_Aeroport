@@ -13,7 +13,7 @@ public class PanneauBandeauOutils extends javax.swing.JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	public static final int LARGEUR_PAR_DEFAUT = 100;
+	public static final int LARGEUR_PAR_DEFAUT = 1350;
 	public static final int HAUTEUR_PAR_DEFAUT = 75;
 	public static final Color COULEUR_FOND_PAR_DEFAUT = Color.black;
 

@@ -104,16 +104,12 @@ public class PanneauRechercheVol extends JPanel {
 		constraints.gridy = 4;
 		add(jtfheure, constraints);
 
-		JButton confirmer = new JButton("confirmer");
-		constraints.weightx = 0.5;
-		constraints.gridwidth = 1;
-		constraints.gridheight = 3;
+		JButton jButtonValider = new JButton("Valider");
+		jButtonValider.setPreferredSize(new Dimension(100, 108));
 		constraints.gridx = 2;
-		constraints.gridy = 1;
-		confirmer.setActionCommand("confirmer");
-		group.add(confirmer);
-		add(confirmer, constraints);
-
+		constraints.gridy = 0;
+		constraints.gridheight = 5;
+		this.add(jButtonValider, constraints);
 	}
 
 }
