@@ -1,14 +1,17 @@
 package fr.eseo.gestionAeroport.vue.ui;
 
+import java.awt.Color;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
+@SuppressWarnings("serial")
 public class FenetreGestionAeroport extends JFrame {
 
 	private static FenetreGestionAeroport instance;
 	public static final String TITRE_PAR_DEFAUT = "Gestion d'Aeroport";
-	private static PanneauPrincipal panneauPrincipal;
 
+	private PanneauPrincipal panneauPrincipal;
 	private PanneauBandeauOutils panneauBandeauOutils;
 
 	public FenetreGestionAeroport() {
@@ -20,13 +23,16 @@ public class FenetreGestionAeroport extends JFrame {
 		this.setResizable(true);
 		this.setLocationRelativeTo(null);
 
+		int hauteurBandeauOutil = (int) Math.max(this.getSize().getHeight() / 10, 50);
+
 		// Bandeau outils
-		this.panneauBandeauOutils = new PanneauBandeauOutils();
+		this.panneauBandeauOutils = new PanneauBandeauOutils((int) this.getSize().getWidth(), hauteurBandeauOutil,
+				Color.BLACK, this);
 		this.add("North", this.panneauBandeauOutils);
 
 		// ajout du panneau principal
 		this.panneauPrincipal = new PanneauPrincipal((int) this.getSize().getWidth(),
-				(int) this.getSize().getHeight() - 75);
+				(int) this.getSize().getHeight() - hauteurBandeauOutil);
 		this.add(panneauPrincipal);
 	}
 
