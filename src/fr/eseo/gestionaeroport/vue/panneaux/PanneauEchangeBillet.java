@@ -61,6 +61,8 @@ public class PanneauEchangeBillet extends JPanel {
 		/// On choisit la taille
 		gbc.gridheight = 1;
 		gbc.gridwidth = 1;
+		/// on le centre
+		gbc.anchor = GridBagConstraints.CENTER;
 		this.add(numVolTxt, gbc);
 
 		JTextField numVolJtf = new JTextField();
@@ -125,6 +127,8 @@ public class PanneauEchangeBillet extends JPanel {
 		gbc.gridwidth = 1;
 		/// remplissage de la case en horizontal et vertical
 		gbc.fill = GridBagConstraints.BOTH;
+		/// on met le bouton à gauche
+		gbc.anchor = GridBagConstraints.LINE_END;
 		this.add(validerBout, gbc);
 	}
 
