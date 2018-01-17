@@ -49,5 +49,5 @@ public abstract class DAO<T> {
 	 * 
 	 * @return T
 	 */
-	public abstract T affiche();
+	public abstract String affiche();
 }

@@ -24,9 +24,13 @@ public class AeroportDAO extends DAO<Aeroport> {
 
 	}
 
-	public String find() {
+	public Aeroport find(Aeroport obj) {
+		return obj;
+	}
 
-		String ville;
+	public String affiche() {
+
+		String ville = "";
 
 		try {
 			ResultSet result = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)
