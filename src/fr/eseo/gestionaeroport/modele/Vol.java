@@ -1,6 +1,7 @@
 package fr.eseo.gestionaeroport.modele;
 
 import java.util.Date;
+import java.util.List;
 
 public class Vol {
 	public int idVol;
@@ -8,15 +9,14 @@ public class Vol {
 	private Date heureArrivee;
 	private Aeroport aeroportDepart;
 	private Aeroport aeroportArrivee;
-	private String nomPassagers;
+	private List<String> nomPassagers;
 	private int nombrePassagers;
 	private Compagnie compagnie;
 	private Avion avion;
 	private String place;
-	
-	//constructeur:
+
 	public Vol(int idVol, Date heureDepart, Date heureArrivee, Aeroport aeroportDepart, Aeroport aeroportArrivee,
-			String nomPassagers, int nombrePassagers, Compagnie compagnie, Avion avion, String place) {
+			List<String> nomPassagers, int nombrePassagers, Avion avion, String place) {
 		super();
 		this.idVol = idVol;
 		this.heureDepart = heureDepart;
@@ -25,12 +25,11 @@ public class Vol {
 		this.aeroportArrivee = aeroportArrivee;
 		this.nomPassagers = nomPassagers;
 		this.nombrePassagers = nombrePassagers;
-		this.compagnie = compagnie;
 		this.avion = avion;
 		this.place = place;
 	}
 
-	//getters and setters:
+	// getters and setters:
 	public int getIdVol() {
 		return idVol;
 	}
@@ -71,11 +70,11 @@ public class Vol {
 		this.aeroportArrivee = aeroportArrivee;
 	}
 
-	public String getNomPassagers() {
+	public List<String> getNomPassagers() {
 		return nomPassagers;
 	}
 
-	public void setNomPassagers(String nomPassagers) {
+	public void setNomPassagers(List<String> nomPassagers) {
 		this.nomPassagers = nomPassagers;
 	}
 
