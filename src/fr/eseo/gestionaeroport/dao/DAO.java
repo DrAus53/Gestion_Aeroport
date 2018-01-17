@@ -18,7 +18,7 @@ public abstract class DAO<T> {
 	 * @param obj
 	 * @return boolean
 	 */
-	public abstract boolean create(T obj);
+	public abstract void create(T obj);
 
 	/**
 	 * Méthode pour effacer
