@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 public class Vol {
-	public int idVol;
+	public int numeroVol;
 	private Date heureDepart;
 	private Date heureArrivee;
 	private int idaeroportDepart;
@@ -15,10 +15,10 @@ public class Vol {
 	private int idavion;
 	private String place;
 
-	public Vol(int idVol, Date heureDepart, Date heureArrivee, int idaeroportDepart, int idaeroportArrivee,
+	public Vol(int numeroVol, Date heureDepart, Date heureArrivee, int idaeroportDepart, int idaeroportArrivee,
 			List<String> nomPassagers, int nombrePassagers, int idavion, String place) {
 		super();
-		this.idVol = idVol;
+		this.numeroVol = numeroVol;
 		this.heureDepart = heureDepart;
 		this.heureArrivee = heureArrivee;
 		this.setIdaeroportDepart(idaeroportDepart);
@@ -30,12 +30,12 @@ public class Vol {
 	}
 
 	// getters and setters:
-	public int getIdVol() {
-		return idVol;
+	public int getnumeroVol() {
+		return numeroVol;
 	}
 
-	public void setIdVol(int idVol) {
-		this.idVol = idVol;
+	public void setnumeroVol(int numeroVol) {
+		this.numeroVol = numeroVol;
 	}
 
 	public Date getHeureDepart() {
