@@ -40,7 +40,7 @@ public class PanneauRechercheVol extends JPanel {
 		constraints.insets = new Insets(2, 2, 2, 2);
 
 		// Zone de titre
-		JLabel zoneTitre = new JLabel("Recherche Vol");
+		JLabel zoneTitre = new JLabel("Rechercher un vol");
 		zoneTitre.setFont(new Font("Berlin Sans FB Demi", 1, 30));
 		zoneTitre.setForeground(FenetreGestionAeroport.COULEUR_CADRE_PANNEAUX);
 		/// On positionne la case au départ
