@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import fr.eseo.gestionaeroport.controleur.actions.ActionProposerVol;
 import fr.eseo.gestionaeroport.controleur.baseDeDonnees.ConnexionBDD;
 import fr.eseo.gestionaeroport.dao.AeroportDAO;
 import fr.eseo.gestionaeroport.dao.AvionDAO;
@@ -212,7 +213,7 @@ public class PanneauProposerVol extends JPanel {
 		this.add(jComboBoxAvion, constraints);
 
 		// valider
-		JButton validerBout = new JButton("Valider");
+		JButton validerBout = new JButton(new ActionProposerVol());
 		validerBout.setPreferredSize(new Dimension(70, 30));
 		/// couleur du texte
 		validerBout.setForeground(Color.WHITE);
