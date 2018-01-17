@@ -31,20 +31,25 @@ public class AeroportDAO extends DAO<Aeroport> {
 
 	public Object[] affiche() {
 
-		Object[] villes = new Object[] { "bug à i=1", "bug à i=2", "bug à i=3", "bug à i=4", "bug à i=5", "bug à i=6" };
+		Object[] villes = new Object[20];
 
 		try {
 			ResultSet result = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)
-					.executeQuery("SELECT Ville FROM aeroport");
+					.executeQuery("SELECT * FROM aeroport");
 			ResultSetMetaData resultMeta = result.getMetaData();
+			int compteur = 0;
 
 			while (result.next()) {
-				for (int i = 1; i <= resultMeta.getColumnCount(); i++)
-					villes[i] = ("" + result.getObject(i).toString() + "");
+
+				for (int i = 1; i <= resultMeta.getColumnCount(); i++) {
+					villes[compteur] = ("" + result.getObject(2).toString() + "");
+				}
+
+				compteur += 1;
 			}
 
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
+
 			e1.printStackTrace();
 		}
 

@@ -144,8 +144,8 @@ public class PanneauProposerVol extends JPanel {
 		constraints.fill = GridBagConstraints.NONE;
 		this.add(labelArriveeAeroport, constraints);
 
-		JTextField jTextFieldArriveeAeroport = new JTextField();
-		jTextFieldArriveeAeroport
+		JComboBox<Object> jComboBoxArriveetAeroport = new JComboBox<>(villes);
+		jComboBoxArriveetAeroport
 				.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));
 		constraints.gridx = 2;
 		constraints.gridy = 3;
@@ -153,7 +153,7 @@ public class PanneauProposerVol extends JPanel {
 		constraints.gridheight = 1;
 		constraints.anchor = GridBagConstraints.CENTER;
 		constraints.fill = GridBagConstraints.HORIZONTAL;
-		this.add(jTextFieldArriveeAeroport, constraints);
+		this.add(jComboBoxArriveetAeroport, constraints);
 
 		JLabel labelDateArrivee = new JLabel("Date");
 		constraints.gridx = 1;
