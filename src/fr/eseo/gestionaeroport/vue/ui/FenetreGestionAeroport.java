@@ -28,6 +28,9 @@ public class FenetreGestionAeroport extends JFrame {
 	public static final int LARGEUR_PANNEAU_PAR_DEFAUT = 300;
 	public static final int HAUTEUR_PANNEAU_PAR_DEFAUT = 30;
 
+	public static final int LARGEUR_BOITE_DIALOGUE_PAR_DEFAUT = 500;
+	public static final int HAUTEUR_BOITE_DIALOGUE_PAR_DEFAUT = 300;
+
 	public static final Color COULEUR_FOND_FENETRE = new Color(38, 138, 255);
 	public static final Color COULEUR_CADRE_PANNEAUX = new Color(255, 81, 38);
 	public static final Color COULEUR_FOND_PANNEAUX = new Color(255, 255, 255);
