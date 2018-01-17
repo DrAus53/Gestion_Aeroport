@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -16,8 +17,15 @@ public class PanneauEmbarquement extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private FenetreGestionAeroport fenetreGestionAeroport;
 
-	public PanneauEmbarquement() {
+	public PanneauEmbarquement(int largeur, int hauteur) {
+		this.setSize(largeur, hauteur);
+		this.setBackground(FenetreGestionAeroport.COULEUR_FOND_PANNEAUX);
+		this.setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, FenetreGestionAeroport.COULEUR_CADRE_PANNEAUX));
 		initComponent();
+	}
+
+	public PanneauEmbarquement() {
+		this(FenetreGestionAeroport.LARGEUR_PANNEAU_PAR_DEFAUT, FenetreGestionAeroport.HAUTEUR_PANNEAU_PAR_DEFAUT);
 	}
 
 	private void initComponent() {

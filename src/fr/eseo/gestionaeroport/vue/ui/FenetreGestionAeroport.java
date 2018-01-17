@@ -10,6 +10,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 import fr.eseo.gestionaeroport.vue.panneaux.PanneauEchangeBillet;
+import fr.eseo.gestionaeroport.vue.panneaux.PanneauEmbarquement;
 import fr.eseo.gestionaeroport.vue.panneaux.PanneauEnregistrerUnNouvelAvion;
 import fr.eseo.gestionaeroport.vue.panneaux.PanneauModifierUnCompteClient;
 import fr.eseo.gestionaeroport.vue.panneaux.PanneauProposerVol;
@@ -39,8 +40,9 @@ public class FenetreGestionAeroport extends JFrame {
 	private PanneauEnregistrerUnNouvelAvion panneauEnregistrerUnNouvelAvion;
 	private PanneauModifierUnCompteClient panneauModifierUnCompteClient;
 	private PanneauEchangeBillet panneauEchangeBillet;
+	private PanneauEmbarquement panneauEmbarquement;
 
-	public FenetreGestionAeroport() {
+	private FenetreGestionAeroport() {
 		super();
 		this.setTitle(TITRE_PAR_DEFAUT);
 		this.setIconImage(new ImageIcon("icone_avion.png").getImage());
@@ -106,6 +108,11 @@ public class FenetreGestionAeroport extends JFrame {
 		constraints.gridx = 0;
 		constraints.gridy = 3;
 		this.getContentPane().add(panneauEchangeBillet, constraints);
+
+		this.panneauEmbarquement = new PanneauEmbarquement();
+		constraints.gridx = 1;
+		constraints.gridy = 3;
+		this.getContentPane().add(panneauEmbarquement, constraints);
 	}
 
 }
