@@ -7,6 +7,8 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import fr.eseo.gestionaeroport.GestionAeroport;
+
 public class BarreOutils extends JMenuBar {
 
 	private static final long serialVersionUID = 1L;
@@ -15,15 +17,22 @@ public class BarreOutils extends JMenuBar {
 	private static final int HAUTEUR_PAR_DEFAUT = 75;
 	private static final Color COULEUR_FOND_PAR_DEFAUT = Color.black;
 
-	private JMenu menuProfil = new JMenu("Profil");
-	private JMenuItem itemNom = new JMenuItem("Nom");
-	private JMenuItem itemPrenom = new JMenuItem("Prenom");
-	private JMenuItem itemLogin = new JMenuItem("Login");
-	private JMenuItem itemAdresseMail = new JMenuItem("AdresseMail");
+	private JMenu menuProfil;
+	private JMenuItem itemNom;
+	private JMenuItem itemPrenom;
+	private JMenuItem itemLogin;
+	private JMenuItem itemAdresseMail;
 	private JMenuItem itemModifer = new JMenuItem("Modifer");
 	private JMenuItem itemDeconnexion = new JMenuItem("Deconnexion");
 
 	public BarreOutils(int largeur, int hauteur, Color fond) {
+		;
+		menuProfil = new JMenu("Profil");
+		GestionAeroport.getInstance();
+		itemNom = new JMenuItem(GestionAeroport.getUtilisateurConnecte().getNom());
+		itemPrenom = new JMenuItem(GestionAeroport.getUtilisateurConnecte().getPrenom());
+		itemLogin = new JMenuItem(GestionAeroport.getUtilisateurConnecte().getLogin());
+		itemAdresseMail = new JMenuItem(GestionAeroport.getUtilisateurConnecte().getAdresseMail());
 
 		this.setBackground(fond);
 		this.setPreferredSize(new Dimension(largeur, hauteur));

@@ -8,6 +8,7 @@ import java.sql.Statement;
 
 import javax.swing.AbstractAction;
 
+import fr.eseo.gestionaeroport.GestionAeroport;
 import fr.eseo.gestionaeroport.controleur.baseDeDonnees.ConnexionBDD;
 import fr.eseo.gestionaeroport.modele.Utilisateur;
 import fr.eseo.gestionaeroport.vue.ui.FenetreConnexion;
@@ -54,6 +55,7 @@ public class ActionConnexion extends AbstractAction {
 								result.getString("prenom"), result.getString("nom"), result.getString("motdepasse"),
 								result.getString("login"), result.getString("adressemail"));
 						System.out.print("Utilisateur Connecté");
+						GestionAeroport.setUtilisateurConnecte(this.utilisateurConnecte);
 						FenetreConnexion.fermerFenetre();
 					}
 				} catch (SQLException e) {
