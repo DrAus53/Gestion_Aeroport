@@ -9,6 +9,7 @@ import java.awt.Insets;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -69,9 +70,10 @@ public class PanneauProposerVol extends JPanel {
 		constraints.anchor = GridBagConstraints.CENTER;
 		this.add(labelDepartAeroport, constraints);
 
-		JTextField jTextFieldDepartAeroport = new JTextField();
-		jTextFieldDepartAeroport.setColumns(15);
-		jTextFieldDepartAeroport
+		Object[] elements = new Object[] { "Element 1", "Element 2", "Element 3", "Element 4", "Element 5" };
+
+		JComboBox<Object> jComboBoxDepartAeroport = new JComboBox<>(elements);
+		jComboBoxDepartAeroport
 				.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));
 		constraints.gridx = 2;
 		constraints.gridy = 1;
@@ -79,7 +81,7 @@ public class PanneauProposerVol extends JPanel {
 		constraints.gridheight = 1;
 		constraints.anchor = GridBagConstraints.CENTER;
 		constraints.fill = GridBagConstraints.HORIZONTAL;
-		this.add(jTextFieldDepartAeroport, constraints);
+		this.add(jComboBoxDepartAeroport, constraints);
 
 		JLabel labelDate = new JLabel("Date");
 		constraints.gridx = 1;

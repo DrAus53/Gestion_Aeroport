@@ -2,9 +2,7 @@ package fr.eseo.gestionaeroport.dao;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 import fr.eseo.gestionaeroport.modele.baseDeDonnees.Aeroport;
 
@@ -14,31 +12,31 @@ public class AeroportDAO extends DAO<Aeroport> {
 		super(conn);
 	}
 
-	public boolean create(Aeroport obj) {
-		return false;
+	public void create(Aeroport obj) {
+
 	}
 
-	public boolean delete(Aeroport obj) {
-		return false;
+	public void delete(Aeroport obj) {
+
 	}
 
-	public boolean update(Aeroport obj) {
-		return false;
+	public void update(Aeroport obj) {
+
 	}
 
-	public Aeroport find(int id) {
-		Aeroport aeroport = new Aeroport();
+	public String find() {
+
+		String ville;
 
 		try {
+			ResultSet result = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)
+					.executeQuery("SELECT Ville FROM aeroport");
 
-			Statement state = conn.createStatement();
-
-			ResultSet result = state.executeQuery("SELECT * FROM avion");
-
-			ResultSetMetaData resultMeta = result.getMetaData();
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
-		return aeroport;
+
+		return ville;
 	}
 }
