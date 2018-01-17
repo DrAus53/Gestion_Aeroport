@@ -8,8 +8,8 @@ public class Vol {
 	private int idAvion;
 	private int nombrePassagers;
 	private String nomPassagers;
-	private int idAeroportDepart;
-	private int idAeroportArrivee;
+	private Aeroport AeroportDepart;
+	private int AeroportArrivee;
 	private Date heureDepart;
 	private Date heureArrivee;
 
@@ -112,4 +112,13 @@ public class Vol {
 	public void setHeureArrivee(Date heureArrivee) {
 		this.heureArrivee = heureArrivee;
 	}
+
+	public void setIdAeroportArrivee(int idAeroportArrivee) {
+		this.idAeroportArrivee = idAeroportArrivee;
+	}
+
+	public void setIdAeroportArrivee(int idAeroportArrivee) {
+		this.idAeroportArrivee = idAeroportArrivee;
+	}
+
 }
