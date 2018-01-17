@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.sql.Connection;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -14,6 +15,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import fr.eseo.gestionaeroport.controleur.baseDeDonnees.ConnexionBDD;
+import fr.eseo.gestionaeroport.dao.AeroportDAO;
 import fr.eseo.gestionaeroport.vue.ui.FenetreGestionAeroport;
 
 public class PanneauProposerVol extends JPanel {
@@ -70,9 +73,10 @@ public class PanneauProposerVol extends JPanel {
 		constraints.anchor = GridBagConstraints.CENTER;
 		this.add(labelDepartAeroport, constraints);
 
-		Object[] elements = new Object[] { "Element 1", "Element 2", "Element 3", "Element 4", "Element 5" };
+		Connection conn = ConnexionBDD.connexion();
+		Object[] villes = new AeroportDAO(conn).affiche();
 
-		JComboBox<Object> jComboBoxDepartAeroport = new JComboBox<>(elements);
+		JComboBox<Object> jComboBoxDepartAeroport = new JComboBox<>(villes);
 		jComboBoxDepartAeroport
 				.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));
 		constraints.gridx = 2;
