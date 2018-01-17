@@ -42,7 +42,9 @@ public class ActionEnregistrerAvion extends AbstractAction {
 						state.execute("INSERT INTO avion (nomavion, typeavion, nombreplaces, idcompagnie) VALUES('"
 								+ nomAvion + "', '" + typeAvion + "','" + nbplace + "','1')");
 						BoiteDialogueNewAvionOk jop1 = new BoiteDialogueNewAvionOk();
+						FenetreGestionAeroport.getInstance();
 					} catch (Exception e) {
+						BoiteDialogueNewAvionKo jop2 = new BoiteDialogueNewAvionKo();
 						e.printStackTrace();
 					}
 				}
