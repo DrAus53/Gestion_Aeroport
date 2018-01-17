@@ -9,8 +9,7 @@ public class Utilisateur {
 	private String login;
 	private String adresseMail;
 
-	public Utilisateur(int id, String prenom, String nom, String motDePasse, String login, String adresseMail) {
-		this.id = id;
+	public Utilisateur(String prenom, String nom, String motDePasse, String login, String adresseMail) {
 		this.prenom = prenom;
 		this.nom = nom;
 		this.motDePasse = motDePasse;

@@ -9,8 +9,9 @@ import java.util.Date;
 import java.util.List;
 
 import fr.eseo.gestionaeroport.dao.ReservationDAO;
+import fr.eseo.gestionaeroport.dao.UtilisateurDAO;
 import fr.eseo.gestionaeroport.dao.VolDAO;
-import fr.eseo.gestionaeroport.modele.Reservation;
+import fr.eseo.gestionaeroport.modele.Utilisateur;
 import fr.eseo.gestionaeroport.modele.Vol;
 
 public class TestSQL {
@@ -30,8 +31,14 @@ public class TestSQL {
 
 			ReservationDAO reservationDAO = new ReservationDAO(conn);
 
-			reservationDAO.delete(new Reservation(new Date(), 2, 3, 2));
+			// reservationDAO.delete(new Reservation(new Date(), 2, 3, 2));
 
+			UtilisateurDAO utilisateur = new UtilisateurDAO(conn);
+			utilisateur.find(new Utilisateur("Vincent", "Moindreau",
+					"d9c1b294ae7ed31095e97852c43e6b2b073acd71cba868cb28e9da1c1a26b5bd", "vincent", "uysige@jisd.fr"));
+			utilisateur.update(new Utilisateur("Vincent", "Moindreau",
+					"d9c1b294ae7ed31095e97852c43e6b2b073acd71cba868cb28e9da1c1a26b5bd", "vincent", "uysige@jisd.fr"),
+					new Utilisateur("Vincent", "Mansalier", "emma", "emma", "emma.mansalier@jisd.fr"));
 			// L'objet ResultSet contient le résultat de la requête SQL
 			ResultSet result = state.executeQuery("SELECT * FROM vol");
 			// On récupère les MetaData

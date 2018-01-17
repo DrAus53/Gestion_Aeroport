@@ -31,10 +31,10 @@ public abstract class DAO<T> {
 	/**
 	 * Méthode de mise à jour
 	 * 
-	 * @param obj
+	 * @param obj1
 	 * @return boolean
 	 */
-	public abstract void update(T obj);
+	public abstract void update(T obj, T obj1);
 
 	/**
 	 * Méthode de recherche des informations

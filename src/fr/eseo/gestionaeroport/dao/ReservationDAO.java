@@ -53,4 +53,10 @@ public class ReservationDAO extends DAO<Reservation> {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public void update(Reservation obj, Reservation obj1) {
+		// TODO Auto-generated method stub
+
+	}
 }

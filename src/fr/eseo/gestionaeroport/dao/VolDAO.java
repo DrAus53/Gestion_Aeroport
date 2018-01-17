@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 
+import javax.naming.spi.DirStateFactory.Result;
+
 import fr.eseo.gestionaeroport.modele.Vol;
 
 public class VolDAO extends DAO<Vol> {
@@ -126,6 +128,12 @@ public class VolDAO extends DAO<Vol> {
 				.executeQuery("SELECT  FROM vol WHERE aeroportdepart=" + "'" + obj.getIdaeroportDepart() + "'"
 						+ "AND aeroportarrivee=" + "'" + obj.getIdaeroportArrivee() + "'" + "AND datedepart=" + "'"
 						+ obj.getDateDepart() + "';");
+
+	}
+
+	@Override
+	public void update(Vol obj, Vol obj1) {
+		// TODO Auto-generated method stub
 
 	}
 }
