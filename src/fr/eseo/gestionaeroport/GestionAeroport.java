@@ -6,7 +6,6 @@ import fr.eseo.gestionaeroport.vue.ui.FenetreConnexion;
 
 public class GestionAeroport {
 
-	// static FenetreGestionAeroport fenetre;
 	static FenetreConnexion fenetreConnexion;
 
 	public GestionAeroport() {
@@ -14,8 +13,6 @@ public class GestionAeroport {
 	}
 
 	public static void lancerFenetreAvecConstructeur() {
-		// fenetre = FenetreGestionAeroport.getInstance();
-		// fenetre.setVisible(true);
 		fenetreConnexion = FenetreConnexion.getInstance();
 		fenetreConnexion.setVisible(true);
 	}
