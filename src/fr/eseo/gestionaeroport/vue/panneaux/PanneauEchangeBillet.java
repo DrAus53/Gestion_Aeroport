@@ -14,10 +14,16 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import fr.eseo.gestionaeroport.controleur.actions.ActionEchangeBillet;
 import fr.eseo.gestionaeroport.vue.ui.FenetreGestionAeroport;
 
 @SuppressWarnings("serial")
 public class PanneauEchangeBillet extends JPanel {
+
+	public JTextField numVolJtf;
+	public JTextField nomPasJtf;
+	public JCheckBox rembChB;
+	public FenetreGestionAeroport fenetre;
 
 	public PanneauEchangeBillet(int largeur, int hauteur) {
 		super();
@@ -65,16 +71,17 @@ public class PanneauEchangeBillet extends JPanel {
 		gbc.anchor = GridBagConstraints.CENTER;
 		this.add(numVolTxt, gbc);
 
-		JTextField numVolJtf = new JTextField();
-		numVolJtf.setColumns(15);
-		numVolJtf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));
+		this.numVolJtf = new JTextField();
+		this.numVolJtf.setColumns(15);
+		this.numVolJtf
+				.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));
 		/// On positionne la case
 		gbc.gridx = 1;
 		gbc.gridy = 1;
 		/// On choisit la taille
 		gbc.gridheight = 1;
 		gbc.gridwidth = 1;
-		this.add(numVolJtf, gbc);
+		this.add(this.numVolJtf, gbc);
 
 		// nom du passager
 		JLabel nomPasTxt = new JLabel("Nom du passager ");
@@ -86,30 +93,31 @@ public class PanneauEchangeBillet extends JPanel {
 		gbc.gridwidth = 1;
 		this.add(nomPasTxt, gbc);
 
-		JTextField nomPasJtf = new JTextField();
-		nomPasJtf.setColumns(15);
-		nomPasJtf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));
+		this.nomPasJtf = new JTextField();
+		this.nomPasJtf.setColumns(15);
+		this.nomPasJtf
+				.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));
 		/// On positionne la case
 		gbc.gridx = 1;
 		gbc.gridy = 2;
 		/// On choisit la taille
 		gbc.gridheight = 1;
 		gbc.gridwidth = 1;
-		this.add(nomPasJtf, gbc);
+		this.add(this.nomPasJtf, gbc);
 
 		// remboursement
-		JCheckBox rembChB = new JCheckBox("Remboursement");
-		rembChB.setOpaque(false);
+		this.rembChB = new JCheckBox("Remboursement");
+		this.rembChB.setOpaque(false);
 		/// On positionne la case
 		gbc.gridx = 0;
 		gbc.gridy = 3;
 		/// On choisit la taille
 		gbc.gridheight = 1;
 		gbc.gridwidth = 2;
-		this.add(rembChB, gbc);
+		this.add(this.rembChB, gbc);
 
 		// valider
-		JButton validerBout = new JButton("Valider");
+		JButton validerBout = new JButton(new ActionEchangeBillet(this.fenetre));
 		validerBout.setPreferredSize(new Dimension(70, 30));
 		/// couleur du texte
 		validerBout.setForeground(Color.WHITE);
