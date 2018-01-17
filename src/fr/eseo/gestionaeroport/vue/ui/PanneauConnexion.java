@@ -10,7 +10,6 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import fr.eseo.gestionaeroport.controleur.actions.ActionConnexion;
@@ -21,7 +20,7 @@ public class PanneauConnexion extends JPanel {
 	public FenetreConnexion fenetre;
 
 	private JTextField jTextFieldLogin;
-	private JPasswordField jTextFieldMdp;
+	private JTextField jTextFieldMdp;
 
 	public PanneauConnexion() {
 		initComponent();
@@ -31,7 +30,7 @@ public class PanneauConnexion extends JPanel {
 		return jTextFieldLogin;
 	}
 
-	public JPasswordField getjTextFieldMdp() {
+	public JTextField getjTextFieldMdp() {
 		return jTextFieldMdp;
 	}
 
@@ -68,7 +67,7 @@ public class PanneauConnexion extends JPanel {
 		constraints.gridy = 2;
 		this.add(labelMdp, constraints);
 
-		this.jTextFieldMdp = new JPasswordField();
+		this.jTextFieldMdp = new JTextField();
 		jTextFieldMdp.setPreferredSize(new Dimension(120, 18));
 		jTextFieldMdp
 				.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));

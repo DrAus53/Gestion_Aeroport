@@ -1,7 +1,5 @@
 package fr.eseo.gestionaeroport.vue.ui;
 
-import java.util.Arrays;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
@@ -46,6 +44,6 @@ public class FenetreConnexion extends JFrame {
 	}
 
 	public static String findMdp() {
-		return Arrays.toString(FenetreConnexion.getInstance().panneauConnexion.getjTextFieldMdp().getPassword());
+		return FenetreConnexion.getInstance().panneauConnexion.getjTextFieldMdp().getText();
 	}
 }
