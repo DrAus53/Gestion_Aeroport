@@ -8,8 +8,8 @@ public class ConnexionBDD {
 	// Variables
 
 	private static String url = "jdbc:postgresql://192.168.4.127:5432/gestionaeroport";
-	private static String user = "";
-	private static String mdp = "";
+	private static String user = "tanguy";
+	private static String mdp = "6c4c4USV";
 
 	// Methodes
 

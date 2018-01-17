@@ -36,8 +36,8 @@ public class PanneauConnexion extends JPanel {
 
 	public void initComponent() {
 		this.setLayout(new GridBagLayout());
-		this.setBackground(new Color(38, 138, 255));
-		this.setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, new Color(255, 81, 38)));
+		this.setBackground(FenetreGestionAeroport.COULEUR_FOND_FENETRE);
+		this.setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, FenetreGestionAeroport.COULEUR_ACCENTUATION));
 		GridBagConstraints constraints = new GridBagConstraints();
 
 		JLabel labelBienvenu = new JLabel("Bienvenu !");
@@ -56,7 +56,8 @@ public class PanneauConnexion extends JPanel {
 
 		this.jTextFieldLogin = new JTextField();
 		jTextFieldLogin.setPreferredSize(new Dimension(120, 18));
-		jTextFieldLogin.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, new Color(255, 208, 38)));
+		jTextFieldLogin
+				.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));
 		constraints.gridx = 1;
 		constraints.gridy = 1;
 		this.add(jTextFieldLogin, constraints);
@@ -68,7 +69,8 @@ public class PanneauConnexion extends JPanel {
 
 		this.jTextFieldMdp = new JTextField();
 		jTextFieldMdp.setPreferredSize(new Dimension(120, 18));
-		jTextFieldMdp.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, new Color(255, 208, 38)));
+		jTextFieldMdp
+				.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));
 		constraints.gridx = 1;
 		constraints.gridy = 2;
 		this.add(jTextFieldMdp, constraints);
@@ -81,9 +83,10 @@ public class PanneauConnexion extends JPanel {
 		/// couleur du texte
 		jButtonValider.setForeground(Color.WHITE);
 		/// on peint l'interieur
-		jButtonValider.setBackground(new Color(255, 208, 38));
+		jButtonValider.setBackground(FenetreGestionAeroport.COULEUR_ACCENTUATION);
 		/// on peint les bordures
-		jButtonValider.setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, new Color(255, 208, 38)));
+		jButtonValider
+				.setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, FenetreGestionAeroport.COULEUR_ACCENTUATION));
 		/// on enleve l'effet focus
 		jButtonValider.setFocusPainted(false);
 		this.add(jButtonValider, constraints);

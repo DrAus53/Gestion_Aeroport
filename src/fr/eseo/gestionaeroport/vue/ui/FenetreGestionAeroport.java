@@ -31,10 +31,10 @@ public class FenetreGestionAeroport extends JFrame {
 	public static final int LARGEUR_BOITE_DIALOGUE_PAR_DEFAUT = 500;
 	public static final int HAUTEUR_BOITE_DIALOGUE_PAR_DEFAUT = 300;
 
-	public static final Color COULEUR_FOND_FENETRE = new Color(38, 138, 255);
-	public static final Color COULEUR_CADRE_PANNEAUX = new Color(255, 81, 38);
-	public static final Color COULEUR_FOND_PANNEAUX = new Color(255, 255, 255);
-	public static final Color COULEUR_ACCENTUATION = new Color(255, 208, 38);
+	public static final Color COULEUR_FOND_FENETRE = new Color(144, 164, 174);
+	public static final Color COULEUR_CADRE_PANNEAUX = new Color(0, 105, 92);
+	public static final Color COULEUR_FOND_PANNEAUX = new Color(242, 244, 244);
+	public static final Color COULEUR_ACCENTUATION = new Color(165, 214, 167);
 	public static final Color COULEUR_BANDEAU = new Color(23, 32, 42);
 
 	private BarreOutils barreOutils;
