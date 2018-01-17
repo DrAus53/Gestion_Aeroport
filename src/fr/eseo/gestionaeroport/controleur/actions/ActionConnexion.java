@@ -1,9 +1,15 @@
 package fr.eseo.gestionaeroport.controleur.actions;
 
 import java.awt.event.ActionEvent;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.swing.AbstractAction;
 
+import fr.eseo.gestionaeroport.controleur.baseDeDonnees.ConnexionBDD;
+import fr.eseo.gestionaeroport.modele.Utilisateur;
 import fr.eseo.gestionaeroport.vue.ui.FenetreConnexion;
 
 public class ActionConnexion extends AbstractAction {
@@ -11,6 +17,8 @@ public class ActionConnexion extends AbstractAction {
 
 	private FenetreConnexion fenetreConnexion;
 	public static final String NOM_ACTION = "Connexion";
+
+	private Utilisateur utilisateurConnecte;
 
 	public ActionConnexion(FenetreConnexion fenetreConnexion) {
 		super(NOM_ACTION);
@@ -22,6 +30,10 @@ public class ActionConnexion extends AbstractAction {
 		this.fenetreConnexion = fenetreConnexion.getInstance();
 	}
 
+	public Utilisateur getUtilisateurConnecte() {
+		return utilisateurConnecte;
+	}
+
 	public void actionPerformed(ActionEvent arg0) {
 
 		String login = FenetreConnexion.findLogin();
@@ -29,8 +41,24 @@ public class ActionConnexion extends AbstractAction {
 
 		if (login != null && !login.equals("") && login.length() >= 5) {
 			if (mdp != null && !mdp.equals("") && mdp.length() >= 5) {
+				// requête utilisateur:
+				try {
+					Statement state = ConnexionBDD.connexion().createStatement();
 
-				FenetreConnexion.fermerFenetre();
+					ResultSet result = state.executeQuery(
+							"SELECT * FROM utilisateur WHERE login='" + login + "' AND motdepasse='" + mdp + "'");
+					ResultSetMetaData resultMeta = result.getMetaData();
+					// si on trouve un utilisateur:
+					while (result.next()) {
+						this.utilisateurConnecte = new Utilisateur(Integer.parseInt(result.getString("idutilisateur")),
+								result.getString("prenom"), result.getString("nom"), result.getString("motdepasse"),
+								result.getString("login"), result.getString("adressemail"));
+						System.out.print("Utilisateur Connecté");
+						FenetreConnexion.fermerFenetre();
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 	}
