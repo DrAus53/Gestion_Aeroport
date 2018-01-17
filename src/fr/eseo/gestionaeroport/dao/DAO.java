@@ -6,10 +6,10 @@ import fr.eseo.gestionaeroport.controleur.baseDeDonnees.ConnexionBDD;
 
 public abstract class DAO<T> {
 
-	protected Connection connect = ConnexionBDD.connexion();
+	protected Connection conn = ConnexionBDD.connexion();
 
-	public DAO(Connection connect) {
-		this.connect = connect;
+	public DAO(Connection conn) {
+		this.conn = conn;
 	}
 
 	/**
