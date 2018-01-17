@@ -1,7 +1,6 @@
 package fr.eseo.gestionaeroport.dao;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -49,9 +48,10 @@ public class VolDAO extends DAO<Vol> {
 	public void delete(Vol obj) {
 		try {
 			ResultSet result = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)
-					.executeQuery("DELETE vol WHERE idaeroportdepart=" + obj.getIdaeroportDepart()
-							+ "AND idaeroportarrivee=" + obj.getIdaeroportArrivee() + "AND heuredepart="
-							+ obj.getHeureDepart() + "AND heurearrivee=" + obj.getHeureArrivee());
+					.executeQuery("DELETE vol WHERE idaeroportdepart=" + "'" + obj.getIdaeroportDepart() + "'"
+							+ "AND idaeroportarrivee=" + "'" + obj.getIdaeroportArrivee() + "'" + "AND heuredepart="
+							+ "'" + obj.getHeureDepart() + "'" + "AND heurearrivee=" + "'" + obj.getHeureArrivee()
+							+ "');");
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -61,24 +61,27 @@ public class VolDAO extends DAO<Vol> {
 
 	}
 
-	public boolean update(Vol obj) {
-		return false;
+	public void update(Vol obj) {
+
 	}
 
-	public void find(String aeroportdepart, String aeroportarrivee, Date heuredepart, Date heurearrivee) {
+	public Vol find(Vol obj) {
 		try {
 			ResultSet result = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)
-					.executeQuery("SELECT * FROM vol WHERE aeroportdepart=" + aeroportdepart + "AND aeroportarrivee="
-							+ aeroportarrivee + "AND heuredepart" + heuredepart + "AND heurearrivee=" + heurearrivee);
+					.executeQuery("SELECT * FROM vol WHERE aeroportdepart=" + "'" + obj.getIdaeroportDepart() + "'"
+							+ "AND aeroportarrivee=" + "'" + obj.getIdaeroportDepart() + "'" + "AND heuredepart" + "'"
+							+ obj.getHeureDepart() + "');");
+
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+		return obj;
 
 	}
 
 	@Override
-	public Vol find(int id) {
+	public Vol affiche() {
 		// TODO Auto-generated method stub
 		return null;
 	}
