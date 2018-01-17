@@ -14,12 +14,13 @@ public class ReservationDAO extends DAO<Reservation> {
 
 	public void create(Reservation obj) {
 		try {
+			System.out.println("INSERT INTO reservation (datereservation,idtrajet,idutilisateur) VALUES( '"
+					+ obj.getDateReservation() + "'" + "," + "'" + obj.getIdTrajet() + "','" + +obj.getIdUtilisateur()
+					+ "');");
 			int result = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)
-					.executeUpdate(
-							"INSERT INTO reservation (idreservation,datereservation,idtrajet,idutilisateur) VALUES("
-									+ "'" + obj.getIdReservation() + "'" + "," + "'" + obj.getDateReservation() + "'"
-									+ "," + "'ab'," + "'" + obj.getIdTrajet() + "'" + "," + "'" + obj.getIdUtilisateur()
-									+ "');");
+					.executeUpdate("INSERT INTO reservation (datereservation,idtrajet,idutilisateur) VALUES( '"
+							+ obj.getDateReservation() + "'" + "," + "'" + obj.getIdTrajet() + "','"
+							+ +obj.getIdUtilisateur() + "');");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -28,10 +29,10 @@ public class ReservationDAO extends DAO<Reservation> {
 
 	public void delete(Reservation obj) {
 		try {
-			ResultSet result = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)
-					.executeQuery("DELETE * FROM Reservation WHERE idreservation=" + "'" + obj.getIdReservation()
-							+ "AND datereservation='" + "'" + obj.getDateReservation() + "'" + "AND idtrajet=" + "'"
-							+ obj.getIdTrajet() + "'" + "AND idutilisateur=" + "'" + obj.getIdUtilisateur() + "');");
+			int result = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)
+					.executeUpdate("DELETE FROM reservation WHERE datereservation='" + obj.getDateReservation() + "'"
+							+ "AND idtrajet=" + "'" + obj.getIdTrajet() + "'" + "AND idutilisateur=" + "'"
+							+ obj.getIdUtilisateur() + "';");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -48,7 +49,7 @@ public class ReservationDAO extends DAO<Reservation> {
 	}
 
 	@Override
-	public Reservation affiche() {
+	public Object[] affiche() {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -17,6 +17,7 @@ import javax.swing.JTextField;
 
 import fr.eseo.gestionaeroport.controleur.baseDeDonnees.ConnexionBDD;
 import fr.eseo.gestionaeroport.dao.AeroportDAO;
+import fr.eseo.gestionaeroport.dao.AvionDAO;
 import fr.eseo.gestionaeroport.vue.ui.FenetreGestionAeroport;
 
 public class PanneauProposerVol extends JPanel {
@@ -144,8 +145,8 @@ public class PanneauProposerVol extends JPanel {
 		constraints.fill = GridBagConstraints.NONE;
 		this.add(labelArriveeAeroport, constraints);
 
-		JTextField jTextFieldArriveeAeroport = new JTextField();
-		jTextFieldArriveeAeroport
+		JComboBox<Object> jComboBoxArriveetAeroport = new JComboBox<>(villes);
+		jComboBoxArriveetAeroport
 				.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));
 		constraints.gridx = 2;
 		constraints.gridy = 3;
@@ -153,7 +154,7 @@ public class PanneauProposerVol extends JPanel {
 		constraints.gridheight = 1;
 		constraints.anchor = GridBagConstraints.CENTER;
 		constraints.fill = GridBagConstraints.HORIZONTAL;
-		this.add(jTextFieldArriveeAeroport, constraints);
+		this.add(jComboBoxArriveetAeroport, constraints);
 
 		JLabel labelDateArrivee = new JLabel("Date");
 		constraints.gridx = 1;
@@ -188,7 +189,7 @@ public class PanneauProposerVol extends JPanel {
 		constraints.fill = GridBagConstraints.HORIZONTAL;
 		this.add(jTextFieldHeureArrivee, constraints);
 
-		JLabel labelIdAvion = new JLabel("Numéro avion");
+		JLabel labelIdAvion = new JLabel("Avion affecté");
 		constraints.gridx = 0;
 		constraints.gridy = 5;
 		constraints.gridwidth = 2;
@@ -197,8 +198,10 @@ public class PanneauProposerVol extends JPanel {
 		constraints.fill = GridBagConstraints.NONE;
 		this.add(labelIdAvion, constraints);
 
-		JTextField jTextFieldIdAvion = new JTextField();
-		jTextFieldIdAvion
+		Object[] avions = new AvionDAO(conn).affiche();
+
+		JComboBox<Object> jComboBoxAvion = new JComboBox<>(avions);
+		jComboBoxAvion
 				.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));
 		constraints.gridx = 2;
 		constraints.gridy = 5;
@@ -206,7 +209,7 @@ public class PanneauProposerVol extends JPanel {
 		constraints.gridheight = 1;
 		constraints.anchor = GridBagConstraints.CENTER;
 		constraints.fill = GridBagConstraints.HORIZONTAL;
-		this.add(jTextFieldIdAvion, constraints);
+		this.add(jComboBoxAvion, constraints);
 
 		// valider
 		JButton validerBout = new JButton("Valider");

@@ -18,7 +18,10 @@ import fr.eseo.gestionaeroport.vue.ui.FenetreGestionAeroport;
 public class PanneauRechercheVol extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-
+	JTextField jtf;
+	JTextField jtfa;
+	JTextField jtfdate;
+	JTextField jtfheure;
 	public PanneauRechercheVol(int largeur, int l) {
 		super();
 		this.setSize(new Dimension(largeur, l));
@@ -33,6 +36,22 @@ public class PanneauRechercheVol extends JPanel {
 		this(FenetreGestionAeroport.LARGEUR_PANNEAU_PAR_DEFAUT, FenetreGestionAeroport.HAUTEUR_PANNEAU_PAR_DEFAUT);
 	}
 
+	public JTextField getJTextFieldAeroportDepart() {
+		return jtf;
+	}
+	
+	public JTextField getJTextFielAeroportArrivee() {
+		return jtfa;
+	}
+	
+	public JTextField getJTextFieldDate() {
+		return jtfdate;
+	}
+	
+	public JTextField getJTextFieldHeure() {
+		return jtfheure;
+	}
+	
 	private void initComponents() {
 		// Layout
 		this.setLayout(new GridBagLayout());
@@ -62,7 +81,7 @@ public class PanneauRechercheVol extends JPanel {
 		constraints.weightx = 0.5;
 		this.add(label, constraints);
 
-		JTextField jtf = new JTextField();
+		jtf = new JTextField();
 		jtf.setColumns(15);
 		jtf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));
 		constraints.anchor = GridBagConstraints.LINE_START;
@@ -82,7 +101,7 @@ public class PanneauRechercheVol extends JPanel {
 		constraints.weightx = 0.5;
 		this.add(labelarrive, constraints);
 
-		JTextField jtfa = new JTextField();
+		jtfa = new JTextField();
 		jtfa.setColumns(15);
 		jtfa.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));
 		constraints.anchor = GridBagConstraints.LINE_START;
@@ -101,7 +120,7 @@ public class PanneauRechercheVol extends JPanel {
 		constraints.gridy = 3;
 		this.add(labeldate, constraints);
 
-		JTextField jtfdate = new JTextField("JJ/MM/AAAA");
+		 jtfdate = new JTextField("JJ/MM/AAAA");
 		jtfdate.setColumns(10);
 		jtfdate.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));
 		constraints.anchor = GridBagConstraints.LINE_START;
@@ -120,7 +139,7 @@ public class PanneauRechercheVol extends JPanel {
 		constraints.gridy = 4;
 		this.add(labelheure, constraints);
 
-		JTextField jtfheure = new JTextField("H/MIN");
+		 jtfheure = new JTextField("H/MIN");
 		constraints.anchor = GridBagConstraints.LINE_START;
 		jtfheure.setColumns(10);
 		jtfheure.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));

@@ -110,7 +110,7 @@ public class VolDAO extends DAO<Vol> {
 	}
 
 	@Override
-	public Vol affiche() {
+	public Object[] affiche() {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -3,66 +3,70 @@ package fr.eseo.gestionaeroport.modele;
 import java.util.Date;
 
 public class Reservation {
-public int idReservation;
-public java.util.Date dateReservation;
-public int getIdReservation() {
-	return idReservation;
-}
+	public int idReservation;
+	public java.util.Date dateReservation;
 
-public void setIdReservation(int idReservation) {
-	this.idReservation = idReservation;
-}
+	public int getIdReservation() {
+		return idReservation;
+	}
 
-public java.util.Date getDateReservation() {
-	return dateReservation;
-}
+	public void setIdReservation(int idReservation) {
+		this.idReservation = idReservation;
+	}
 
-public void setDateReservation(java.util.Date dateReservation) {
-	this.dateReservation = dateReservation;
-}
+	public java.util.Date getDateReservation() {
+		return dateReservation;
+	}
 
-public int getIdAvion() {
-	return idAvion;
-}
+	public void setDateReservation(java.util.Date dateReservation) {
+		this.dateReservation = dateReservation;
+	}
 
-public void setIdAvion(int idAvion) {
-	this.idAvion = idAvion;
-}
+	public int getIdAvion() {
+		return idAvion;
+	}
 
-public int getIdUtilisateur() {
-	return idUtilisateur;
-}
+	public void setIdAvion(int idAvion) {
+		this.idAvion = idAvion;
+	}
 
-public void setIdUtilisateur(int idUtilisateur) {
-	this.idUtilisateur = idUtilisateur;
-}
+	public int getIdUtilisateur() {
+		return idUtilisateur;
+	}
 
-public int getIdTrajet() {
-	return idTrajet;
-}
+	public void setIdUtilisateur(int idUtilisateur) {
+		this.idUtilisateur = idUtilisateur;
+	}
 
-public void setIdTrajet(int idTrajet) {
-	this.idTrajet = idTrajet;
-}
-public int idAvion;
-public int idUtilisateur;
-public int idTrajet;
-public Reservation(int idReservation, Date dateReservation, int idAvion, int idUtilisateur, int idTrajet) {
-	super();
-	this.idReservation = idReservation;
-	this.dateReservation = dateReservation;
-	this.idAvion = idAvion;
-	this.idUtilisateur = idUtilisateur;
-	this.idTrajet = idTrajet;
-}
- 
-public void creer() {
-	
-}
-public void modifier() {
-	
-}
-public void supprimer() {
-	
-}
+	public int getIdTrajet() {
+		return idTrajet;
+	}
+
+	public void setIdTrajet(int idTrajet) {
+		this.idTrajet = idTrajet;
+	}
+
+	public int idAvion;
+	public int idUtilisateur;
+	public int idTrajet;
+
+	public Reservation(Date dateReservation, int idAvion, int idUtilisateur, int idTrajet) {
+		super();
+		this.dateReservation = dateReservation;
+		this.idAvion = idAvion;
+		this.idUtilisateur = idUtilisateur;
+		this.idTrajet = idTrajet;
+	}
+
+	public void creer() {
+
+	}
+
+	public void modifier() {
+
+	}
+
+	public void supprimer() {
+
+	}
 }
