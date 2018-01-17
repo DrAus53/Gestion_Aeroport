@@ -13,9 +13,15 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import fr.eseo.gestionaeroport.controleur.actions.ActionEnregistrerAvion;
 import fr.eseo.gestionaeroport.vue.ui.FenetreGestionAeroport;
 
 public class PanneauEnregistrerUnNouvelAvion extends JPanel {
+
+	public JTextField nbrPlaceJtf;
+	public JTextField modeleJtf;
+	public JTextField constructeurJtf;
+	public FenetreGestionAeroport fenetre;
 
 	public PanneauEnregistrerUnNouvelAvion(int largeur, int hauteur) {
 		super();
@@ -60,9 +66,9 @@ public class PanneauEnregistrerUnNouvelAvion extends JPanel {
 		constraints.anchor = GridBagConstraints.CENTER;
 		this.add(constructeur, constraints);
 
-		JTextField constructeurJtf = new JTextField();
-		constructeurJtf.setColumns(15);
-		constructeurJtf
+		this.constructeurJtf = new JTextField();
+		this.constructeurJtf.setColumns(15);
+		this.constructeurJtf
 				.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));
 		constraints.weightx = 0.5;
 		constraints.gridx = 1;
@@ -70,7 +76,7 @@ public class PanneauEnregistrerUnNouvelAvion extends JPanel {
 		constraints.gridwidth = 1;
 		constraints.gridheight = 1;
 		constraints.anchor = GridBagConstraints.LINE_START;
-		this.add(constructeurJtf, constraints);
+		this.add(this.constructeurJtf, constraints);
 
 		// Nom = Modele
 		JLabel label = new JLabel("Modèle");
@@ -82,16 +88,17 @@ public class PanneauEnregistrerUnNouvelAvion extends JPanel {
 		constraints.anchor = GridBagConstraints.CENTER;
 		this.add(label, constraints);
 
-		JTextField modeleJtf = new JTextField();
-		modeleJtf.setColumns(15);
-		modeleJtf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));
+		this.modeleJtf = new JTextField();
+		this.modeleJtf.setColumns(15);
+		this.modeleJtf
+				.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));
 		constraints.weightx = 0.5;
 		constraints.gridx = 1;
 		constraints.gridy = 2;
 		constraints.gridwidth = 1;
 		constraints.gridheight = 1;
 		constraints.anchor = GridBagConstraints.LINE_START;
-		this.add(modeleJtf, constraints);
+		this.add(this.modeleJtf, constraints);
 
 		JLabel labela = new JLabel("Nombre de places");
 		constraints.gridx = 0;
@@ -101,19 +108,20 @@ public class PanneauEnregistrerUnNouvelAvion extends JPanel {
 		constraints.anchor = GridBagConstraints.CENTER;
 		this.add(labela, constraints);
 
-		JTextField nbrPlaceJtf = new JTextField();
-		nbrPlaceJtf.setColumns(7);
-		nbrPlaceJtf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));
+		this.nbrPlaceJtf = new JTextField();
+		this.nbrPlaceJtf.setColumns(7);
+		this.nbrPlaceJtf
+				.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));
 		constraints.weightx = 0.5;
 		constraints.gridx = 1;
 		constraints.gridy = 3;
 		constraints.gridwidth = 1;
 		constraints.gridheight = 1;
 		constraints.anchor = GridBagConstraints.LINE_START;
-		this.add(nbrPlaceJtf, constraints);
+		this.add(this.nbrPlaceJtf, constraints);
 
 		// valider
-		JButton validerBout = new JButton("Valider");
+		JButton validerBout = new JButton(new ActionEnregistrerAvion(this.fenetre));
 		validerBout.setPreferredSize(new Dimension(70, 30));
 		/// couleur du texte
 		validerBout.setForeground(Color.WHITE);

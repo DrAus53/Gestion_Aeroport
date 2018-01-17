@@ -1,15 +1,55 @@
 package fr.eseo.gestionaeroport.controleur.actions;
 
 import java.awt.event.ActionEvent;
+import java.sql.Statement;
 
 import javax.swing.AbstractAction;
 
+import fr.eseo.gestionaeroport.controleur.baseDeDonnees.ConnexionBDD;
+import fr.eseo.gestionaeroport.vue.boitedialogue.BoiteDialogueNewAvionKo;
+import fr.eseo.gestionaeroport.vue.boitedialogue.BoiteDialogueNewAvionOk;
+import fr.eseo.gestionaeroport.vue.ui.FenetreGestionAeroport;
+
 public class ActionEnregistrerAvion extends AbstractAction {
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+	private FenetreGestionAeroport fenetreGestionAeroport;
+	public static final String NOM_ACTION = "Valider";
 
+	public ActionEnregistrerAvion(FenetreGestionAeroport fenetreGestionAeroport) {
+		super(NOM_ACTION);
+		this.fenetreGestionAeroport = fenetreGestionAeroport;
 	}
 
+	public ActionEnregistrerAvion() {
+		super(NOM_ACTION);
+		this.fenetreGestionAeroport = fenetreGestionAeroport.getInstance();
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		String nomAvion = FenetreGestionAeroport.getInstance().getPanneauEnregistrerUnNouvelAvion().constructeurJtf
+				.getText();
+		String typeAvion = FenetreGestionAeroport.getInstance().getPanneauEnregistrerUnNouvelAvion().modeleJtf
+				.getText();
+		String nbplace = FenetreGestionAeroport.getInstance().getPanneauEnregistrerUnNouvelAvion().nbrPlaceJtf
+				.getText();
+		System.out.println(nomAvion + "\n" + typeAvion + "\n" + nbplace);
+		if (!nomAvion.equals("")) {
+			if (!typeAvion.equals("")) {
+				if (!nbplace.equals("")) {
+					try {
+						Statement state = ConnexionBDD.connexion().createStatement();
+						state.execute("INSERT INTO avion (nomavion, typeavion, nombreplaces, idcompagnie) VALUES('"
+								+ nomAvion + "', '" + typeAvion + "','" + nbplace + "','1')");
+						BoiteDialogueNewAvionOk jop1 = new BoiteDialogueNewAvionOk();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+		if (nomAvion.equals("") || typeAvion.equals("") || nbplace.equals("")) {
+			BoiteDialogueNewAvionKo jop2 = new BoiteDialogueNewAvionKo();
+		}
+	}
 }
