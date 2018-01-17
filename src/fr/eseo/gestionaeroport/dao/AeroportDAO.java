@@ -31,7 +31,7 @@ public class AeroportDAO extends DAO<Aeroport> {
 
 	public Object[] affiche() {
 
-		Object[] villes = new Object[20];
+		Object[] villes = new Object[30];
 
 		try {
 			ResultSet result = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)
