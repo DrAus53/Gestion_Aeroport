@@ -5,7 +5,7 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import fr.eseo.gestionaeroport.modele.baseDeDonnees.Vol;
+import fr.eseo.gestionaeroport.modele.Vol;
 
 public class VolDAO extends DAO<Vol> {
 
@@ -14,21 +14,25 @@ public class VolDAO extends DAO<Vol> {
 	}
 
 	public boolean create(Vol obj) {
-		Vol vol = new Vol();
 		try {
 			ResultSet aeroportdepart = this.conn
 					.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY).executeQuery(
-							"SELECT nomAeroport FROM Aeroport WHERE " + vol.getIdAeroportDepart() + "=idAeroport");
+							"SELECT nomAeroport FROM Aeroport WHERE " + obj.getIdaeroportDepart() + "=idAeroport");
 
 			ResultSet aeroportarrivee = this.conn
 					.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY).executeQuery(
-							"SELECT nomAeroport FROM Aeroport WHERE " + vol.getIdAeroportArrivee() + "=idAeroport");
+							"SELECT nomAeroport FROM Aeroport WHERE " + obj.getIdaeroportArrivee() + "=idAeroport");
+
+			System.out.println(
+					"INSERT INTO vol (idAeroportdepart,idAeroportarrivee,nombrepassagers,heuredepart,heurearrivee) VALUES("
+							+ obj.getIdaeroportDepart() + "," + obj.getIdaeroportArrivee() + "," + 0 + ","
+							+ obj.getHeureDepart() + "," + obj.getHeureArrivee() + ")");
 
 			ResultSet result = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)
 					.executeQuery(
-							"INSERT INTO vol VALUES(idAeroportdepart,idAeroportarrivee,nombrepassagers,heuredepart,heurearrivee) VALUES("
-									+ vol.getIdAeroportDepart() + "," + vol.getIdAeroportArrivee() + "," + 0 + ","
-									+ vol.getHeureDepart() + "," + vol.getHeureArrivee() + ")");
+							"INSERT INTO vol (aeroportdepart,aeroportarrivee,nombrepassagers,heuredepart,heurearrivee) VALUES("
+									+ obj.getIdaeroportDepart() + "," + obj.getIdaeroportArrivee() + "," + 0 + ","
+									+ obj.getHeureDepart() + "," + obj.getHeureArrivee() + ")");
 			return true;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -41,8 +45,8 @@ public class VolDAO extends DAO<Vol> {
 	public boolean delete(Vol obj) {
 		try {
 			ResultSet result = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)
-					.executeQuery("DELETE vol WHERE idaeroportdepart=" + obj.getIdAeroportDepart()
-							+ "AND idaeroportarrivee=" + obj.getIdAeroportArrivee() + "AND heuredepart="
+					.executeQuery("DELETE vol WHERE idaeroportdepart=" + obj.getIdaeroportDepart()
+							+ "AND idaeroportarrivee=" + obj.getIdaeroportArrivee() + "AND heuredepart="
 							+ obj.getHeureDepart() + "AND heurearrivee=" + obj.getHeureArrivee());
 			return true;
 		} catch (SQLException e) {
@@ -57,8 +61,7 @@ public class VolDAO extends DAO<Vol> {
 		return false;
 	}
 
-	public Vol find(String aeroportdepart, String aeroportarrivee, Date heuredepart, Date heurearrivee) {
-		Vol vol = new Vol();
+	public void find(String aeroportdepart, String aeroportarrivee, Date heuredepart, Date heurearrivee) {
 		try {
 			ResultSet result = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)
 					.executeQuery("SELECT * FROM vol WHERE aeroportdepart=" + aeroportdepart + "AND aeroportarrivee="
@@ -67,12 +70,13 @@ public class VolDAO extends DAO<Vol> {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		return vol;
+
 	}
 
 	@Override
-	public fr.eseo.gestionaeroport.modele.baseDeDonnees.Vol find(int id) {
+	public Vol find(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 }

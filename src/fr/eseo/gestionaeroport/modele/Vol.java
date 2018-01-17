@@ -7,25 +7,25 @@ public class Vol {
 	public int idVol;
 	private Date heureDepart;
 	private Date heureArrivee;
-	private Aeroport aeroportDepart;
-	private Aeroport aeroportArrivee;
+	private int idaeroportDepart;
+	private int idaeroportArrivee;
 	private List<String> nomPassagers;
 	private int nombrePassagers;
 	private Compagnie compagnie;
-	private Avion avion;
+	private int idavion;
 	private String place;
 
-	public Vol(int idVol, Date heureDepart, Date heureArrivee, Aeroport aeroportDepart, Aeroport aeroportArrivee,
-			List<String> nomPassagers, int nombrePassagers, Avion avion, String place) {
+	public Vol(int idVol, Date heureDepart, Date heureArrivee, int idaeroportDepart, int idaeroportArrivee,
+			List<String> nomPassagers, int nombrePassagers, int idavion, String place) {
 		super();
 		this.idVol = idVol;
 		this.heureDepart = heureDepart;
 		this.heureArrivee = heureArrivee;
-		this.aeroportDepart = aeroportDepart;
-		this.aeroportArrivee = aeroportArrivee;
+		this.setIdaeroportDepart(idaeroportDepart);
+		this.setIdaeroportArrivee(idaeroportArrivee);
 		this.nomPassagers = nomPassagers;
 		this.nombrePassagers = nombrePassagers;
-		this.avion = avion;
+		this.setIdavion(idavion);
 		this.place = place;
 	}
 
@@ -54,22 +54,6 @@ public class Vol {
 		this.heureArrivee = heureArrivee;
 	}
 
-	public Aeroport getAeroportDepart() {
-		return aeroportDepart;
-	}
-
-	public void setAeroportDepart(Aeroport aeroportDepart) {
-		this.aeroportDepart = aeroportDepart;
-	}
-
-	public Aeroport getAeroportArrivee() {
-		return aeroportArrivee;
-	}
-
-	public void setAeroportArrivee(Aeroport aeroportArrivee) {
-		this.aeroportArrivee = aeroportArrivee;
-	}
-
 	public List<String> getNomPassagers() {
 		return nomPassagers;
 	}
@@ -94,19 +78,35 @@ public class Vol {
 		this.compagnie = compagnie;
 	}
 
-	public Avion getAvion() {
-		return avion;
-	}
-
-	public void setAvion(Avion avion) {
-		this.avion = avion;
-	}
-
 	public String getPlace() {
 		return place;
 	}
 
 	public void setPlace(String place) {
 		this.place = place;
+	}
+
+	public int getIdaeroportDepart() {
+		return idaeroportDepart;
+	}
+
+	public void setIdaeroportDepart(int idaeroportDepart) {
+		this.idaeroportDepart = idaeroportDepart;
+	}
+
+	public int getIdaeroportArrivee() {
+		return idaeroportArrivee;
+	}
+
+	public void setIdaeroportArrivee(int idaeroportArrivee) {
+		this.idaeroportArrivee = idaeroportArrivee;
+	}
+
+	public int getIdavion() {
+		return idavion;
+	}
+
+	public void setIdavion(int idavion) {
+		this.idavion = idavion;
 	}
 }
