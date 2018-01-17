@@ -9,6 +9,8 @@ import java.awt.Insets;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
+import fr.eseo.gestionaeroport.GestionAeroport;
+import fr.eseo.gestionaeroport.modele.Utilisateur;
 import fr.eseo.gestionaeroport.vue.panneaux.PanneauEchangeBillet;
 import fr.eseo.gestionaeroport.vue.panneaux.PanneauEmbarquement;
 import fr.eseo.gestionaeroport.vue.panneaux.PanneauEnregistrerUnNouvelAvion;
@@ -116,6 +118,14 @@ public class FenetreGestionAeroport extends JFrame {
 		constraints.gridx = 1;
 		constraints.gridy = 3;
 		this.getContentPane().add(panneauEmbarquement, constraints);
+	}
+
+	public static void fermerFenetre() {
+		instance.dispose();
+		GestionAeroport.getInstance();
+		GestionAeroport.setUtilisateurConnecte(new Utilisateur(0, null, null, null, null, null));
+		FenetreConnexion fenetre = FenetreConnexion.getInstance();
+		fenetre.setVisible(true);
 	}
 
 }
