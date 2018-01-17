@@ -17,11 +17,19 @@ public class PanneauConnexion extends JPanel {
 	private static final long serialVersionUID = 1L;
 	public FenetreConnexion fenetre;
 
-	public JTextField jTextFieldLogin;
-	public JTextField jTextFieldMdp;
+	private JTextField jTextFieldLogin;
+	private JTextField jTextFieldMdp;
 
 	public PanneauConnexion() {
 		initComponent();
+	}
+
+	public JTextField getjTextFieldLogin() {
+		return jTextFieldLogin;
+	}
+
+	public JTextField getjTextFieldMdp() {
+		return jTextFieldMdp;
 	}
 
 	public void initComponent() {
@@ -41,7 +49,7 @@ public class PanneauConnexion extends JPanel {
 		constraints.gridy = 1;
 		this.add(labelLogin, constraints);
 
-		JTextField jTextFieldLogin = new JTextField();
+		this.jTextFieldLogin = new JTextField();
 		jTextFieldLogin.setPreferredSize(new Dimension(120, 18));
 		constraints.gridx = 1;
 		constraints.gridy = 1;
@@ -52,7 +60,7 @@ public class PanneauConnexion extends JPanel {
 		constraints.gridy = 2;
 		this.add(labelMdp, constraints);
 
-		JTextField jTextFieldMdp = new JTextField();
+		this.jTextFieldMdp = new JTextField();
 		jTextFieldMdp.setPreferredSize(new Dimension(120, 18));
 		constraints.gridx = 1;
 		constraints.gridy = 2;

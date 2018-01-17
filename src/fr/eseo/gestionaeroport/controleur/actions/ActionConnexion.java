@@ -25,13 +25,13 @@ public class ActionConnexion extends AbstractAction {
 	public void actionPerformed(ActionEvent arg0) {
 
 		String login = FenetreConnexion.findLogin();
-		System.out.println(login);
-		String mdp = this.fenetreConnexion.findMdp();
-		if (login != null) {
-			if (mdp != null) {
+		String mdp = FenetreConnexion.findMdp();
 
+		if (login != null && !login.equals("") && login.length() >= 5) {
+			if (mdp != null && !mdp.equals("") && mdp.length() >= 5) {
+
+				FenetreConnexion.fermerFenetre();
 			}
 		}
-		this.fenetreConnexion.fermerFenetre();
 	}
 }

@@ -11,7 +11,7 @@ public class FenetreConnexion extends JFrame {
 	public static final int LARGEUR_PANNEAU_PAR_DEFAUT = 300;
 	public static final int HAUTEUR_PANNEAU_PAR_DEFAUT = 30;
 
-	private static PanneauConnexion panneauConnexion;
+	private PanneauConnexion panneauConnexion;
 
 	public FenetreConnexion() {
 		this.setTitle(TITRE_PAR_DEFAUT);
@@ -35,13 +35,15 @@ public class FenetreConnexion extends JFrame {
 
 	public static void fermerFenetre() {
 		instance.dispose();
+		FenetreGestionAeroport fenetre = FenetreGestionAeroport.getInstance();
+		fenetre.setVisible(true);
 	}
 
 	public static String findLogin() {
-		return FenetreConnexion.panneauConnexion.jTextFieldLogin.getText();
+		return FenetreConnexion.getInstance().panneauConnexion.getjTextFieldLogin().getText();
 	}
 
-	public String findMdp() {
-		return instance.panneauConnexion.jTextFieldMdp.getText();
+	public static String findMdp() {
+		return FenetreConnexion.getInstance().panneauConnexion.getjTextFieldMdp().getText();
 	}
 }
