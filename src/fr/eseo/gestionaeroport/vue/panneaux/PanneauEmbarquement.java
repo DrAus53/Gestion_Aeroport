@@ -34,7 +34,7 @@ public class PanneauEmbarquement extends JPanel {
 		GridBagConstraints constraints = new GridBagConstraints();
 		constraints.insets = new Insets(2, 2, 2, 2);
 
-		JLabel zoneTitre = new JLabel("Embarquement");
+		JLabel zoneTitre = new JLabel("Liste des passagers");
 		zoneTitre.setFont(new Font("Berlin Sans FB Demi", 1, 30));
 		zoneTitre.setForeground(FenetreGestionAeroport.COULEUR_CADRE_PANNEAUX);
 		constraints.gridx = 0;

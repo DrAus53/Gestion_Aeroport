@@ -3,6 +3,7 @@ package fr.eseo.gestionaeroport;
 import javax.swing.SwingUtilities;
 
 import fr.eseo.gestionaeroport.modele.Utilisateur;
+import fr.eseo.gestionaeroport.vue.boitedialogue.BoiteDialogueModifierClient;
 import fr.eseo.gestionaeroport.vue.ui.FenetreConnexion;
 
 public class GestionAeroport {
@@ -18,6 +19,7 @@ public class GestionAeroport {
 	public static void lancerFenetreAvecConstructeur() {
 		fenetreConnexion = FenetreConnexion.getInstance();
 		fenetreConnexion.setVisible(true);
+		new BoiteDialogueModifierClient();
 	}
 
 	public static Utilisateur getUtilisateurConnecte() {
