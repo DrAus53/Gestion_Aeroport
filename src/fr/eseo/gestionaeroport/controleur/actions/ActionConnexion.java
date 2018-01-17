@@ -39,8 +39,8 @@ public class ActionConnexion extends AbstractAction {
 		String login = FenetreConnexion.findLogin();
 		String mdp = FenetreConnexion.findMdp();
 
-		if (login != null && !login.equals("") && login.length() >= 5) {
-			if (mdp != null && !mdp.equals("") && mdp.length() >= 5) {
+		if (login != null && !login.equals("") && login.length() >= 1) {
+			if (mdp != null && !mdp.equals("") && mdp.length() >= 1) {
 				// requête utilisateur:
 				try {
 					Statement state = ConnexionBDD.connexion().createStatement();
