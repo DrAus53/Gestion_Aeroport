@@ -17,7 +17,7 @@ public class GestionAeroport {
 		// fenetre = FenetreGestionAeroport.getInstance();
 		// fenetre.setVisible(true);
 		fenetreConnexion = FenetreConnexion.getInstance();
-		fenetreConnexion.setVisible(true);
+		fenetreConnexion.setVisible(false);
 	}
 
 	public static void main(String[] args) {
