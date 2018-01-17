@@ -20,6 +20,7 @@ import fr.eseo.gestionaeroport.vue.ui.FenetreGestionAeroport;
 public class PanneauEchangeBillet extends JPanel {
 
 	public PanneauEchangeBillet(int largeur, int hauteur) {
+		super();
 		this.setSize(largeur, hauteur);
 		this.setBackground(FenetreGestionAeroport.COULEUR_FOND_PANNEAUX);
 		/// on ajoute un cadre autour du jpanel (de 4 pixels)
@@ -47,7 +48,9 @@ public class PanneauEchangeBillet extends JPanel {
 		gbc.gridy = 0;
 		/// On choisit la taille du titre
 		gbc.gridheight = 1;
-		gbc.gridwidth = 3;
+		gbc.gridwidth = GridBagConstraints.REMAINDER;
+		/// On positionne le titre au milieu
+		gbc.anchor = GridBagConstraints.CENTER;
 		this.add(zoneTitre, gbc);
 
 		// numero de vol
