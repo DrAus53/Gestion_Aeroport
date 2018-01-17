@@ -1,11 +1,14 @@
 package fr.eseo.gestionaeroport.dao;
 
+import java.sql.Connection;
+
 import fr.eseo.gestionaeroport.controleur.baseDeDonnees.ConnexionBDD;
 
 public abstract class DAO<T> {
-	protected ConnexionBDD connect = null;
 
-	public DAO(ConnexionBDD connect) {
+	protected Connection connect = ConnexionBDD.connexion();
+
+	public DAO(Connection connect) {
 		this.connect = connect;
 	}
 
