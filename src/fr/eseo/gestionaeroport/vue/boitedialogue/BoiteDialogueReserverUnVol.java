@@ -33,8 +33,7 @@ public class BoiteDialogueReserverUnVol extends JDialog {
 	}
 
 	public BoiteDialogueReserverUnVol() {
-		this(FenetreGestionAeroport.LARGEUR_BOITE_DIALOGUE_PAR_DEFAUT,
-				FenetreGestionAeroport.HAUTEUR_BOITE_DIALOGUE_PAR_DEFAUT);
+		this(300, 170);
 	}
 
 	private void initialisationComposants() {
