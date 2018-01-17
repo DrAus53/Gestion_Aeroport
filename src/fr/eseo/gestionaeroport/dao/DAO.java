@@ -42,7 +42,7 @@ public abstract class DAO<T> {
 	 * @param id
 	 * @return T
 	 */
-	public abstract T find(T obj);
+	public abstract Object[][] find(T obj);
 
 	/**
 	 * Méthode de recherche de toutes les informations

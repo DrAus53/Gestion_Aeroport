@@ -18,8 +18,9 @@ import fr.eseo.gestionaeroport.vue.ui.FenetreGestionAeroport;
 
 @SuppressWarnings("serial")
 public class BoiteDialogueListeDeVols extends JDialog {
+	Object[][] donnees = new Object[30][30];
 
-	public BoiteDialogueListeDeVols(int largeur, int hauteur) {
+	public BoiteDialogueListeDeVols(int largeur, int hauteur, Object[][] donnees) {
 		super();
 		this.setPreferredSize(new Dimension(largeur, hauteur));
 		// au milieu de l'écran
@@ -32,11 +33,12 @@ public class BoiteDialogueListeDeVols extends JDialog {
 		this.initialisationComposants();
 
 		this.setVisible(true);
+		this.donnees = donnees;
 	}
 
 	public BoiteDialogueListeDeVols() {
 		this(FenetreGestionAeroport.LARGEUR_BOITE_DIALOGUE_PAR_DEFAUT,
-				FenetreGestionAeroport.HAUTEUR_BOITE_DIALOGUE_PAR_DEFAUT);
+				FenetreGestionAeroport.HAUTEUR_BOITE_DIALOGUE_PAR_DEFAUT, new Object[30][30]);
 	}
 
 	private void initialisationComposants() {
@@ -54,7 +56,6 @@ public class BoiteDialogueListeDeVols extends JDialog {
 				"<html><center>Date de<br/>départ</center></html>", "<html><center>Heure<br/>d'arrivée</center></html>",
 				"<html><center>Nombre de<br/>passagers</center></html>" };
 
-		Object[][] donnees = {};
 		// TODO
 
 		JTable tableauVol = new JTable(donnees, entetes);

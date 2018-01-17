@@ -9,6 +9,8 @@ import fr.eseo.gestionaeroport.modele.Vol;
 
 public class VolDAO extends DAO<Vol> {
 
+	Object[][] vol = new Object[30][30];
+
 	public VolDAO(Connection conn) {
 		super(conn);
 	}
@@ -73,7 +75,8 @@ public class VolDAO extends DAO<Vol> {
 
 	}
 
-	public Vol find(Vol obj) {
+	public Object[][] find(Vol obj) {
+		ResultSetMetaData resultMeta;
 		System.out.println("SELECT * FROM vol WHERE aeroportdepart=" + "'" + obj.getIdaeroportDepart() + "'"
 				+ "AND aeroportarrivee=" + "'" + obj.getIdaeroportDepart() + "'" + "AND datedepart=" + "'"
 				+ obj.getDateDepart() + "';");
@@ -84,7 +87,7 @@ public class VolDAO extends DAO<Vol> {
 							+ "AND aeroportarrivee=" + "'" + obj.getIdaeroportArrivee() + "'" + "AND datedepart=" + "'"
 							+ obj.getDateDepart() + "';");
 
-			ResultSetMetaData resultMeta = result.getMetaData();
+			resultMeta = result.getMetaData();
 
 			System.out.println("\n**********************************");
 			// On affiche le nom des colonnes
@@ -92,13 +95,16 @@ public class VolDAO extends DAO<Vol> {
 				System.out.print("\t" + resultMeta.getColumnName(i).toUpperCase() + "\t *");
 
 			System.out.println("\n**********************************");
-
+			int compteurl = 0;
+			int compteur = 0;
 			while (result.next()) {
-				for (int i = 1; i <= resultMeta.getColumnCount(); i++)
+				for (int i = 1; i <= resultMeta.getColumnCount(); i++) {
 					System.out.print("\t" + result.getObject(i).toString() + "\t |");
-
-				System.out.println("\n---------------------------------");
-
+					vol[compteur][compteurl] = ("" + result.getObject(i).toString() + "");
+					compteurl++;
+					System.out.println("\n---------------------------------");
+				}
+				compteur++;
 			}
 			result.close();
 
@@ -106,12 +112,20 @@ public class VolDAO extends DAO<Vol> {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return obj;
+		return vol;
 	}
 
 	@Override
 	public Object[] affiche() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public int getIdAeroport(String sqlaeroportdepart) {
+		Result result = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)
+				.executeQuery("SELECT  FROM vol WHERE aeroportdepart=" + "'" + obj.getIdaeroportDepart() + "'"
+						+ "AND aeroportarrivee=" + "'" + obj.getIdaeroportArrivee() + "'" + "AND datedepart=" + "'"
+						+ obj.getDateDepart() + "';");
+
 	}
 }
