@@ -118,4 +118,28 @@ public class FenetreGestionAeroport extends JFrame {
 		this.getContentPane().add(panneauEmbarquement, constraints);
 	}
 
+	public PanneauRechercheVol getPanneauRechercheVol() {
+		return panneauRechercheVol;
+	}
+
+	public PanneauProposerVol getPanneauProposerVol() {
+		return panneauProposerVol;
+	}
+
+	public PanneauEnregistrerUnNouvelAvion getPanneauEnregistrerUnNouvelAvion() {
+		return panneauEnregistrerUnNouvelAvion;
+	}
+
+	public PanneauModifierUnCompteClient getPanneauModifierUnCompteClient() {
+		return panneauModifierUnCompteClient;
+	}
+
+	public PanneauEchangeBillet getPanneauEchangeBillet() {
+		return panneauEchangeBillet;
+	}
+
+	public PanneauEmbarquement getPanneauEmbarquement() {
+		return panneauEmbarquement;
+	}
+
 }
