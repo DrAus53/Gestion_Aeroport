@@ -13,7 +13,7 @@ public class FenetreConnexion extends JFrame {
 
 	private PanneauConnexion panneauConnexion;
 
-	public FenetreConnexion() {
+	private FenetreConnexion() {
 		this.setTitle(TITRE_PAR_DEFAUT);
 		this.setIconImage(new ImageIcon("icone_avion.png").getImage());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
