@@ -21,7 +21,7 @@ public class BarreOutils extends JMenuBar {
 	private JMenuItem itemLogin = new JMenuItem("Login");
 	private JMenuItem itemAdresseMail = new JMenuItem("AdresseMail");
 	private JMenuItem itemModifer = new JMenuItem("Modifer");
-	private JMenuItem itemDeconexion = new JMenuItem("Deconexion");
+	private JMenuItem itemDeconnexion = new JMenuItem("Deconnexion");
 
 	public BarreOutils(int largeur, int hauteur, Color fond) {
 
@@ -36,13 +36,14 @@ public class BarreOutils extends JMenuBar {
 
 	private void initComponents() {
 
+		menuProfil.setForeground(Color.white);
 		this.menuProfil.add(itemNom);
 		this.menuProfil.add(itemPrenom);
 		this.menuProfil.add(itemLogin);
 		this.menuProfil.add(itemAdresseMail);
 		this.menuProfil.add(itemModifer);
 		this.menuProfil.addSeparator();
-		this.menuProfil.add(itemDeconexion);
+		this.menuProfil.add(itemDeconnexion);
 
 		this.add(menuProfil);
 

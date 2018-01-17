@@ -13,7 +13,7 @@ public class VolDAO extends DAO<Vol> {
 		super(conn);
 	}
 
-	public boolean create(Vol obj) {
+	public void create(Vol obj) {
 		try {
 			ResultSet aeroportdepart = this.conn
 					.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY).executeQuery(
@@ -24,35 +24,39 @@ public class VolDAO extends DAO<Vol> {
 							"SELECT nomAeroport FROM Aeroport WHERE " + obj.getIdaeroportArrivee() + "=idAeroport");
 
 			System.out.println(
-					"INSERT INTO vol (idAeroportdepart,idAeroportarrivee,nombrepassagers,heuredepart,heurearrivee) VALUES("
-							+ obj.getIdaeroportDepart() + "," + obj.getIdaeroportArrivee() + "," + 0 + ","
-							+ obj.getHeureDepart() + "," + obj.getHeureArrivee() + ")");
+					"INSERT INTO vol (numerovol,idavion,place,nompassagers,aeroportdepart,aeroportarrivee,nombrepassagers,heuredepart,heurearrivee) VALUES("
+							+ "'" + 2 + "'" + "," + "'" + 2 + "'" + "," + "'ab'," + "'"
+							+ obj.getNomPassagers().get(0).toString() + "'" + "," + "'" + obj.getIdaeroportDepart()
+							+ "'" + "," + "'" + obj.getIdaeroportArrivee() + "'" + "," + "'" + 1 + "'"
+							+ ",'01:02:50','01:02:50');");
 
-			ResultSet result = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)
-					.executeQuery(
-							"INSERT INTO vol (aeroportdepart,aeroportarrivee,nombrepassagers,heuredepart,heurearrivee) VALUES("
-									+ obj.getIdaeroportDepart() + "," + obj.getIdaeroportArrivee() + "," + 0 + ","
-									+ obj.getHeureDepart() + "," + obj.getHeureArrivee() + ")");
-			return true;
+			int result = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)
+					.executeUpdate(
+							"INSERT INTO vol (numerovol,idavion,place,nompassagers,aeroportdepart,aeroportarrivee,nombrepassagers,heuredepart,heurearrivee) VALUES("
+									+ "'" + obj.getnumeroVol() + "'" + "," + "'" + obj.getIdavion() + "'" + ","
+									+ "'ab'," + "'" + obj.getNomPassagers().get(0).toString() + "'" + "," + "'"
+									+ obj.getIdaeroportDepart() + "'" + "," + "'" + obj.getIdaeroportArrivee() + "'"
+									+ "," + "'" + 1 + "'" + ",'01:02:50','01:02:50');");
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return false;
+
 		}
 
 	}
 
-	public boolean delete(Vol obj) {
+	public void delete(Vol obj) {
 		try {
 			ResultSet result = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)
 					.executeQuery("DELETE vol WHERE idaeroportdepart=" + obj.getIdaeroportDepart()
 							+ "AND idaeroportarrivee=" + obj.getIdaeroportArrivee() + "AND heuredepart="
 							+ obj.getHeureDepart() + "AND heurearrivee=" + obj.getHeureArrivee());
-			return true;
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return false;
+
 		}
 
 	}
