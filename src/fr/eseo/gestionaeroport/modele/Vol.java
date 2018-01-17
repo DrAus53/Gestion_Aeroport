@@ -1,12 +1,15 @@
 package fr.eseo.gestionaeroport.modele;
 
+import java.sql.Time;
 import java.util.Date;
 import java.util.List;
 
 public class Vol {
 	public int numeroVol;
-	private Date heureDepart;
-	private Date heureArrivee;
+	private Time heureDepart;
+	private Time heureArrivee;
+	private Date dateDepart;
+	private Date dateArrive;
 	private int idaeroportDepart;
 	private int idaeroportArrivee;
 	private List<String> nomPassagers;
@@ -15,18 +18,18 @@ public class Vol {
 	private int idavion;
 	private String place;
 
-	public Vol(int numeroVol, Date heureDepart, Date heureArrivee, int idaeroportDepart, int idaeroportArrivee,
+	public Vol(int numeroVol, Date dateDepart, Date dateArrivee, int idaeroportDepart, int idaeroportArrivee,
 			List<String> nomPassagers, int nombrePassagers, int idavion, String place) {
 		super();
 		this.numeroVol = numeroVol;
-		this.heureDepart = heureDepart;
-		this.heureArrivee = heureArrivee;
 		this.setIdaeroportDepart(idaeroportDepart);
 		this.setIdaeroportArrivee(idaeroportArrivee);
 		this.nomPassagers = nomPassagers;
 		this.nombrePassagers = nombrePassagers;
 		this.setIdavion(idavion);
 		this.place = place;
+		this.dateDepart = dateDepart;
+		this.dateArrive = dateArrivee;
 	}
 
 	// getters and setters:
@@ -42,15 +45,15 @@ public class Vol {
 		return heureDepart;
 	}
 
-	public void setHeureDepart(Date heureDepart) {
+	public void setHeureDepart(Time heureDepart) {
 		this.heureDepart = heureDepart;
 	}
 
-	public Date getHeureArrivee() {
+	public Time getHeureArrivee() {
 		return heureArrivee;
 	}
 
-	public void setHeureArrivee(Date heureArrivee) {
+	public void setHeureArrivee(Time heureArrivee) {
 		this.heureArrivee = heureArrivee;
 	}
 
@@ -108,5 +111,21 @@ public class Vol {
 
 	public void setIdavion(int idavion) {
 		this.idavion = idavion;
+	}
+
+	public Date getDateDepart() {
+		return dateDepart;
+	}
+
+	public void setDateDepart(Date dateDepart) {
+		this.dateDepart = dateDepart;
+	}
+
+	public Date getDateArrive() {
+		return dateArrive;
+	}
+
+	public void setDateArrive(Date dateArrive) {
+		this.dateArrive = dateArrive;
 	}
 }
