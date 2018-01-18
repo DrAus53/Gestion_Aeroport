@@ -43,7 +43,7 @@ public class BoiteDialogueModifierUtilisateur extends JDialog {
 	}
 
 	public BoiteDialogueModifierUtilisateur() {
-		this(300, 170, new Utilisateur(null, null, null, null, null));
+		this(300, 170, new Utilisateur(0, null, null, null, null, null));
 	}
 
 	public void setUtilisateur(Utilisateur utilisateur) {
