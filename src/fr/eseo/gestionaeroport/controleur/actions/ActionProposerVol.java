@@ -64,8 +64,8 @@ public class ActionProposerVol extends AbstractAction {
 					.getSelectedItem().toString();
 			aeroportarrivee = FenetreGestionAeroport.getInstance().getPanneauProposerVol().getJComboBoxArriveeAeroport()
 					.getSelectedItem().toString();
-			avion = FenetreGestionAeroport.getInstance().getPanneauProposerVol().getJComboBoxArriveeAeroport()
-					.getSelectedItem().toString();
+			avion = FenetreGestionAeroport.getInstance().getPanneauProposerVol().getJComboBoxAvion().getSelectedItem()
+					.toString();
 
 			// Conversion des dates au format de la BDD
 			SimpleDateFormat dateFormatD = new SimpleDateFormat("yyyy-MM-dd");

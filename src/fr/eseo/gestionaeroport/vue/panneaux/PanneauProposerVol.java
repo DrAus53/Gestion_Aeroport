@@ -52,7 +52,6 @@ public class PanneauProposerVol extends JPanel {
 
 	Connection conn = ConnexionBDD.connexion();
 	Object[] villes = new AeroportDAO(conn).affiche();
-
 	JComboBox<Object> jComboBoxDepartAeroport = new JComboBox<>(villes);
 
 	public JComboBox<Object> getJComboBoxDepartAeroport() {
@@ -63,6 +62,13 @@ public class PanneauProposerVol extends JPanel {
 
 	public JComboBox<Object> getJComboBoxArriveeAeroport() {
 		return jComboBoxArriveeAeroport;
+	}
+
+	Object[] avions = new AvionDAO(conn).affiche();
+	JComboBox<Object> jComboBoxAvion = new JComboBox<>(avions);
+
+	public JComboBox<Object> getJComboBoxAvion() {
+		return jComboBoxAvion;
 	}
 
 	private void initComponent() {
@@ -221,9 +227,6 @@ public class PanneauProposerVol extends JPanel {
 		constraints.fill = GridBagConstraints.NONE;
 		this.add(labelIdAvion, constraints);
 
-		Object[] avions = new AvionDAO(conn).affiche();
-
-		JComboBox<Object> jComboBoxAvion = new JComboBox<>(avions);
 		jComboBoxAvion
 				.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));
 		constraints.gridx = 2;

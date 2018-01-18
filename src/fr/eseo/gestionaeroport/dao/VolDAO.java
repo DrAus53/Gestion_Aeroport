@@ -75,6 +75,27 @@ public class VolDAO extends DAO<Vol> {
 		return idaeroport;
 	}
 
+	public int getIdAeroportStr(String str) {
+		Statement state;
+		int idaeroport = 0;
+		try {
+			state = ConnexionBDD.connexion().createStatement();
+			ResultSet result = state.executeQuery("SELECT * FROM aeroport");
+			ResultSetMetaData resultMeta = result.getMetaData();
+			System.out.println("SELECT idaeroport FROM aeroport WHERE nomaeroport='" + str + "';");
+			result = state.executeQuery("SELECT idaeroport FROM aeroport WHERE nomaeroport='" + str + "';");
+			resultMeta = result.getMetaData();
+			while (result.next()) {
+				idaeroport = result.getInt("idaeroport");
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return idaeroport;
+	}
+
 	public void delete(Vol obj) {
 		try {
 			System.out.println("DELETE * FROM vol WHERE idaeroportdepart=" + "'" + obj.getIdaeroportDepart() + "'"
