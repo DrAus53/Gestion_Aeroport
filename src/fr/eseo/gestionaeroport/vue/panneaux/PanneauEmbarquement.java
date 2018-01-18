@@ -18,6 +18,8 @@ import fr.eseo.gestionaeroport.vue.ui.FenetreGestionAeroport;
 @SuppressWarnings("serial")
 public class PanneauEmbarquement extends JPanel {
 
+	private JTextField jTextFieldNumVol;
+
 	public PanneauEmbarquement(int largeur, int hauteur) {
 		this.setSize(largeur, hauteur);
 		this.setBackground(FenetreGestionAeroport.COULEUR_FOND_PANNEAUX);
@@ -27,6 +29,10 @@ public class PanneauEmbarquement extends JPanel {
 
 	public PanneauEmbarquement() {
 		this(FenetreGestionAeroport.LARGEUR_PANNEAU_PAR_DEFAUT, FenetreGestionAeroport.HAUTEUR_PANNEAU_PAR_DEFAUT);
+	}
+
+	public JTextField getjTextFieldNumVol() {
+		return jTextFieldNumVol;
 	}
 
 	private void initComponent() {
@@ -50,15 +56,15 @@ public class PanneauEmbarquement extends JPanel {
 		constraints.gridwidth = 1;
 		this.add(labelNumVol, constraints);
 
-		JTextField jTextFieldNumVol = new JTextField();
-		jTextFieldNumVol.setColumns(15);
-		jTextFieldNumVol
+		this.jTextFieldNumVol = new JTextField();
+		this.jTextFieldNumVol.setColumns(15);
+		this.jTextFieldNumVol
 				.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));
 		constraints.gridx = 1;
 		constraints.gridy = 1;
 		constraints.gridheight = 1;
 		constraints.gridwidth = 1;
-		this.add(jTextFieldNumVol, constraints);
+		this.add(this.jTextFieldNumVol, constraints);
 
 		// valider
 		JButton jButtonValider = new JButton("Valider");
