@@ -8,20 +8,21 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.swing.AbstractAction;
+
 import fr.eseo.gestionaeroport.controleur.baseDeDonnees.ConnexionBDD;
 import fr.eseo.gestionaeroport.dao.VolDAO;
 import fr.eseo.gestionaeroport.modele.Vol;
 import fr.eseo.gestionaeroport.vue.boitedialogue.BoiteDialogueListeDeVols;
 import fr.eseo.gestionaeroport.vue.ui.FenetreGestionAeroport;
 
-public class ActionReservation {
+@SuppressWarnings("serial")
+public class ActionReservation extends AbstractAction {
 
 	public static final String NOM_ACTION = "Valider";
-	private FenetreGestionAeroport fenetreGestionAeroport;
 
 	public ActionReservation(FenetreGestionAeroport fenetreGestionAeroport) {
 		super(NOM_ACTION);
-		this.fenetreGestionAeroport = fenetreGestionAeroport;
 	}
 
 	@Override
@@ -64,4 +65,5 @@ public class ActionReservation {
 			e.printStackTrace();
 		}
 
+	}
 }

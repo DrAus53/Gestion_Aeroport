@@ -12,23 +12,20 @@ import fr.eseo.gestionaeroport.vue.ui.FenetreGestionAeroport;
 
 public class ActionModifierCompteClientConnecte extends AbstractAction {
 
-	private FenetreGestionAeroport fenetreGestionAeroport;
 	public static final String NOM_ACTION = "Valider";
 
 	public ActionModifierCompteClientConnecte(FenetreGestionAeroport fenetreGestionAeroport) {
 		super(NOM_ACTION);
-		this.fenetreGestionAeroport = fenetreGestionAeroport;
 	}
 
 	public ActionModifierCompteClientConnecte() {
 		super(NOM_ACTION);
-		this.fenetreGestionAeroport = fenetreGestionAeroport.getInstance();
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// récupération des zones de saisie de texte:
-		String newNom = FenetreGestionAeroport.getInstance().getMenuBar().get
+		String newNom = null;
 		String newPrenom = FenetreGestionAeroport.getInstance().getPanneauEchangeBillet().numVolJtf.getText();
 		String newLogin = FenetreGestionAeroport.getInstance().getPanneauEchangeBillet().numVolJtf.getText();
 		String newAdresseMail = FenetreGestionAeroport.getInstance().getPanneauEchangeBillet().numVolJtf.getText();
