@@ -170,7 +170,7 @@ public class BoiteDialogueModifierClient extends JDialog {
 		panneau.add(jtfMotDePasse, constraints);
 
 		// boutton enregistrer
-		JButton buttonAnnuler = new JButton("Enregistrer");
+		JButton buttonAnnuler = new JButton();
 		constraints.anchor = GridBagConstraints.LINE_END;
 		buttonAnnuler.setPreferredSize(new Dimension(70, 30));
 		/// couleur du texte

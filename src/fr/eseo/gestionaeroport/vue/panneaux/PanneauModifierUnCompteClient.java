@@ -22,6 +22,11 @@ public class PanneauModifierUnCompteClient extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private FenetreGestionAeroport fenetre;
 	GridBagConstraints constraints = new GridBagConstraints();
+	private ActionModifierUnCompteClient actionModifierUnCompteClient;
+
+	public ActionModifierUnCompteClient getActionModifierUnCompteClient() {
+		return actionModifierUnCompteClient;
+	}
 
 	public PanneauModifierUnCompteClient(int largeur, int hauteur) {
 		super();
@@ -98,7 +103,8 @@ public class PanneauModifierUnCompteClient extends JPanel {
 		this.add(jtfPrenom, constraints);
 
 		// valider
-		JButton validerBout = new JButton(new ActionModifierUnCompteClient(this.fenetre));
+		actionModifierUnCompteClient = new ActionModifierUnCompteClient(this.fenetre);
+		JButton validerBout = new JButton(actionModifierUnCompteClient);
 		validerBout.setPreferredSize(new Dimension(70, 30));
 		/// couleur du texte
 		validerBout.setForeground(Color.WHITE);
