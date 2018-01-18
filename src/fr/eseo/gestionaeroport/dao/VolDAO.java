@@ -15,7 +15,7 @@ import fr.eseo.gestionaeroport.modele.Vol;
 
 public class VolDAO extends DAO<Vol> {
 
-	ArrayList[][] listvol = new ArrayList[30][30];
+	List<Vol> listvol = new ArrayList<Vol>();
 
 	public VolDAO(Connection conn) {
 		super(conn);
@@ -103,7 +103,7 @@ public class VolDAO extends DAO<Vol> {
 
 	}
 
-	public Object[][] find(Vol obj) {
+	public List<Vol> find(Vol obj) {
 		ResultSetMetaData resultMeta;
 		System.out.println("SELECT * FROM vol WHERE idaeroportdepart=" + "'" + obj.getIdaeroportDepart() + "'"
 				+ "AND idaeroportarrivee=" + "'" + obj.getIdaeroportDepart() + "'" + "AND datedepart=" + "'"
@@ -128,8 +128,11 @@ public class VolDAO extends DAO<Vol> {
 			while (result.next()) {
 				System.out.println(result.getString("idaeroportdepart"));
 				for (int i = 1; i <= resultMeta.getColumnCount(); i++) {
-					List <Vol>.add( new Vol(resut;get("ideaeroport")));
-					vol[compteur][compteurl] = ("" + result.getObject(i).toString() + "");
+					listvol.add(new Vol(result.getInt("numerovol"), result.getDate("datedepart"),
+							result.getDate("datearrivee"), result.getInt("idaeroportdepart"),
+							result.getInt("idaeroportarrivee"), result.getInt("nombrepassagers"),
+							result.getTime("heuredepart"), result.getTime("heurearrivee")));
+					System.out.println(listvol);
 
 					compteurl++;
 					System.out.println("\n---------------------------------");
@@ -142,8 +145,7 @@ public class VolDAO extends DAO<Vol> {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.print(vol);
-		return vol;
+		return listvol;
 	}
 
 	@Override

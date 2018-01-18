@@ -1,6 +1,7 @@
 package fr.eseo.gestionaeroport.dao;
 
 import java.sql.Connection;
+import java.util.List;
 
 import fr.eseo.gestionaeroport.controleur.baseDeDonnees.ConnexionBDD;
 
@@ -42,7 +43,7 @@ public abstract class DAO<T> {
 	 * @param id
 	 * @return T
 	 */
-	public abstract Object[][] find(T obj);
+	public abstract List<T> find(T obj);
 
 	/**
 	 * Méthode de recherche de toutes les informations
