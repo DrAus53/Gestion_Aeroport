@@ -13,14 +13,24 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import fr.eseo.gestionaeroport.modele.Utilisateur;
 import fr.eseo.gestionaeroport.vue.ui.FenetreGestionAeroport;
 
 @SuppressWarnings("serial")
-public class BoiteDialogueModifierClient extends JDialog {
+public class BoiteDialogueModifierUtilisateur extends JDialog {
 
-	public BoiteDialogueModifierClient(int largeur, int hauteur) {
+	private Utilisateur utilisateur;
+
+	private JTextField jtfNom;
+	private JTextField jtfPrenom;
+	private JTextField jtfAdresseMail;
+	private JTextField jtfLogin;
+	private JTextField jtfMotDePasse;
+
+	public BoiteDialogueModifierUtilisateur(int largeur, int hauteur, Utilisateur utilisateur) {
 		super();
 		this.setPreferredSize(new Dimension(largeur, hauteur));
+		this.setUtilisateur(utilisateur);
 		// au milieu de l'écran
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
@@ -32,8 +42,21 @@ public class BoiteDialogueModifierClient extends JDialog {
 		this.setVisible(true);
 	}
 
-	public BoiteDialogueModifierClient() {
-		this(300, 170);
+	public BoiteDialogueModifierUtilisateur() {
+		this(300, 170, new Utilisateur(null, null, null, null, null));
+	}
+
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
+	}
+
+	public Utilisateur getUtilisateur() {
+		utilisateur.setNom(jtfNom.getText());
+		utilisateur.setPrenom(jtfPrenom.getText());
+		utilisateur.setAdresseMail(jtfAdresseMail.getText());
+		utilisateur.setLogin(jtfLogin.getText());
+		utilisateur.setMotDePasse(jtfMotDePasse.getText());
+		return utilisateur;
 	}
 
 	private void initialisationComposants() {
@@ -53,7 +76,7 @@ public class BoiteDialogueModifierClient extends JDialog {
 		constraints.anchor = GridBagConstraints.CENTER;
 		panneau.add(labelNom, constraints);
 
-		JTextField jtfNom = new JTextField();
+		jtfNom = new JTextField(utilisateur.getNom());
 		jtfNom.setColumns(15);
 		jtfNom.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));
 		constraints.weightx = 0.5;
@@ -73,7 +96,7 @@ public class BoiteDialogueModifierClient extends JDialog {
 		constraints.anchor = GridBagConstraints.CENTER;
 		panneau.add(labelPrenom, constraints);
 
-		JTextField jtfPrenom = new JTextField();
+		jtfPrenom = new JTextField(utilisateur.getNom());
 		jtfPrenom.setColumns(15);
 		jtfPrenom.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));
 		constraints.weightx = 0.5;
@@ -93,7 +116,7 @@ public class BoiteDialogueModifierClient extends JDialog {
 		constraints.anchor = GridBagConstraints.CENTER;
 		panneau.add(labelAdresseMail, constraints);
 
-		JTextField jtfAdresseMail = new JTextField();
+		jtfAdresseMail = new JTextField(utilisateur.getAdresseMail());
 		jtfAdresseMail.setColumns(15);
 		jtfAdresseMail
 				.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));
@@ -104,6 +127,47 @@ public class BoiteDialogueModifierClient extends JDialog {
 		constraints.gridheight = 1;
 		constraints.anchor = GridBagConstraints.LINE_START;
 		panneau.add(jtfAdresseMail, constraints);
+
+		// Login
+		JLabel labelLogin = new JLabel("Login");
+		constraints.gridx = 0;
+		constraints.gridy = 3;
+		constraints.gridwidth = 1;
+		constraints.gridheight = 1;
+		constraints.anchor = GridBagConstraints.CENTER;
+		panneau.add(labelLogin, constraints);
+
+		jtfLogin = new JTextField(utilisateur.getLogin());
+		jtfLogin.setColumns(15);
+		jtfLogin.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));
+		constraints.weightx = 0;
+		constraints.gridx = 1;
+		constraints.gridy = 3;
+		constraints.gridwidth = 1;
+		constraints.gridheight = 1;
+		constraints.anchor = GridBagConstraints.LINE_START;
+		panneau.add(jtfLogin, constraints);
+
+		// Mot de passe
+		JLabel labelMotDePasse = new JLabel("Mot de passe");
+		constraints.gridx = 0;
+		constraints.gridy = 4;
+		constraints.gridwidth = 1;
+		constraints.gridheight = 1;
+		constraints.anchor = GridBagConstraints.CENTER;
+		panneau.add(labelMotDePasse, constraints);
+
+		jtfMotDePasse = new JTextField(utilisateur.getMotDePasse());
+		jtfMotDePasse.setColumns(15);
+		jtfMotDePasse
+				.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));
+		constraints.weightx = 0;
+		constraints.gridx = 1;
+		constraints.gridy = 4;
+		constraints.gridwidth = 1;
+		constraints.gridheight = 1;
+		constraints.anchor = GridBagConstraints.LINE_START;
+		panneau.add(jtfMotDePasse, constraints);
 
 		// boutton enregistrer
 		JButton buttonAnnuler = new JButton("Enregistrer");
@@ -120,7 +184,7 @@ public class BoiteDialogueModifierClient extends JDialog {
 		buttonAnnuler.setFocusPainted(false);
 		/// on positionne la case
 		constraints.gridx = 0;
-		constraints.gridy = 3;
+		constraints.gridy = 5;
 		constraints.gridwidth = 1;
 		constraints.gridheight = 1;
 		constraints.weighty = 0;
@@ -143,7 +207,7 @@ public class BoiteDialogueModifierClient extends JDialog {
 		buttonEnregister.setFocusPainted(false);
 		/// on positionne la case
 		constraints.gridx = 1;
-		constraints.gridy = 3;
+		constraints.gridy = 5;
 		constraints.gridwidth = 1;
 		constraints.gridheight = 1;
 		constraints.weighty = 0;
