@@ -1,14 +1,20 @@
 package fr.eseo.gestionaeroport.controleur.actions;
 
 import java.awt.event.ActionEvent;
+import java.sql.Connection;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.swing.AbstractAction;
 
-//import fr.eseo.gestionaeroport.controleur.baseDeDonnees.ConnexionBDD;
-
+import fr.eseo.gestionaeroport.controleur.baseDeDonnees.ConnexionBDD;
+import fr.eseo.gestionaeroport.dao.VolDAO;
+import fr.eseo.gestionaeroport.modele.Vol;
 import fr.eseo.gestionaeroport.vue.boitedialogue.BoiteDialogueNewVolKo;
+import fr.eseo.gestionaeroport.vue.boitedialogue.BoiteDialogueNewVolKoAero;
+import fr.eseo.gestionaeroport.vue.boitedialogue.BoiteDialogueNewVolKoDate;
 import fr.eseo.gestionaeroport.vue.boitedialogue.BoiteDialogueNewVolOk;
 import fr.eseo.gestionaeroport.vue.ui.FenetreGestionAeroport;
 
@@ -43,6 +49,12 @@ public class ActionProposerVol extends AbstractAction {
 		int moisA = 0;
 		int jourD = 0;
 		int jourA = 0;
+		Date dateD = null;
+		Date dateA = null;
+		List<String> nomPassagers = new ArrayList<String>();
+		Connection conn = ConnexionBDD.connexion();
+		VolDAO volproposeDAO = new VolDAO(conn);
+		Vol volpropose = new Vol(0, dateD, dateA, idaeroportdepart, idaeroportarrivee, nomPassagers, 0, idavion, "XX");
 
 		try {
 
@@ -70,23 +82,34 @@ public class ActionProposerVol extends AbstractAction {
 			// Conversion des dates au format de la BDD
 			SimpleDateFormat dateFormatD = new SimpleDateFormat("yyyy-MM-dd");
 			String dateTexteD = "" + anneeD + "-" + moisD + "-" + jourD;
-			Date dateD = dateFormatD.parse(dateTexteD);
+			dateD = dateFormatD.parse(dateTexteD);
 			SimpleDateFormat dateFormatA = new SimpleDateFormat("yyyy-MM-dd");
 			String dateTexteA = "" + anneeA + "-" + moisA + "-" + jourA;
-			Date dateA = dateFormatA.parse(dateTexteA);
+			dateA = dateFormatA.parse(dateTexteA);
+			// récupération des id d'aéroports
+			idaeroportdepart = volproposeDAO.getIdAeroportStr(aeroportdepart);
+			idaeroportarrivee = volproposeDAO.getIdAeroportStr(aeroportarrivee);
 
 			if (idaeroportarrivee != idaeroportdepart) {
 
-				BoiteDialogueNewVolOk valid = new BoiteDialogueNewVolOk();
-				FenetreGestionAeroport.getInstance();
+				try {
+					// volpropose = new Vol(dateD, dateA, idaeroportdepart, idaeroportarrivee,
+					// idavion);
+					volproposeDAO.create(volpropose);
+					BoiteDialogueNewVolOk valid = new BoiteDialogueNewVolOk();
+					FenetreGestionAeroport.getInstance();
+				} catch (Exception e) {
+					BoiteDialogueNewVolKo error = new BoiteDialogueNewVolKo();
+					e.printStackTrace();
+				}
 
 			} else {
-				BoiteDialogueNewVolKo error = new BoiteDialogueNewVolKo();
+				BoiteDialogueNewVolKoAero error = new BoiteDialogueNewVolKoAero();
 			}
 
 		} catch (Exception e) {
 
-			BoiteDialogueNewVolKo error = new BoiteDialogueNewVolKo();
+			BoiteDialogueNewVolKoDate error = new BoiteDialogueNewVolKoDate();
 			e.printStackTrace();
 		}
 	}
