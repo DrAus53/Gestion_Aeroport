@@ -2,7 +2,6 @@ package fr.eseo.gestionaeroport.modele;
 
 public class Utilisateur {
 
-	private int id;
 	private String prenom;
 	private String nom;
 	private String motDePasse;
@@ -15,14 +14,6 @@ public class Utilisateur {
 		this.motDePasse = motDePasse;
 		this.login = login;
 		this.adresseMail = adresseMail;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getPrenom() {

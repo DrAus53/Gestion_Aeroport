@@ -35,7 +35,7 @@ public class AeroportDAO extends DAO<Aeroport> {
 
 		try {
 			ResultSet result = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)
-					.executeQuery("SELECT * FROM aeroport");
+					.executeQuery("SELECT * FROM aeroport ORDER BY idaeroport");
 			ResultSetMetaData resultMeta = result.getMetaData();
 			int compteur = 0;
 
