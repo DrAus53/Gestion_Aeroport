@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.swing.AbstractAction;
@@ -12,7 +14,6 @@ import fr.eseo.gestionaeroport.controleur.baseDeDonnees.ConnexionBDD;
 import fr.eseo.gestionaeroport.dao.VolDAO;
 import fr.eseo.gestionaeroport.modele.Vol;
 import fr.eseo.gestionaeroport.vue.boitedialogue.BoiteDialogueListeDeVols;
-import fr.eseo.gestionaeroport.vue.boitedialogue.BoiteDialogueNewAvionOk;
 import fr.eseo.gestionaeroport.vue.ui.FenetreGestionAeroport;
 
 public class ActionRechercheDeVol extends AbstractAction {
@@ -22,25 +23,19 @@ public class ActionRechercheDeVol extends AbstractAction {
 
 	public ActionRechercheDeVol(FenetreGestionAeroport fenetreGestionAeroport) {
 		super(NOM_ACTION);
-		this.fenetreGestionAeroport = fenetreGestionAeroport.getInstance();
+		this.fenetreGestionAeroport = fenetreGestionAeroport;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		String sqlaeroportdepart = fenetreGestionAeroport.getPanneauRechercheVol().getJTextFieldAeroportDepart()
-				.getText();
-		String sqlaeroportarrivee = fenetreGestionAeroport.getPanneauRechercheVol().getJTextFielAeroportArrivee()
-				.getText();
-		String sqldate = fenetreGestionAeroport.getPanneauRechercheVol().getJTextFieldDate().getText();
-
-		String sqlheure = fenetreGestionAeroport.getPanneauRechercheVol().getJTextFieldHeure().getText();
-		Connection conn = ConnexionBDD.connexion();
-		// Création d'un objet Statement
 		try {
+			Connection conn = ConnexionBDD.connexion();
+			// Création d'un objet Statement
 			Statement state = conn.createStatement();
 			VolDAO volDAO = new VolDAO(conn);
 
-			BoiteDialogueNewAvionOk jop1 = new BoiteDialogueNewAvionOk();
+			System.out.println(Integer.parseInt(FenetreGestionAeroport.getInstance().getPanneauRechercheVol()
+					.getJTextFieldDate().getText().split("-")[0]));
 
 			int annee = Integer.parseInt(FenetreGestionAeroport.getInstance().getPanneauRechercheVol()
 					.getJTextFieldDate().getText().split("-")[0]);
@@ -48,16 +43,32 @@ public class ActionRechercheDeVol extends AbstractAction {
 					.getJTextFieldDate().getText().split("-")[1]);
 			int jour = Integer.parseInt(FenetreGestionAeroport.getInstance().getPanneauRechercheVol()
 					.getJTextFieldDate().getText().split("-")[2]);
-
+			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+			System.out.println(new Date(annee, mois, jour));
+			String dateTexte = "" + annee + "-" + mois + "-" + jour;
+			Date date = null;
+			try {
+				date = dateFormat.parse(dateTexte);
+				System.out.print(date);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			BoiteDialogueListeDeVols boite = new BoiteDialogueListeDeVols(500, 300,
-					volDAO.find(new Vol(new Date(annee, mois, jour),
+					volDAO.find(new Vol(date,
 							volDAO.getIdAeroport(FenetreGestionAeroport.getInstance().getPanneauRechercheVol()
 									.getJTextFieldAeroportDepart()),
 							volDAO.getIdAeroport(FenetreGestionAeroport.getInstance().getPanneauRechercheVol()
 									.getJTextFielAeroportArrivee()),
 							1)));
+			System.out.println(volDAO.find(new Vol(date,
+					volDAO.getIdAeroport(FenetreGestionAeroport.getInstance().getPanneauRechercheVol()
+							.getJTextFieldAeroportDepart()),
+					volDAO.getIdAeroport(FenetreGestionAeroport.getInstance().getPanneauRechercheVol()
+							.getJTextFielAeroportArrivee()),
+					1)));
+
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

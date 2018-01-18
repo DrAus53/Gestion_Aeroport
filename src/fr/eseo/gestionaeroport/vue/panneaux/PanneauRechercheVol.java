@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import fr.eseo.gestionaeroport.controleur.actions.ActionRechercheDeVol;
 import fr.eseo.gestionaeroport.vue.ui.FenetreGestionAeroport;
 
 public class PanneauRechercheVol extends JPanel {
@@ -22,6 +23,8 @@ public class PanneauRechercheVol extends JPanel {
 	JTextField jtfa;
 	JTextField jtfdate;
 	JTextField jtfheure;
+	public FenetreGestionAeroport fenetre;
+
 	public PanneauRechercheVol(int largeur, int l) {
 		super();
 		this.setSize(new Dimension(largeur, l));
@@ -39,19 +42,19 @@ public class PanneauRechercheVol extends JPanel {
 	public JTextField getJTextFieldAeroportDepart() {
 		return jtf;
 	}
-	
+
 	public JTextField getJTextFielAeroportArrivee() {
 		return jtfa;
 	}
-	
+
 	public JTextField getJTextFieldDate() {
 		return jtfdate;
 	}
-	
+
 	public JTextField getJTextFieldHeure() {
 		return jtfheure;
 	}
-	
+
 	private void initComponents() {
 		// Layout
 		this.setLayout(new GridBagLayout());
@@ -120,7 +123,7 @@ public class PanneauRechercheVol extends JPanel {
 		constraints.gridy = 3;
 		this.add(labeldate, constraints);
 
-		 jtfdate = new JTextField("JJ/MM/AAAA");
+		jtfdate = new JTextField("JJ/MM/AAAA");
 		jtfdate.setColumns(10);
 		jtfdate.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));
 		constraints.anchor = GridBagConstraints.LINE_START;
@@ -139,7 +142,7 @@ public class PanneauRechercheVol extends JPanel {
 		constraints.gridy = 4;
 		this.add(labelheure, constraints);
 
-		 jtfheure = new JTextField("H/MIN");
+		jtfheure = new JTextField("H/MIN");
 		constraints.anchor = GridBagConstraints.LINE_START;
 		jtfheure.setColumns(10);
 		jtfheure.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));
@@ -151,7 +154,7 @@ public class PanneauRechercheVol extends JPanel {
 		add(jtfheure, constraints);
 
 		// valider
-		JButton validerBout = new JButton("Valider");
+		JButton validerBout = new JButton(new ActionRechercheDeVol(this.fenetre));
 		constraints.anchor = GridBagConstraints.LINE_END;
 		validerBout.setPreferredSize(new Dimension(70, 30));
 		/// couleur du texte
