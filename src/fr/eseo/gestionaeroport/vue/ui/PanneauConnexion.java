@@ -40,7 +40,7 @@ public class PanneauConnexion extends JPanel {
 		this.setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, FenetreGestionAeroport.COULEUR_ACCENTUATION));
 		GridBagConstraints constraints = new GridBagConstraints();
 
-		JLabel labelBienvenu = new JLabel("Bienvenu !");
+		JLabel labelBienvenu = new JLabel("Bienvenue !");
 		labelBienvenu.setFont(new Font("Berlin Sans FB Demi", 1, 30));
 		labelBienvenu.setForeground(FenetreGestionAeroport.COULEUR_CADRE_PANNEAUX);
 		constraints.gridx = 0;
