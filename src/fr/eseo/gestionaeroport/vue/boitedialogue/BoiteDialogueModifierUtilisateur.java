@@ -46,6 +46,10 @@ public class BoiteDialogueModifierUtilisateur extends JDialog {
 		this(300, 170, new Utilisateur(0, null, null, null, null, null));
 	}
 
+	public BoiteDialogueModifierUtilisateur(Utilisateur utilisateur) {
+		this(300, 170, utilisateur);
+	}
+
 	public void setUtilisateur(Utilisateur utilisateur) {
 		this.utilisateur = utilisateur;
 	}
