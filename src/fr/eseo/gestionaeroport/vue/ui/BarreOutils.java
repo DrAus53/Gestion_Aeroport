@@ -9,7 +9,6 @@ import javax.swing.JMenuItem;
 
 import fr.eseo.gestionaeroport.GestionAeroport;
 import fr.eseo.gestionaeroport.controleur.actions.ActionDeconnexion;
-import fr.eseo.gestionaeroport.controleur.actions.ActionModifier;
 
 public class BarreOutils extends JMenuBar {
 
@@ -24,7 +23,7 @@ public class BarreOutils extends JMenuBar {
 	private JMenuItem itemPrenom;
 	private JMenuItem itemLogin;
 	private JMenuItem itemAdresseMail;
-	private JMenuItem itemModifer = new JMenuItem(new ActionModifier());
+	private JMenuItem itemModifer = new JMenuItem("Modifer");
 	private JMenuItem itemDeconnexion = new JMenuItem(new ActionDeconnexion());
 
 	public BarreOutils(int largeur, int hauteur, Color fond) {
