@@ -61,12 +61,6 @@ public class ActionRechercheDeVol extends AbstractAction {
 							volDAO.getIdAeroport(FenetreGestionAeroport.getInstance().getPanneauRechercheVol()
 									.getJTextFielAeroportArrivee()),
 							1)));
-			System.out.println(volDAO.find(new Vol(date,
-					volDAO.getIdAeroport(FenetreGestionAeroport.getInstance().getPanneauRechercheVol()
-							.getJTextFieldAeroportDepart()),
-					volDAO.getIdAeroport(FenetreGestionAeroport.getInstance().getPanneauRechercheVol()
-							.getJTextFielAeroportArrivee()),
-					1)));
 
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -28,7 +28,7 @@ public class PanneauProposerVol extends JPanel {
 		super();
 		this.setSize(largeur, hauteur);
 		this.setBackground(FenetreGestionAeroport.COULEUR_FOND_PANNEAUX);
-		/// on ajoute un cadre autour du jpanel (de 4 pixels)
+		// on ajoute un cadre autour du jpanel (de 4 pixels)
 		this.setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, FenetreGestionAeroport.COULEUR_CADRE_PANNEAUX));
 		initComponent();
 	}
