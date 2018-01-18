@@ -1,7 +1,8 @@
 package fr.eseo.gestionaeroport.controleur.actions;
 
 import java.awt.event.ActionEvent;
-//import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.swing.AbstractAction;
 
@@ -28,24 +29,65 @@ public class ActionProposerVol extends AbstractAction {
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		String shit = "";
 
-		if (!shit.equals("")) {
-			if (!shit.equals("")) {
-				if (!shit.equals("")) {
-					try {
+		// Déclaration des variables
+		String aeroportdepart = "";
+		String aeroportarrivee = "";
+		int idaeroportdepart = 0;
+		int idaeroportarrivee = 0;
+		String avion = "";
+		int idavion = 0;
+		int anneeD = 0;
+		int anneeA = 0;
+		int moisD = 0;
+		int moisA = 0;
+		int jourD = 0;
+		int jourA = 0;
 
-						BoiteDialogueNewVolOk valid = new BoiteDialogueNewVolOk();
-						FenetreGestionAeroport.getInstance();
-					} catch (Exception e) {
-						BoiteDialogueNewVolKo error = new BoiteDialogueNewVolKo();
-						e.printStackTrace();
-					}
-				}
+		try {
+
+			// Récupération des dates et affectation aux variables
+			anneeD = Integer.parseInt(FenetreGestionAeroport.getInstance().getPanneauProposerVol()
+					.getJTextFieldDateDepart().getText().split("-")[0]);
+			moisD = Integer.parseInt(FenetreGestionAeroport.getInstance().getPanneauProposerVol()
+					.getJTextFieldDateDepart().getText().split("-")[1]);
+			jourD = Integer.parseInt(FenetreGestionAeroport.getInstance().getPanneauProposerVol()
+					.getJTextFieldDateDepart().getText().split("-")[2]);
+			anneeA = Integer.parseInt(FenetreGestionAeroport.getInstance().getPanneauProposerVol()
+					.getJTextFieldDateArrivee().getText().split("-")[0]);
+			moisA = Integer.parseInt(FenetreGestionAeroport.getInstance().getPanneauProposerVol()
+					.getJTextFieldDateArrivee().getText().split("-")[1]);
+			jourA = Integer.parseInt(FenetreGestionAeroport.getInstance().getPanneauProposerVol()
+					.getJTextFieldDateArrivee().getText().split("-")[2]);
+			// Récupération des aéroports/avions et affectation aux variables
+			aeroportdepart = FenetreGestionAeroport.getInstance().getPanneauProposerVol().getJComboBoxDepartAeroport()
+					.getSelectedItem().toString();
+			aeroportarrivee = FenetreGestionAeroport.getInstance().getPanneauProposerVol().getJComboBoxArriveeAeroport()
+					.getSelectedItem().toString();
+			avion = FenetreGestionAeroport.getInstance().getPanneauProposerVol().getJComboBoxArriveeAeroport()
+					.getSelectedItem().toString();
+
+			// Conversion des dates au format de la BDD
+			SimpleDateFormat dateFormatD = new SimpleDateFormat("yyyy-MM-dd");
+			String dateTexteD = "" + anneeD + "-" + moisD + "-" + jourD;
+			Date dateD = dateFormatD.parse(dateTexteD);
+			SimpleDateFormat dateFormatA = new SimpleDateFormat("yyyy-MM-dd");
+			String dateTexteA = "" + anneeA + "-" + moisA + "-" + jourA;
+			Date dateA = dateFormatA.parse(dateTexteA);
+
+			if (idaeroportarrivee != idaeroportdepart) {
+
+				BoiteDialogueNewVolOk valid = new BoiteDialogueNewVolOk();
+				FenetreGestionAeroport.getInstance();
+
+			} else {
+				BoiteDialogueNewVolKo error = new BoiteDialogueNewVolKo();
 			}
-		}
-		if (shit.equals("") || shit.equals("") || shit.equals("")) {
+
+		} catch (Exception e) {
+
 			BoiteDialogueNewVolKo error = new BoiteDialogueNewVolKo();
+			e.printStackTrace();
 		}
 	}
 }

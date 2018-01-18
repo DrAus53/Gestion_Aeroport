@@ -22,6 +22,6 @@ public class BoiteDialogueNewVolOk extends JOptionPane {
 	}
 
 	private void initialisationComposants() {
-		BoiteDialogueNewVolOk.showMessageDialog(null, "Vol enregistré.", "Erreur", JOptionPane.ERROR_MESSAGE);
+		BoiteDialogueNewVolOk.showMessageDialog(null, "Vol enregistré.", "Succès", JOptionPane.INFORMATION_MESSAGE);
 	}
 }

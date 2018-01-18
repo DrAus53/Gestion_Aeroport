@@ -37,6 +37,34 @@ public class PanneauProposerVol extends JPanel {
 		this(FenetreGestionAeroport.LARGEUR_PANNEAU_PAR_DEFAUT, FenetreGestionAeroport.HAUTEUR_PANNEAU_PAR_DEFAUT);
 	}
 
+	// Accesseurs
+	JTextField jTextFieldDepartDate = new JTextField();
+
+	public JTextField getJTextFieldDateDepart() {
+		return jTextFieldDepartDate;
+	}
+
+	JTextField jTextFieldDateArrivee = new JTextField();
+
+	public JTextField getJTextFieldDateArrivee() {
+		return jTextFieldDateArrivee;
+	}
+
+	Connection conn = ConnexionBDD.connexion();
+	Object[] villes = new AeroportDAO(conn).affiche();
+
+	JComboBox<Object> jComboBoxDepartAeroport = new JComboBox<>(villes);
+
+	public JComboBox<Object> getJComboBoxDepartAeroport() {
+		return jComboBoxDepartAeroport;
+	}
+
+	JComboBox<Object> jComboBoxArriveeAeroport = new JComboBox<>(villes);
+
+	public JComboBox<Object> getJComboBoxArriveeAeroport() {
+		return jComboBoxArriveeAeroport;
+	}
+
 	private void initComponent() {
 		// Layout
 		this.setLayout(new GridBagLayout());
@@ -75,10 +103,6 @@ public class PanneauProposerVol extends JPanel {
 		constraints.anchor = GridBagConstraints.CENTER;
 		this.add(labelDepartAeroport, constraints);
 
-		Connection conn = ConnexionBDD.connexion();
-		Object[] villes = new AeroportDAO(conn).affiche();
-
-		JComboBox<Object> jComboBoxDepartAeroport = new JComboBox<>(villes);
 		jComboBoxDepartAeroport
 				.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));
 		constraints.gridx = 2;
@@ -102,7 +126,7 @@ public class PanneauProposerVol extends JPanel {
 		 * peut-être utiliser plutôt un calendrier ->
 		 * http://www.javacodex.com/Swing/Swing-Calendar
 		 */
-		JTextField jTextFieldDepartDate = new JTextField();
+
 		jTextFieldDepartDate.setColumns(7);
 		jTextFieldDepartDate
 				.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));
@@ -146,8 +170,7 @@ public class PanneauProposerVol extends JPanel {
 		constraints.fill = GridBagConstraints.NONE;
 		this.add(labelArriveeAeroport, constraints);
 
-		JComboBox<Object> jComboBoxArriveetAeroport = new JComboBox<>(villes);
-		jComboBoxArriveetAeroport
+		jComboBoxArriveeAeroport
 				.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));
 		constraints.gridx = 2;
 		constraints.gridy = 3;
@@ -155,7 +178,7 @@ public class PanneauProposerVol extends JPanel {
 		constraints.gridheight = 1;
 		constraints.anchor = GridBagConstraints.CENTER;
 		constraints.fill = GridBagConstraints.HORIZONTAL;
-		this.add(jComboBoxArriveetAeroport, constraints);
+		this.add(jComboBoxArriveeAeroport, constraints);
 
 		JLabel labelDateArrivee = new JLabel("Date");
 		constraints.gridx = 1;
@@ -166,7 +189,6 @@ public class PanneauProposerVol extends JPanel {
 		constraints.fill = GridBagConstraints.NONE;
 		this.add(labelDateArrivee, constraints);
 
-		JTextField jTextFieldDateArrivee = new JTextField();
 		jTextFieldDateArrivee.setText("AAAA-MM-JJ");
 		jTextFieldDateArrivee
 				.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));
