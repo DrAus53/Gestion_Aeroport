@@ -154,7 +154,7 @@ public class PanneauRechercheVol extends JPanel {
 		add(jtfheure, constraints);
 
 		// valider
-		JButton validerBout = new JButton(new ActionRechercheDeVol(this.fenetre));
+		JButton validerBout = new JButton(new ActionRechercheDeVol());
 		constraints.anchor = GridBagConstraints.LINE_END;
 		validerBout.setPreferredSize(new Dimension(70, 30));
 		/// couleur du texte

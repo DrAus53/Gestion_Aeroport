@@ -27,6 +27,9 @@ public class BoiteDialogueListeDeVols extends JDialog {
 
 	public BoiteDialogueListeDeVols(int largeur, int hauteur, List<Vol> listeVols) {
 		super();
+
+		this.setListeVols(listeVols);
+
 		this.setPreferredSize(new Dimension(largeur, hauteur));
 		// au milieu de l'écran
 		this.setLocationRelativeTo(null);
@@ -38,7 +41,6 @@ public class BoiteDialogueListeDeVols extends JDialog {
 		this.initialisationComposants();
 
 		this.setVisible(true);
-		this.setListeVols(listeVols);
 	}
 
 	public BoiteDialogueListeDeVols() {
@@ -129,18 +131,27 @@ public class BoiteDialogueListeDeVols extends JDialog {
 			int ligneTableau = 0;
 
 			for (Vol vol : listeVols) {
-				donneesTableau[ligneTableau][0] = vol.getnumeroVol();
+				donneesTableau[ligneTableau][0] = String.valueOf(vol.getnumeroVol());
 				donneesTableau[ligneTableau][1] = AeroportDAO.getNomAeroport(vol.getIdaeroportArrivee());
-				donneesTableau[ligneTableau][2] = vol.getDateDepart();
-				donneesTableau[ligneTableau][3] = vol.getHeureDepart();
+				if (vol.getDateDepart() != null) {
+					donneesTableau[ligneTableau][2] = vol.getDateDepart().toString();
+				}
+				if (vol.getHeureDepart() != null) {
+					donneesTableau[ligneTableau][3] = vol.getHeureDepart().toString();
+				}
 				donneesTableau[ligneTableau][4] = AeroportDAO.getNomAeroport(vol.getIdaeroportArrivee());
-				donneesTableau[ligneTableau][5] = vol.getDateArrive();
-				donneesTableau[ligneTableau][6] = vol.getHeureArrivee();
-				donneesTableau[ligneTableau][7] = vol.getNombrePassagers();
+				if (vol.getDateArrive() != null) {
+					donneesTableau[ligneTableau][5] = vol.getDateArrive().toString();
+				}
+				if (vol.getHeureArrivee() != null) {
+					donneesTableau[ligneTableau][6] = vol.getHeureArrivee().toString();
+				}
+				donneesTableau[ligneTableau][7] = String.valueOf(vol.getNombrePassagers());
 			}
 
 			return donneesTableau;
 		} else {
+			System.out.println("Liste vol null");
 			return null;
 		}
 	}

@@ -145,6 +145,7 @@ public class VolDAO extends DAO<Vol> {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println(listvol.toString());
 		return listvol;
 	}
 
