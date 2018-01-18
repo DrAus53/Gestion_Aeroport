@@ -106,7 +106,7 @@ public class PanneauProposerVol extends JPanel {
 		jTextFieldDepartDate.setColumns(7);
 		jTextFieldDepartDate
 				.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));
-		jTextFieldDepartDate.setText("JJ/MM/AAAA");
+		jTextFieldDepartDate.setText("AAAA-MM-JJ");
 		constraints.gridx = 2;
 		constraints.gridy = 2;
 		constraints.gridwidth = 1;
@@ -167,7 +167,7 @@ public class PanneauProposerVol extends JPanel {
 		this.add(labelDateArrivee, constraints);
 
 		JTextField jTextFieldDateArrivee = new JTextField();
-		jTextFieldDateArrivee.setText("JJ/MM/AAAA");
+		jTextFieldDateArrivee.setText("AAAA-MM-JJ");
 		jTextFieldDateArrivee
 				.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));
 		constraints.gridx = 2;
