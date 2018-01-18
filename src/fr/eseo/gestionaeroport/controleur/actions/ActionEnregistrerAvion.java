@@ -27,9 +27,8 @@ public class ActionEnregistrerAvion extends AbstractAction {
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		String nomAvion = FenetreGestionAeroport.getInstance().getPanneauEnregistrerUnNouvelAvion().constructeurJtf
-				.getText();
-		String typeAvion = FenetreGestionAeroport.getInstance().getPanneauEnregistrerUnNouvelAvion().modeleJtf
+		String nomAvion = FenetreGestionAeroport.getInstance().getPanneauEnregistrerUnNouvelAvion().modeleJtf.getText();
+		String typeAvion = FenetreGestionAeroport.getInstance().getPanneauEnregistrerUnNouvelAvion().constructeurJtf
 				.getText();
 		String nbplace = FenetreGestionAeroport.getInstance().getPanneauEnregistrerUnNouvelAvion().nbrPlaceJtf
 				.getText();
