@@ -22,6 +22,7 @@ public class PanneauEchangeBillet extends JPanel {
 
 	public JTextField numVolJtf;
 	public JTextField nomPasJtf;
+	public JTextField prenomPasJtf;
 	public JCheckBox rembChB;
 	public FenetreGestionAeroport fenetre;
 
@@ -105,12 +106,34 @@ public class PanneauEchangeBillet extends JPanel {
 		gbc.gridwidth = 1;
 		this.add(this.nomPasJtf, gbc);
 
+		// prénom du passager
+		JLabel prenomPasTxt = new JLabel("Prénom du passager ");
+		/// On positionne la case
+		gbc.gridx = 0;
+		gbc.gridy = 3;
+		/// On choisit la taille
+		gbc.gridheight = 1;
+		gbc.gridwidth = 1;
+		this.add(prenomPasTxt, gbc);
+
+		this.prenomPasJtf = new JTextField();
+		this.prenomPasJtf.setColumns(15);
+		this.prenomPasJtf
+				.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));
+		/// On positionne la case
+		gbc.gridx = 1;
+		gbc.gridy = 3;
+		/// On choisit la taille
+		gbc.gridheight = 1;
+		gbc.gridwidth = 1;
+		this.add(this.prenomPasJtf, gbc);
+
 		// remboursement
 		this.rembChB = new JCheckBox("Remboursement");
 		this.rembChB.setOpaque(false);
 		/// On positionne la case
 		gbc.gridx = 0;
-		gbc.gridy = 3;
+		gbc.gridy = 4;
 		/// On choisit la taille
 		gbc.gridheight = 1;
 		gbc.gridwidth = 2;
