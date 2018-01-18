@@ -3,6 +3,8 @@ package fr.eseo.gestionaeroport.dao;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import fr.eseo.gestionaeroport.modele.Utilisateur;
 
@@ -46,17 +48,20 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
 
 	}
 
-	public Object[][] find(Utilisateur obj) {
+	public Utilisateur find(Utilisateur obj) {
+		List<Utilisateur> utilisateur = new ArrayList<Utilisateur>();
 		try {
-
 			ResultSet result = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)
 					.executeQuery("SELECT * FROM Utilisateur WHERE prenom=" + "'" + obj.getPrenom() + "'" + "AND nom="
 							+ "'" + obj.getNom() + "';");
+			utilisateur.add(new Utilisateur(result.getInt("idutilisateur"), result.getString("prenom"),
+					result.getString("nom"), result.getString("motdepasse"), result.getString("login"),
+					result.getString("adressemail")));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+		return utilisateur.get(0);
 
 	}
 

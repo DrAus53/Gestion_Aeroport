@@ -13,12 +13,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import fr.eseo.gestionaeroport.controleur.actions.ActionModifierUnCompteClient;
 import fr.eseo.gestionaeroport.vue.ui.FenetreGestionAeroport;
 
 public class PanneauModifierUnCompteClient extends JPanel {
-
+	JTextField jtfNom;
+	JTextField jtfPrenom;
 	private static final long serialVersionUID = 1L;
-	private FenetreGestionAeroport fenetreGestionAeroport;
+	private FenetreGestionAeroport fenetre;
 	GridBagConstraints constraints = new GridBagConstraints();
 
 	public PanneauModifierUnCompteClient(int largeur, int hauteur) {
@@ -64,7 +66,7 @@ public class PanneauModifierUnCompteClient extends JPanel {
 		constraints.anchor = GridBagConstraints.CENTER;
 		this.add(labelNom, constraints);
 
-		JTextField jtfNom = new JTextField();
+		jtfNom = new JTextField();
 		jtfNom.setColumns(15);
 		jtfNom.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));
 		constraints.weightx = 0.5;
@@ -84,7 +86,7 @@ public class PanneauModifierUnCompteClient extends JPanel {
 		constraints.anchor = GridBagConstraints.CENTER;
 		this.add(labelPrenom, constraints);
 
-		JTextField jtfPrenom = new JTextField();
+		jtfPrenom = new JTextField();
 		jtfPrenom.setColumns(15);
 		jtfPrenom.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));
 		constraints.weightx = 0.5;
@@ -96,7 +98,7 @@ public class PanneauModifierUnCompteClient extends JPanel {
 		this.add(jtfPrenom, constraints);
 
 		// valider
-		JButton validerBout = new JButton("Valider");
+		JButton validerBout = new JButton(new ActionModifierUnCompteClient(this.fenetre));
 		validerBout.setPreferredSize(new Dimension(70, 30));
 		/// couleur du texte
 		validerBout.setForeground(Color.WHITE);
@@ -117,6 +119,14 @@ public class PanneauModifierUnCompteClient extends JPanel {
 		/// on met le bouton à gauche
 		constraints.anchor = GridBagConstraints.LINE_END;
 		this.add(validerBout, constraints);
+	}
+
+	public JTextField getJTextFieldNom() {
+		return jtfNom;
+	}
+
+	public JTextField getJTextFielPrenom() {
+		return jtfPrenom;
 	}
 
 }

@@ -1,19 +1,25 @@
 package fr.eseo.gestionaeroport.modele;
 
 public class Utilisateur {
-
+	private int id;
 	private String prenom;
 	private String nom;
 	private String motDePasse;
 	private String login;
 	private String adresseMail;
 
-	public Utilisateur(String prenom, String nom, String motDePasse, String login, String adresseMail) {
+	public Utilisateur(int id, String prenom, String nom, String motDePasse, String login, String adresseMail) {
 		this.prenom = prenom;
 		this.nom = nom;
 		this.motDePasse = motDePasse;
 		this.login = login;
 		this.adresseMail = adresseMail;
+		this.setId(id);
+	}
+
+	public Utilisateur(String prenom2, String nom2) {
+		this.prenom = prenom;
+		this.nom = nom;
 	}
 
 	public String getPrenom() {
@@ -58,6 +64,14 @@ public class Utilisateur {
 
 	public void annuler(int numReservation) {
 		// TODO
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }
