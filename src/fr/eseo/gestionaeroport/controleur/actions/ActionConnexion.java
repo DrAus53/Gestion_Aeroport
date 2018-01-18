@@ -54,7 +54,7 @@ public class ActionConnexion extends AbstractAction {
 						this.utilisateurConnecte = new Utilisateur(result.getString("prenom"), result.getString("nom"),
 								result.getString("motdepasse"), result.getString("login"),
 								result.getString("adressemail"));
-						System.out.print("Utilisateur Connecté");
+						// System.out.print("Utilisateur Connecté");
 						GestionAeroport.setUtilisateurConnecte(this.utilisateurConnecte);
 						FenetreConnexion.fermerFenetre();
 					}
