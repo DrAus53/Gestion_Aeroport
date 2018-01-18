@@ -5,9 +5,9 @@ import java.awt.Dimension;
 import javax.swing.JOptionPane;
 
 @SuppressWarnings("serial")
-public class BoiteDialogueTrajetAnnuleOk extends JOptionPane {
+public class BoiteDialogueTexteVide extends JOptionPane {
 
-	public BoiteDialogueTrajetAnnuleOk(int largeur, int hauteur) {
+	public BoiteDialogueTexteVide(int largeur, int hauteur) {
 		super();
 		this.setPreferredSize(new Dimension(largeur, hauteur));
 
@@ -16,12 +16,12 @@ public class BoiteDialogueTrajetAnnuleOk extends JOptionPane {
 		this.setVisible(true);
 	}
 
-	public BoiteDialogueTrajetAnnuleOk() {
+	public BoiteDialogueTexteVide() {
 		this(350, 170);
 	}
 
 	private void initialisationComposants() {
-		BoiteDialogueTrajetAnnuleOk.showMessageDialog(null, "Le trajet a bien été supprimé", "Information",
-				JOptionPane.INFORMATION_MESSAGE);
+		BoiteDialogueTexteVide.showMessageDialog(null, "Veuillez remplir toutes les zones de texte", "Attention",
+				JOptionPane.WARNING_MESSAGE);
 	}
 }
