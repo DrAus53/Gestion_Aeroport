@@ -24,22 +24,19 @@ public class ActionModifierCompteClientConnecte extends AbstractAction {
 		// récupération de l'utilisateur modifié
 		Utilisateur newUtilisateur = FenetreGestionAeroport.getInstance().getBarreOutils().getActionModifier()
 				.getBoiteDialogueModifierUtilisateur().getUtilisateur();
-		String idutilisateur;
+		String idutilisateur = "";
 		try {
 			Statement state = ConnexionBDD.connexion().createStatement();
 			ResultSet result = state.executeQuery("SELECT idutilisateur FROM utilisateur WHERE idutilisateur ='"
 					+ GestionAeroport.getUtilisateurConnecte().getId() + "';");
 			while (result.next()) {
 				idutilisateur = result.getString("idutilisateur");
-				// On met à jour les champs
-				result.updateString("nom", newUtilisateur.getNom());
-				result.updateString("prenom", newUtilisateur.getPrenom());
-				result.updateString("login", newUtilisateur.getLogin());
-				result.updateString("adressemail", newUtilisateur.getAdresseMail());
-				result.updateString("motdepasse", newUtilisateur.getMotDePasse());
-				// On valide
-				result.updateRow();
 			}
+			int resultat = state.executeUpdate("UPDATE utilisateur SET nom='" + newUtilisateur.getNom() + "', prenom='"
+					+ newUtilisateur.getPrenom() + "', login='" + newUtilisateur.getLogin() + "', adressemail='"
+					+ newUtilisateur.getAdresseMail() + "', motdepasse='" + newUtilisateur.getMotDePasse()
+					+ "' WHERE idutilisateur='" + idutilisateur + "';");
+			GestionAeroport.setUtilisateurConnecte(newUtilisateur);
 		} catch (Exception e) {
 
 		}
