@@ -51,7 +51,7 @@ public class ActionRechercheDeVol extends AbstractAction {
 				date = dateFormat.parse(dateTexte);
 				System.out.print(date);
 			} catch (ParseException e) {
-				// TODO Auto-generated catch block
+				// Auto-generated catch block
 				e.printStackTrace();
 			}
 			BoiteDialogueListeDeVols boite = new BoiteDialogueListeDeVols(500, 300,
