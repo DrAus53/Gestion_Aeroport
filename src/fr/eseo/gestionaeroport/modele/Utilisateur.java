@@ -17,9 +17,17 @@ public class Utilisateur {
 		this.setId(id);
 	}
 
-	public Utilisateur(String prenom2, String nom2) {
+	public Utilisateur(String prenom, String nom, String motDePasse, String login, String adresseMail) {
 		this.prenom = prenom;
 		this.nom = nom;
+		this.motDePasse = motDePasse;
+		this.login = login;
+		this.adresseMail = adresseMail;
+	}
+
+	public Utilisateur(String prenom2, String nom2) {
+		this.prenom = prenom2;
+		this.nom = nom2;
 	}
 
 	public String getPrenom() {

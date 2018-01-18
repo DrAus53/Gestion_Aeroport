@@ -40,8 +40,7 @@ public class ActionModifierUnCompteClient extends AbstractAction {
 		String nom = fenetreGestionAeroport.getPanneauModifierUnCompteClient().getJTextFieldNom().getText();
 		String prenom = fenetreGestionAeroport.getPanneauModifierUnCompteClient().getJTextFielPrenom().getText();
 		if (!nom.equals("") && !prenom.equals("")) {
-			utilisateurDAO.find(new Utilisateur(prenom, nom));
-
+			Utilisateur utilisateur = utilisateurDAO.find(new Utilisateur(prenom, nom));
 		}
 	}
 }
