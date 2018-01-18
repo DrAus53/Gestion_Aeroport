@@ -32,7 +32,7 @@ public class AeroportDAO extends DAO<Aeroport> {
 		return null;
 	}
 
-	public String getIdAeroport(int idaeroport) {
+	public static String getNomAeroport(int idaeroport) {
 		Statement state;
 		String aeroport = "";
 		try {

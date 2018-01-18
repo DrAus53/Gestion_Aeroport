@@ -5,8 +5,6 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -16,42 +14,29 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.JTableHeader;
 
-import fr.eseo.gestionaeroport.dao.AeroportDAO;
-import fr.eseo.gestionaeroport.modele.Vol;
 import fr.eseo.gestionaeroport.vue.ui.FenetreGestionAeroport;
 
 @SuppressWarnings("serial")
-public class BoiteDialogueListeDeVols extends JDialog {
+public class BoiteDialogueListePassagers extends JDialog {
 
-	private List<Vol> listeVols;
-
-	public BoiteDialogueListeDeVols(int largeur, int hauteur, List<Vol> listeVols) {
+	public BoiteDialogueListePassagers(int largeur, int hauteur) {
 		super();
 		this.setPreferredSize(new Dimension(largeur, hauteur));
 		// au milieu de l'écran
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
 		this.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
-		this.setTitle("Liste des vols");
-		this.setUndecorated(true);
+		this.setTitle("Liste des passagers");
+		// this.setUndecorated(true);
 
 		this.initialisationComposants();
 
 		this.setVisible(true);
-		this.setListeVols(listeVols);
 	}
 
-	public BoiteDialogueListeDeVols() {
+	public BoiteDialogueListePassagers() {
 		this(FenetreGestionAeroport.LARGEUR_BOITE_DIALOGUE_PAR_DEFAUT,
-				FenetreGestionAeroport.HAUTEUR_BOITE_DIALOGUE_PAR_DEFAUT, new ArrayList<Vol>());
-	}
-
-	public List<Vol> getListeVols() {
-		return listeVols;
-	}
-
-	public void setListeVols(List<Vol> listeVols) {
-		this.listeVols = listeVols;
+				FenetreGestionAeroport.HAUTEUR_BOITE_DIALOGUE_PAR_DEFAUT);
 	}
 
 	private void initialisationComposants() {
@@ -62,15 +47,12 @@ public class BoiteDialogueListeDeVols extends JDialog {
 		/// on ajoute un marge autour du composant
 		constraints.insets = new Insets(2, 2, 2, 2);
 
-		String[] entetes = { "<html><center>Numéro<br/>de vol</center></html>",
-				"<html><center>Aéroport<br/>de départ</center></html>",
-				"<html><center>Date de<br/>départ</center></html>", "<html><center>Heure de<br/>départ</center></html>",
-				"<html><center>Aéroport<br/>d'arrivée</center></html>",
-				"<html><center>Date de<br/>d'arrivée</center></html>",
-				"<html><center>Heure<br/>d'arrivée</center></html>",
-				"<html><center>Nombre de<br/>passagers</center></html>" };
+		String[] entetes = { "<html><center>Nom du passager</center></html>",
+				"<html><center>Prénom du passager</center></html>",
+				"<html><center>Numéro de réservation</center></html>" };
 
-		Object[][] donnees = listeVolToTable(this.getListeVols());
+		Object[][] donnees = {};
+		// TODO
 
 		JTable tableauVol = new JTable(donnees, entetes);
 
@@ -81,11 +63,9 @@ public class BoiteDialogueListeDeVols extends JDialog {
 
 		// création d'une scroll barre
 		JScrollPane scroll = new JScrollPane(tableauVol);
-		// le tableau ne se redimmenssionne pas tous seul
-		tableauVol.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
 		constraints.gridx = 0;
-		constraints.gridy = 0;
+		constraints.gridy = 1;
 		constraints.gridwidth = GridBagConstraints.REMAINDER;
 		constraints.gridheight = 1;
 		/// remplissage de la case en horizontal et vertical
@@ -119,30 +99,4 @@ public class BoiteDialogueListeDeVols extends JDialog {
 		this.add(panTable);
 		this.pack();
 	}
-
-	private Object[][] listeVolToTable(List<Vol> listeVols) {
-		if (listeVols != null) {
-			int taille = listeVols.size();
-			// 8 colones dans le tableau à afficher
-			Object[][] donneesTableau = new String[taille][8];
-
-			int ligneTableau = 0;
-
-			for (Vol vol : listeVols) {
-				donneesTableau[ligneTableau][0] = vol.getnumeroVol();
-				donneesTableau[ligneTableau][1] = AeroportDAO.getNomAeroport(vol.getIdaeroportArrivee());
-				donneesTableau[ligneTableau][2] = vol.getDateDepart();
-				donneesTableau[ligneTableau][3] = vol.getHeureDepart();
-				donneesTableau[ligneTableau][4] = AeroportDAO.getNomAeroport(vol.getIdaeroportArrivee());
-				donneesTableau[ligneTableau][5] = vol.getDateArrive();
-				donneesTableau[ligneTableau][6] = vol.getHeureArrivee();
-				donneesTableau[ligneTableau][7] = vol.getNombrePassagers();
-			}
-
-			return donneesTableau;
-		} else {
-			return null;
-		}
-	}
-
 }
