@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -14,13 +16,14 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.JTableHeader;
 
+import fr.eseo.gestionaeroport.modele.Vol;
 import fr.eseo.gestionaeroport.vue.ui.FenetreGestionAeroport;
 
 @SuppressWarnings("serial")
 public class BoiteDialogueListeDeVols extends JDialog {
-	Object[][] donnees = new Object[30][30];
+	List<Vol> donnees = new ArrayList<Vol>();
 
-	public BoiteDialogueListeDeVols(int largeur, int hauteur, Object[][] donnees) {
+	public BoiteDialogueListeDeVols(int largeur, int hauteur, List<Vol> donnees) {
 		super();
 		this.setPreferredSize(new Dimension(largeur, hauteur));
 		// au milieu de l'écran
@@ -38,7 +41,7 @@ public class BoiteDialogueListeDeVols extends JDialog {
 
 	public BoiteDialogueListeDeVols() {
 		this(FenetreGestionAeroport.LARGEUR_BOITE_DIALOGUE_PAR_DEFAUT,
-				FenetreGestionAeroport.HAUTEUR_BOITE_DIALOGUE_PAR_DEFAUT, new Object[30][30]);
+				FenetreGestionAeroport.HAUTEUR_BOITE_DIALOGUE_PAR_DEFAUT, new ArrayList<Vol>());
 	}
 
 	private void initialisationComposants() {
@@ -57,7 +60,6 @@ public class BoiteDialogueListeDeVols extends JDialog {
 				"<html><center>Nombre de<br/>passagers</center></html>" };
 
 		// TODO
-
 		JTable tableauVol = new JTable(donnees, entetes);
 
 		JTableHeader header = tableauVol.getTableHeader();

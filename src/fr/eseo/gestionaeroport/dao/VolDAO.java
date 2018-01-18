@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JTextField;
 
@@ -13,7 +15,7 @@ import fr.eseo.gestionaeroport.modele.Vol;
 
 public class VolDAO extends DAO<Vol> {
 
-	Object[][] vol = new Object[30][30];
+	ArrayList[][] listvol = new ArrayList[30][30];
 
 	public VolDAO(Connection conn) {
 		super(conn);
@@ -124,9 +126,11 @@ public class VolDAO extends DAO<Vol> {
 			int compteurl = 0;
 			int compteur = 0;
 			while (result.next()) {
+				System.out.println(result.getString("idaeroportdepart"));
 				for (int i = 1; i <= resultMeta.getColumnCount(); i++) {
-					System.out.print("\t" + result.getObject(i).toString() + "\t |");
+					List <Vol>.add( new Vol(resut;get("ideaeroport")));
 					vol[compteur][compteurl] = ("" + result.getObject(i).toString() + "");
+
 					compteurl++;
 					System.out.println("\n---------------------------------");
 				}
@@ -138,6 +142,7 @@ public class VolDAO extends DAO<Vol> {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.print(vol);
 		return vol;
 	}
 
