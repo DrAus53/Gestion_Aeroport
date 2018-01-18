@@ -123,7 +123,7 @@ public class PanneauRechercheVol extends JPanel {
 		constraints.gridy = 3;
 		this.add(labeldate, constraints);
 
-		jtfdate = new JTextField("JJ/MM/AAAA");
+		jtfdate = new JTextField("AAAA-MM-JJ");
 		jtfdate.setColumns(10);
 		jtfdate.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));
 		constraints.anchor = GridBagConstraints.LINE_START;
@@ -142,7 +142,7 @@ public class PanneauRechercheVol extends JPanel {
 		constraints.gridy = 4;
 		this.add(labelheure, constraints);
 
-		jtfheure = new JTextField("H/MIN");
+		jtfheure = new JTextField("H:MIN:S");
 		constraints.anchor = GridBagConstraints.LINE_START;
 		jtfheure.setColumns(10);
 		jtfheure.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));

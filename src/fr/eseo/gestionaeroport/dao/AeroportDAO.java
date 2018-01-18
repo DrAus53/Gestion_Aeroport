@@ -4,7 +4,10 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.List;
 
+import fr.eseo.gestionaeroport.controleur.baseDeDonnees.ConnexionBDD;
 import fr.eseo.gestionaeroport.modele.baseDeDonnees.Aeroport;
 
 public class AeroportDAO extends DAO<Aeroport> {
@@ -25,8 +28,29 @@ public class AeroportDAO extends DAO<Aeroport> {
 
 	}
 
-	public Aeroport find(Aeroport obj) {
-		return obj;
+	public List<Aeroport> find(Aeroport obj) {
+		return null;
+	}
+
+	public String getIdAeroport(int idaeroport) {
+		Statement state;
+		String aeroport = "";
+		try {
+			state = ConnexionBDD.connexion().createStatement();
+			ResultSet result = state.executeQuery("SELECT * FROM aeroport");
+			ResultSetMetaData resultMeta = result.getMetaData();
+			System.out.println("SELECT nomaeroport FROM aeroport WHERE idaeroport='" + idaeroport + "';");
+			result = state.executeQuery("SELECT nomaeroport FROM aeroport WHERE idaeroport='" + idaeroport + "';");
+			resultMeta = result.getMetaData();
+			while (result.next()) {
+				aeroport = result.getString("nomaeroport");
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return aeroport;
 	}
 
 	public Object[] affiche() {
@@ -54,5 +78,11 @@ public class AeroportDAO extends DAO<Aeroport> {
 		}
 
 		return villes;
+	}
+
+	@Override
+	public void update(Aeroport obj, Aeroport obj1) {
+		// TODO Auto-generated method stub
+
 	}
 }
