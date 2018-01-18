@@ -8,6 +8,7 @@ import javax.swing.AbstractAction;
 import fr.eseo.gestionaeroport.controleur.baseDeDonnees.ConnexionBDD;
 import fr.eseo.gestionaeroport.vue.boitedialogue.BoiteDialogueNewAvionKo;
 import fr.eseo.gestionaeroport.vue.boitedialogue.BoiteDialogueNewAvionOk;
+import fr.eseo.gestionaeroport.vue.boitedialogue.BoiteDialogueTexteVide;
 import fr.eseo.gestionaeroport.vue.ui.FenetreGestionAeroport;
 
 public class ActionEnregistrerAvion extends AbstractAction {
@@ -50,7 +51,7 @@ public class ActionEnregistrerAvion extends AbstractAction {
 			}
 		}
 		if (nomAvion.equals("") || typeAvion.equals("") || nbplace.equals("")) {
-			BoiteDialogueNewAvionKo jop2 = new BoiteDialogueNewAvionKo();
+			BoiteDialogueTexteVide jop2 = new BoiteDialogueTexteVide();
 		}
 	}
 }

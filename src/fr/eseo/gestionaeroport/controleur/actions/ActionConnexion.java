@@ -11,6 +11,8 @@ import javax.swing.AbstractAction;
 import fr.eseo.gestionaeroport.GestionAeroport;
 import fr.eseo.gestionaeroport.controleur.baseDeDonnees.ConnexionBDD;
 import fr.eseo.gestionaeroport.modele.Utilisateur;
+import fr.eseo.gestionaeroport.vue.boitedialogue.BoiteDialogueErreurBdd;
+import fr.eseo.gestionaeroport.vue.boitedialogue.BoiteDialogueTexteVide;
 import fr.eseo.gestionaeroport.vue.ui.FenetreConnexion;
 
 public class ActionConnexion extends AbstractAction {
@@ -59,9 +61,14 @@ public class ActionConnexion extends AbstractAction {
 						FenetreConnexion.fermerFenetre();
 					}
 				} catch (SQLException e) {
+					// Boite de dialogue
+					BoiteDialogueErreurBdd jopTrajetErreurBdd = new BoiteDialogueErreurBdd();
 					e.printStackTrace();
 				}
 			}
+		}
+		if (login.equals("") || login.length() < 1 || mdp.equals("") || mdp.length() < 1) {
+			BoiteDialogueTexteVide jopTrajetTexteVide = new BoiteDialogueTexteVide();
 		}
 	}
 }
