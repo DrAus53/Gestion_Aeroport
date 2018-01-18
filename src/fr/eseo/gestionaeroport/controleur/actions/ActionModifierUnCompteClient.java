@@ -39,10 +39,13 @@ public class ActionModifierUnCompteClient extends AbstractAction {
 			e.printStackTrace();
 		}
 		UtilisateurDAO utilisateurDAO = new UtilisateurDAO(conn);
-		String nom = fenetreGestionAeroport.getPanneauModifierUnCompteClient().getJTextFieldNom().getText();
-		String prenom = fenetreGestionAeroport.getPanneauModifierUnCompteClient().getJTextFielPrenom().getText();
+		String nom = fenetreGestionAeroport.getInstance().getPanneauModifierUnCompteClient().getJTextFieldNom()
+				.getText();
+		String prenom = fenetreGestionAeroport.getInstance().getPanneauModifierUnCompteClient().getJTextFielPrenom()
+				.getText();
+
 		if (!nom.equals("") && !prenom.equals("")) {
-			Utilisateur utilisateur = utilisateurDAO.find(new Utilisateur(prenom, nom));
+			Utilisateur utilisateur = utilisateurDAO.find(new Utilisateur(prenom, nom)).get(0);
 			boiteclient = new BoiteDialogueModifierClient(500, 300, utilisateur);
 		}
 	}

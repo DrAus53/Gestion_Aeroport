@@ -48,20 +48,24 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
 
 	}
 
-	public Utilisateur find(Utilisateur obj) {
+	public List<Utilisateur> find(Utilisateur obj) {
 		List<Utilisateur> utilisateur = new ArrayList<Utilisateur>();
 		try {
+			System.out.println("SELECT * FROM Utilisateur WHERE prenom=" + "'" + obj.getPrenom() + "'" + "AND nom="
+					+ "'" + obj.getNom() + "';");
 			ResultSet result = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)
 					.executeQuery("SELECT * FROM Utilisateur WHERE prenom=" + "'" + obj.getPrenom() + "'" + "AND nom="
 							+ "'" + obj.getNom() + "';");
-			utilisateur.add(new Utilisateur(result.getInt("idutilisateur"), result.getString("prenom"),
-					result.getString("nom"), result.getString("motdepasse"), result.getString("login"),
-					result.getString("adressemail")));
+			while (result.next()) {
+				utilisateur.add(new Utilisateur(result.getInt("idutilisateur"), result.getString("prenom"),
+						result.getString("nom"), result.getString("motdepasse"), result.getString("login"),
+						result.getString("adressemail")));
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return utilisateur.get(0);
+		return utilisateur;
 
 	}
 
