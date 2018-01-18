@@ -32,9 +32,19 @@ public class Vol {
 		this.dateArrive = dateArrivee;
 	}
 
+	public Vol(int numeroVol, Date dateDepart, Date dateArrivee, int idaeroportDepart, int idaeroportArrivee,
+			int nombrePassagers, Time heureDepart, Time heureArrivee) {
+		super();
+		this.numeroVol = numeroVol;
+		this.setIdaeroportDepart(idaeroportDepart);
+		this.setIdaeroportArrivee(idaeroportArrivee);
+		this.nombrePassagers = nombrePassagers;
+		this.dateDepart = dateDepart;
+		this.dateArrive = dateArrivee;
+	}
+
 	public Vol(Date dateDepart, int idaeroportDepart, int idaeroportArrivee, int nombrePassagers) {
 		super();
-
 		this.setIdaeroportDepart(idaeroportDepart);
 		this.setIdaeroportArrivee(idaeroportArrivee);
 
