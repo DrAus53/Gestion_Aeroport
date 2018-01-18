@@ -4,9 +4,11 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.sql.Statement;
 
-import javax.naming.spi.DirStateFactory.Result;
+import javax.swing.JTextField;
 
+import fr.eseo.gestionaeroport.controleur.baseDeDonnees.ConnexionBDD;
 import fr.eseo.gestionaeroport.modele.Vol;
 
 public class VolDAO extends DAO<Vol> {
@@ -21,7 +23,7 @@ public class VolDAO extends DAO<Vol> {
 		try {
 
 			System.out.println(
-					"INSERT INTO vol (numerovol,idavion,place,nompassagers,aeroportdepart,aeroportarrivee,nombrepassagers,heuredepart,heurearrivee,datedepart,datearrivee) VALUES("
+					"INSERT INTO vol (numerovol,idavion,place,nompassagers,idaeroportdepart,idaeroportarrivee,nombrepassagers,heuredepart,heurearrivee,datedepart,datearrivee) VALUES("
 							+ "'" + obj.getnumeroVol() + "'" + "," + "'" + obj.getIdavion() + "'" + "," + "'ab'," + "'"
 							+ obj.getNomPassagers().get(0).toString() + "'" + "," + "'" + obj.getIdaeroportDepart()
 							+ "'" + "," + "'" + obj.getIdaeroportArrivee() + "'" + "," + "'" + 1 + "'" + ",'"
@@ -31,7 +33,7 @@ public class VolDAO extends DAO<Vol> {
 							+ obj.getDateDepart() + "','" + obj.getDateArrive() + "');");
 			int result = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)
 					.executeUpdate(
-							"INSERT INTO vol (numerovol,idavion,place,nompassagers,aeroportdepart,aeroportarrivee,nombrepassagers,heuredepart,heurearrivee,datedepart,datearrivee) VALUES("
+							"INSERT INTO vol (numerovol,idavion,place,nompassagers,idaeroportdepart,idaeroportarrivee,nombrepassagers,heuredepart,heurearrivee,datedepart,datearrivee) VALUES("
 									+ "'" + obj.getnumeroVol() + "'" + "," + "'" + obj.getIdavion() + "'" + ","
 									+ "'ab'," + "'" + obj.getNomPassagers().get(0).toString() + "'" + "," + "'"
 									+ obj.getIdaeroportDepart() + "'" + "," + "'" + obj.getIdaeroportArrivee() + "'"
@@ -49,17 +51,39 @@ public class VolDAO extends DAO<Vol> {
 
 	}
 
+	public int getIdAeroport(JTextField jTextField) {
+		Statement state;
+		int idaeroport = 0;
+		try {
+			state = ConnexionBDD.connexion().createStatement();
+			ResultSet result = state.executeQuery("SELECT * FROM aeroport");
+			ResultSetMetaData resultMeta = result.getMetaData();
+			System.out.println("SELECT idaeroport FROM aeroport WHERE nomaeroport='" + jTextField.getText() + "';");
+			result = state
+					.executeQuery("SELECT idaeroport FROM aeroport WHERE nomaeroport='" + jTextField.getText() + "';");
+			resultMeta = result.getMetaData();
+			while (result.next()) {
+				idaeroport = result.getInt("idaeroport");
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return idaeroport;
+	}
+
 	public void delete(Vol obj) {
 		try {
-			System.out.println("DELETE * FROM vol WHERE aeroportdepart=" + "'" + obj.getIdaeroportDepart() + "'"
-					+ " AND aeroportarrivee=" + "'" + obj.getIdaeroportArrivee() + "'" + " AND heuredepart=" + "'"
+			System.out.println("DELETE * FROM vol WHERE idaeroportdepart=" + "'" + obj.getIdaeroportDepart() + "'"
+					+ " AND idaeroportarrivee=" + "'" + obj.getIdaeroportArrivee() + "'" + " AND heuredepart=" + "'"
 					+ obj.getDateDepart().getHours() + ":" + obj.getDateDepart().getMinutes() + ":"
 					+ obj.getDateDepart().getSeconds() + "' AND heurearrivee=" + "'" + obj.getDateArrive().getHours()
 					+ ":" + obj.getDateArrive().getMinutes() + ":" + obj.getDateArrive().getSeconds() + "';");
 
 			int result = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)
-					.executeUpdate("DELETE FROM vol WHERE aeroportdepart=" + "'" + obj.getIdaeroportDepart() + "'"
-							+ " AND aeroportarrivee=" + "'" + obj.getIdaeroportArrivee() + "'" + " AND heuredepart="
+					.executeUpdate("DELETE FROM vol WHERE idaeroportdepart=" + "'" + obj.getIdaeroportDepart() + "'"
+							+ " AND idaeroportarrivee=" + "'" + obj.getIdaeroportArrivee() + "'" + " AND heuredepart="
 							+ "'" + obj.getDateDepart().getHours() + ":" + obj.getDateDepart().getMinutes() + ":"
 							+ obj.getDateDepart().getSeconds() + "' AND heurearrivee=" + "'"
 							+ obj.getDateArrive().getHours() + ":" + obj.getDateArrive().getMinutes() + ":"
@@ -79,15 +103,15 @@ public class VolDAO extends DAO<Vol> {
 
 	public Object[][] find(Vol obj) {
 		ResultSetMetaData resultMeta;
-		System.out.println("SELECT * FROM vol WHERE aeroportdepart=" + "'" + obj.getIdaeroportDepart() + "'"
-				+ "AND aeroportarrivee=" + "'" + obj.getIdaeroportDepart() + "'" + "AND datedepart=" + "'"
+		System.out.println("SELECT * FROM vol WHERE idaeroportdepart=" + "'" + obj.getIdaeroportDepart() + "'"
+				+ "AND idaeroportarrivee=" + "'" + obj.getIdaeroportDepart() + "'" + "AND datedepart=" + "'"
 				+ obj.getDateDepart() + "';");
 		ResultSet result;
 		try {
 			result = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)
-					.executeQuery("SELECT * FROM vol WHERE aeroportdepart=" + "'" + obj.getIdaeroportDepart() + "'"
-							+ "AND aeroportarrivee=" + "'" + obj.getIdaeroportArrivee() + "'" + "AND datedepart=" + "'"
-							+ obj.getDateDepart() + "';");
+					.executeQuery("SELECT * FROM vol WHERE idaeroportdepart=" + "'" + obj.getIdaeroportDepart() + "'"
+							+ "AND idaeroportarrivee=" + "'" + obj.getIdaeroportArrivee() + "'" + "AND datedepart="
+							+ "'" + obj.getDateDepart() + "';");
 
 			resultMeta = result.getMetaData();
 
@@ -121,14 +145,6 @@ public class VolDAO extends DAO<Vol> {
 	public Object[] affiche() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	public int getIdAeroport(String sqlaeroportdepart) {
-		Result result = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)
-				.executeQuery("SELECT  FROM vol WHERE aeroportdepart=" + "'" + obj.getIdaeroportDepart() + "'"
-						+ "AND aeroportarrivee=" + "'" + obj.getIdaeroportArrivee() + "'" + "AND datedepart=" + "'"
-						+ obj.getDateDepart() + "';");
-
 	}
 
 	@Override

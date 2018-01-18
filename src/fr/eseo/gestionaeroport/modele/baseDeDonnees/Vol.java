@@ -8,16 +8,15 @@ public class Vol {
 	private int idAvion;
 	private int nombrePassagers;
 	private String nomPassagers;
-	private Aeroport AeroportDepart;
-	private int AeroportArrivee;
+	private int idAeroportDepart;
+	private int idAeroportArrivee;
 	private Date heureDepart;
 	private Date heureArrivee;
 
 	// constructeur:
-	public Vol(int idVol, int numeroVol, int idAvion, int nombrePassagers, String nomPassagers, int idAeroportDepart,
+	public Vol(int numeroVol, int idAvion, int nombrePassagers, String nomPassagers, int idAeroportDepart,
 			int idAeroportArrivee, Date heureDepart, Date heureArrivee) {
 		super();
-		this.idVol = idVol;
 		this.numeroVol = numeroVol;
 		this.idAvion = idAvion;
 		this.nombrePassagers = nombrePassagers;
@@ -93,10 +92,6 @@ public class Vol {
 		return idAeroportArrivee;
 	}
 
-	public void setIdAeroportArrivee(int idAeroportArrivee) {
-		this.idAeroportArrivee = idAeroportArrivee;
-	}
-
 	public Date getHeureDepart() {
 		return heureDepart;
 	}
@@ -111,10 +106,6 @@ public class Vol {
 
 	public void setHeureArrivee(Date heureArrivee) {
 		this.heureArrivee = heureArrivee;
-	}
-
-	public void setIdAeroportArrivee(int idAeroportArrivee) {
-		this.idAeroportArrivee = idAeroportArrivee;
 	}
 
 	public void setIdAeroportArrivee(int idAeroportArrivee) {

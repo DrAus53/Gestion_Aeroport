@@ -147,7 +147,7 @@ public class FenetreGestionAeroport extends JFrame {
 	public static void fermerFenetre() {
 		instance.dispose();
 		GestionAeroport.getInstance();
-		GestionAeroport.setUtilisateurConnecte(new Utilisateur(0, null, null, null, null, null));
+		GestionAeroport.setUtilisateurConnecte(new Utilisateur(null, null, null, null, null));
 		FenetreConnexion fenetre = FenetreConnexion.getInstance();
 		fenetre.setVisible(true);
 

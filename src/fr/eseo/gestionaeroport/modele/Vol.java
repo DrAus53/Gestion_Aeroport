@@ -32,6 +32,19 @@ public class Vol {
 		this.dateArrive = dateArrivee;
 	}
 
+	public Vol(Date dateDepart, int idaeroportDepart, int idaeroportArrivee, int nombrePassagers) {
+		super();
+
+		this.setIdaeroportDepart(idaeroportDepart);
+		this.setIdaeroportArrivee(idaeroportArrivee);
+
+		this.nombrePassagers = nombrePassagers;
+		this.setIdavion(idavion);
+
+		this.dateDepart = dateDepart;
+
+	}
+
 	// getters and setters:
 	public int getnumeroVol() {
 		return numeroVol;

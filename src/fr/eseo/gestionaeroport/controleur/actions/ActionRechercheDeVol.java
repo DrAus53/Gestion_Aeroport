@@ -4,14 +4,15 @@ import java.awt.event.ActionEvent;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
 
 import javax.swing.AbstractAction;
 
 import fr.eseo.gestionaeroport.controleur.baseDeDonnees.ConnexionBDD;
 import fr.eseo.gestionaeroport.dao.VolDAO;
+import fr.eseo.gestionaeroport.modele.Vol;
 import fr.eseo.gestionaeroport.vue.boitedialogue.BoiteDialogueListeDeVols;
+import fr.eseo.gestionaeroport.vue.boitedialogue.BoiteDialogueNewAvionOk;
 import fr.eseo.gestionaeroport.vue.ui.FenetreGestionAeroport;
 
 public class ActionRechercheDeVol extends AbstractAction {
@@ -38,10 +39,23 @@ public class ActionRechercheDeVol extends AbstractAction {
 		try {
 			Statement state = conn.createStatement();
 			VolDAO volDAO = new VolDAO(conn);
-			int idaeroportdepart = volDAO.getIdAeroport(sqlaeroportdepart);
-			List<String> damien = new ArrayList<String>();
-			BoiteDialogueListeDeVols boite = new BoiteDialogueListeDeVols(500, 300, volDAO.find(obj));
 
+			BoiteDialogueNewAvionOk jop1 = new BoiteDialogueNewAvionOk();
+
+			int annee = Integer.parseInt(FenetreGestionAeroport.getInstance().getPanneauRechercheVol()
+					.getJTextFieldDate().getText().split("-")[0]);
+			int mois = Integer.parseInt(FenetreGestionAeroport.getInstance().getPanneauRechercheVol()
+					.getJTextFieldDate().getText().split("-")[1]);
+			int jour = Integer.parseInt(FenetreGestionAeroport.getInstance().getPanneauRechercheVol()
+					.getJTextFieldDate().getText().split("-")[2]);
+
+			BoiteDialogueListeDeVols boite = new BoiteDialogueListeDeVols(500, 300,
+					volDAO.find(new Vol(new Date(annee, mois, jour),
+							volDAO.getIdAeroport(FenetreGestionAeroport.getInstance().getPanneauRechercheVol()
+									.getJTextFieldAeroportDepart()),
+							volDAO.getIdAeroport(FenetreGestionAeroport.getInstance().getPanneauRechercheVol()
+									.getJTextFielAeroportArrivee()),
+							1)));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
