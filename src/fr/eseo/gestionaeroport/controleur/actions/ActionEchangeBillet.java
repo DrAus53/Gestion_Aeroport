@@ -8,6 +8,12 @@ import java.sql.Statement;
 import javax.swing.AbstractAction;
 
 import fr.eseo.gestionaeroport.controleur.baseDeDonnees.ConnexionBDD;
+import fr.eseo.gestionaeroport.vue.boitedialogue.BoiteDialogueErreurBdd;
+import fr.eseo.gestionaeroport.vue.boitedialogue.BoiteDialogueTexteVide;
+import fr.eseo.gestionaeroport.vue.boitedialogue.BoiteDialogueTrajetAnnuleNonRemb;
+import fr.eseo.gestionaeroport.vue.boitedialogue.BoiteDialogueTrajetAnnuleRemb;
+import fr.eseo.gestionaeroport.vue.boitedialogue.BoiteDialogueTrajetNonTrouve;
+import fr.eseo.gestionaeroport.vue.boitedialogue.BoiteDialogueUtilisateurInconnu;
 import fr.eseo.gestionaeroport.vue.ui.FenetreGestionAeroport;
 
 public class ActionEchangeBillet extends AbstractAction {
@@ -32,33 +38,74 @@ public class ActionEchangeBillet extends AbstractAction {
 		boolean rembChB = FenetreGestionAeroport.getInstance().getPanneauEchangeBillet().rembChB.isSelected();
 		String prenomPas = FenetreGestionAeroport.getInstance().getPanneauEchangeBillet().prenomPasJtf.getText();
 		String idutilisateur = "";
-		System.out.println("\n" + numVol + "\n" + nomPas + "\n" + rembChB);
+		String presenceReservation = "";
+		// System.out.println("\n" + numVol + "\n" + nomPas + "\n" + rembChB);
 		if (!numVol.equals("") && numVol.length() > 0) {
 			if (!nomPas.equals("") && numVol.length() > 0) {
-				// recherche de l'id utilisateur dans la BDD à partire du nom:
-				try {
-					Statement state = ConnexionBDD.connexion().createStatement();
-					ResultSet result = state.executeQuery("SELECT idutilisateur FROM utilisateur WHERE nom ='" + nomPas
-							+ "' AND prenom ='" + prenomPas + "';");
-					ResultSetMetaData resultMeta = result.getMetaData();
-					while (result.next()) {
-						idutilisateur = result.getString("idutilisateur");
-						System.out.println(idutilisateur);
-					}
+				if (!prenomPas.equals("") && prenomPas.length() > 0) {
+					// recherche de l'id utilisateur dans la BDD à partire du nom et prenom:
 					try {
-						// suprimer la reservation de ma BDD:
-						state.execute("DELETE FROM reservation WHERE idtrajet = '" + numVol + "' AND idutilisateur = '"
-								+ idutilisateur + "';");
-						// BoiteDialogueNewAvionOk jop1 = new BoiteDialogueNewAvionOk();
-						// FenetreGestionAeroport.getInstance();
+						Statement state = ConnexionBDD.connexion().createStatement();
+						ResultSet result = state.executeQuery("SELECT idutilisateur FROM utilisateur WHERE nom ='"
+								+ nomPas + "' AND prenom ='" + prenomPas + "';");
+						ResultSetMetaData resultMeta = result.getMetaData();
+						while (result.next()) {
+							// resultat de la recherche
+							idutilisateur = result.getString("idutilisateur");
+							// System.out.println(idutilisateur);
+						}
+						if (idutilisateur.equals("")) {
+							// Utilisateur innexistant
+							BoiteDialogueUtilisateurInconnu jopUtilisateurInconnu = new BoiteDialogueUtilisateurInconnu();
+						} else {
+							// Si l'utilisateur a bien été trouvé:
+							try {
+								// recherche de la bonne supression de la reservation:
+								result = state.executeQuery("SELECT * FROM reservation WHERE idtrajet = '" + numVol
+										+ "' AND idutilisateur = '" + idutilisateur + "';");
+								resultMeta = result.getMetaData();
+								while (result.next()) {
+									presenceReservation = result.getString("idreservation");
+								}
+								if (presenceReservation.equals("")) {
+									// Utilisateur innexistant
+									BoiteDialogueTrajetNonTrouve jopUtilisateurTrajetNonTrouve = new BoiteDialogueTrajetNonTrouve();
+								} else {
+									try {
+										// suprimer la reservation de la BDD:
+										state.execute("DELETE FROM reservation WHERE idtrajet = '" + numVol
+												+ "' AND idutilisateur = '" + idutilisateur + "';");
+										if (rembChB) {
+											// boite de dialogue: trajet bien remboursé:
+											BoiteDialogueTrajetAnnuleRemb jopTrajetTrajetAnnuleRemb = new BoiteDialogueTrajetAnnuleRemb();
+										}
+										if (!rembChB) {
+											// boite de dialogue: trajet bien annulé:
+											BoiteDialogueTrajetAnnuleNonRemb jopTrajetAnnuleNonRemb = new BoiteDialogueTrajetAnnuleNonRemb();
+										}
+									} catch (Exception e) {
+										// Erreur BDD + Boite de dialogue
+										BoiteDialogueErreurBdd jopTrajetErreurBdd = new BoiteDialogueErreurBdd();
+										e.printStackTrace();
+									}
+								}
+							} catch (Exception e) {
+								// Erreur BDD + Boite de dialogue
+								BoiteDialogueErreurBdd jopTrajetErreurBdd = new BoiteDialogueErreurBdd();
+								e.printStackTrace();
+							}
+						}
 					} catch (Exception e) {
-						// BoiteDialogueNewAvionKo jop2 = new BoiteDialogueNewAvionKo();
+						// Erreur BDD + Boite de dialogue
+						BoiteDialogueErreurBdd jopTrajetErreurBdd = new BoiteDialogueErreurBdd();
 						e.printStackTrace();
 					}
-				} catch (Exception e) {
-					e.printStackTrace();
 				}
 			}
+		}
+		if (numVol.equals("") || nomPas.equals("") || prenomPas.equals("")) {
+			// les champs ne sont pas remplis :
+			BoiteDialogueTexteVide jopTextVide = new BoiteDialogueTexteVide();
 		}
 	}
 
