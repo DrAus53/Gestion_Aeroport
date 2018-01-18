@@ -46,10 +46,11 @@ public class ActionUpdateUnCompteClient extends AbstractAction {
 
 			}
 			System.out.println("UPDATE utilisateur SET nom='" + newNom + "', prenom='" + newPrenom + "', login='"
-					+ newLogin + "', adressemail='" + newAdresseMail + "' WHERE idutilisateur='" + neww.getId() + "';");
-			int resultat = state.executeUpdate(
-					"UPDATE utilisateur SET nom='" + newNom + "', prenom='" + newPrenom + "', login='" + newLogin
-							+ "', adressemail='" + newAdresseMail + "' WHERE idutilisateur='" + neww.getId() + "';");
+					+ newLogin + "', adressemail='" + newAdresseMail + "', motdepasse='" + newMdp
+					+ "' WHERE idutilisateur='" + neww.getId() + "';");
+			int resultat = state.executeUpdate("UPDATE utilisateur SET nom='" + newNom + "', prenom='" + newPrenom
+					+ "', login='" + newLogin + "', adressemail='" + newAdresseMail + "', motdepasse='" + newMdp
+					+ "' WHERE idutilisateur='" + neww.getId() + "';");
 
 		} catch (Exception e) {
 
