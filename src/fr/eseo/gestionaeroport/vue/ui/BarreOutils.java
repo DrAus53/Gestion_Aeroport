@@ -9,6 +9,7 @@ import javax.swing.JMenuItem;
 
 import fr.eseo.gestionaeroport.GestionAeroport;
 import fr.eseo.gestionaeroport.controleur.actions.ActionDeconnexion;
+import fr.eseo.gestionaeroport.controleur.actions.ActionModifier;
 
 public class BarreOutils extends JMenuBar {
 
@@ -18,12 +19,14 @@ public class BarreOutils extends JMenuBar {
 	private static final int HAUTEUR_PAR_DEFAUT = 75;
 	private static final Color COULEUR_FOND_PAR_DEFAUT = Color.black;
 
+	private ActionModifier actionModifier = new ActionModifier();
+
 	private JMenu menuProfil;
 	private JMenuItem itemNom;
 	private JMenuItem itemPrenom;
 	private JMenuItem itemLogin;
 	private JMenuItem itemAdresseMail;
-	private JMenuItem itemModifer = new JMenuItem("Modifer");
+	private JMenuItem itemModifer = new JMenuItem(actionModifier);
 	private JMenuItem itemDeconnexion = new JMenuItem(new ActionDeconnexion());
 
 	public BarreOutils(int largeur, int hauteur, Color fond) {
@@ -42,6 +45,10 @@ public class BarreOutils extends JMenuBar {
 
 	public BarreOutils() {
 		this(LARGEUR_PAR_DEFAUT, HAUTEUR_PAR_DEFAUT, COULEUR_FOND_PAR_DEFAUT);
+	}
+
+	public ActionModifier getActionModifier() {
+		return actionModifier;
 	}
 
 	private void initComponents() {

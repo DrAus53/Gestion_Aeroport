@@ -120,6 +120,10 @@ public class FenetreGestionAeroport extends JFrame {
 		this.getContentPane().add(panneauEmbarquement, constraints);
 	}
 
+	public BarreOutils getBarreOutils() {
+		return barreOutils;
+	}
+
 	public PanneauRechercheVol getPanneauRechercheVol() {
 		return panneauRechercheVol;
 	}

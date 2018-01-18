@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import fr.eseo.gestionaeroport.controleur.actions.ActionModifierCompteClientConnecte;
 import fr.eseo.gestionaeroport.modele.Utilisateur;
 import fr.eseo.gestionaeroport.vue.ui.FenetreGestionAeroport;
 
@@ -174,7 +175,7 @@ public class BoiteDialogueModifierUtilisateur extends JDialog {
 		panneau.add(jtfMotDePasse, constraints);
 
 		// boutton enregistrer
-		JButton buttonAnnuler = new JButton("Enregistrer");
+		JButton buttonAnnuler = new JButton(new ActionModifierCompteClientConnecte());
 		constraints.anchor = GridBagConstraints.LINE_END;
 		buttonAnnuler.setPreferredSize(new Dimension(70, 30));
 		/// couleur du texte

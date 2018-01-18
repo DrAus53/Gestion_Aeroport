@@ -8,15 +8,12 @@ import javax.swing.AbstractAction;
 
 import fr.eseo.gestionaeroport.GestionAeroport;
 import fr.eseo.gestionaeroport.controleur.baseDeDonnees.ConnexionBDD;
+import fr.eseo.gestionaeroport.modele.Utilisateur;
 import fr.eseo.gestionaeroport.vue.ui.FenetreGestionAeroport;
 
 public class ActionModifierCompteClientConnecte extends AbstractAction {
 
-	public static final String NOM_ACTION = "Valider";
-
-	public ActionModifierCompteClientConnecte(FenetreGestionAeroport fenetreGestionAeroport) {
-		super(NOM_ACTION);
-	}
+	public static final String NOM_ACTION = "Validé";
 
 	public ActionModifierCompteClientConnecte() {
 		super(NOM_ACTION);
@@ -24,12 +21,9 @@ public class ActionModifierCompteClientConnecte extends AbstractAction {
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		// récupération des zones de saisie de texte:
-		String newNom = null;
-		String newPrenom = FenetreGestionAeroport.getInstance().getPanneauEchangeBillet().numVolJtf.getText();
-		String newLogin = FenetreGestionAeroport.getInstance().getPanneauEchangeBillet().numVolJtf.getText();
-		String newAdresseMail = FenetreGestionAeroport.getInstance().getPanneauEchangeBillet().numVolJtf.getText();
-		String newMdp = FenetreGestionAeroport.getInstance().getPanneauEchangeBillet().numVolJtf.getText();
+		// récupération de l'utilisateur modifié
+		Utilisateur newUtilisateur = FenetreGestionAeroport.getInstance().getBarreOutils().getActionModifier()
+				.getBoiteDialogueModifierUtilisateur().getUtilisateur();
 		String idutilisateur;
 		try {
 			Statement state = ConnexionBDD.connexion().createStatement();
@@ -38,11 +32,11 @@ public class ActionModifierCompteClientConnecte extends AbstractAction {
 			while (result.next()) {
 				idutilisateur = result.getString("idutilisateur");
 				// On met à jour les champs
-				result.updateString("nom", newNom);
-				result.updateString("prenom", newPrenom);
-				result.updateString("login", newLogin);
-				result.updateString("adressemail", newAdresseMail);
-				result.updateString("motdepasse", newMdp);
+				result.updateString("nom", newUtilisateur.getNom());
+				result.updateString("prenom", newUtilisateur.getPrenom());
+				result.updateString("login", newUtilisateur.getLogin());
+				result.updateString("adressemail", newUtilisateur.getAdresseMail());
+				result.updateString("motdepasse", newUtilisateur.getMotDePasse());
 				// On valide
 				result.updateRow();
 			}
