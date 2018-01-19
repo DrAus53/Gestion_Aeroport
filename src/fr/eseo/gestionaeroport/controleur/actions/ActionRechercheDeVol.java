@@ -17,6 +17,13 @@ import fr.eseo.gestionaeroport.vue.boitedialogue.BoiteDialogueListeDeVols;
 import fr.eseo.gestionaeroport.vue.ui.FenetreGestionAeroport;
 
 @SuppressWarnings("serial")
+
+/**
+ * 
+ * Classe pour rechercher un vol dans la base de donnée après clic sur le bouton
+ * Valider
+ *
+ */
 public class ActionRechercheDeVol extends AbstractAction {
 
 	public static final String NOM_ACTION = "Valider";

@@ -13,6 +13,11 @@ import fr.eseo.gestionaeroport.modele.Utilisateur;
 import fr.eseo.gestionaeroport.vue.boitedialogue.BoiteDialogueModifierClient;
 import fr.eseo.gestionaeroport.vue.ui.FenetreGestionAeroport;
 
+/**
+ * 
+ * Classe pour trouver le compte client à modifier
+ *
+ */
 public class ActionModifierUnCompteClient extends AbstractAction {
 	private FenetreGestionAeroport fenetreGestionAeroport;
 	public static final String NOM_ACTION = "Valider";

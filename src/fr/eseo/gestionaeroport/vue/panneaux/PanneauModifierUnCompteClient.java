@@ -16,6 +16,11 @@ import javax.swing.JTextField;
 import fr.eseo.gestionaeroport.controleur.actions.ActionModifierUnCompteClient;
 import fr.eseo.gestionaeroport.vue.ui.FenetreGestionAeroport;
 
+/**
+ * 
+ * Panneau pour modifier un compter client en entrant son prénom et son nom
+ *
+ */
 public class PanneauModifierUnCompteClient extends JPanel {
 	JTextField jtfNom;
 	JTextField jtfPrenom;
@@ -127,10 +132,12 @@ public class PanneauModifierUnCompteClient extends JPanel {
 		this.add(validerBout, constraints);
 	}
 
+	// Récupère le nom entré
 	public JTextField getJTextFieldNom() {
 		return jtfNom;
 	}
 
+	// Récupère le prénom entré
 	public JTextField getJTextFielPrenom() {
 		return jtfPrenom;
 	}

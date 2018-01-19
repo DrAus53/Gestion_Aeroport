@@ -101,7 +101,6 @@ public class PanneauProposerVol extends JPanel {
 		constraints.anchor = GridBagConstraints.CENTER;
 		this.add(labelDepart, constraints);
 
-		// Aeroport de départ
 		JLabel labelDepartAeroport = new JLabel("Aéroport");
 		constraints.gridx = 1;
 		constraints.gridy = 1;
@@ -120,7 +119,6 @@ public class PanneauProposerVol extends JPanel {
 		constraints.fill = GridBagConstraints.HORIZONTAL;
 		this.add(jComboBoxDepartAeroport, constraints);
 
-		// Date
 		JLabel labelDate = new JLabel("Date");
 		constraints.gridx = 1;
 		constraints.gridy = 2;
@@ -147,7 +145,6 @@ public class PanneauProposerVol extends JPanel {
 		constraints.fill = GridBagConstraints.HORIZONTAL;
 		this.add(jTextFieldDepartDate, constraints);
 
-		// Heure
 		JTextField jTextFieldHeure = new JTextField();
 		jTextFieldHeure
 				.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));

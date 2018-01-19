@@ -16,6 +16,12 @@ import javax.swing.JTextField;
 import fr.eseo.gestionaeroport.controleur.actions.ActionRechercheDeVol;
 import fr.eseo.gestionaeroport.vue.ui.FenetreGestionAeroport;
 
+/**
+ * 
+ * Classe de panneau pour avoir les informations du vol de l'utilisateur
+ * Aeroport départ Aeroport arrivé Date Heure
+ *
+ */
 public class PanneauRechercheVol extends JPanel {
 
 	private static final long serialVersionUID = 1L;
@@ -75,6 +81,7 @@ public class PanneauRechercheVol extends JPanel {
 		constraints.anchor = GridBagConstraints.CENTER;
 		this.add(zoneTitre, constraints);
 
+		// Bouton pour l'aeroport de départ
 		JLabel label = new JLabel("départ");
 		constraints.anchor = GridBagConstraints.CENTER;
 		constraints.gridx = 0;
@@ -95,6 +102,7 @@ public class PanneauRechercheVol extends JPanel {
 		constraints.weightx = 0.5;
 		this.add(jtf, constraints);
 
+		// Bouton pour l'aeroport d'arrivé
 		JLabel labelarrive = new JLabel("arrivee");
 		constraints.anchor = GridBagConstraints.CENTER;
 		constraints.gridx = 0;
@@ -115,6 +123,7 @@ public class PanneauRechercheVol extends JPanel {
 		constraints.gridy = 2;
 		add(jtfa, constraints);
 
+		// Bouton pour la date
 		JLabel labeldate = new JLabel("date");
 		constraints.anchor = GridBagConstraints.CENTER;
 		constraints.gridwidth = 1;
@@ -134,6 +143,7 @@ public class PanneauRechercheVol extends JPanel {
 		constraints.gridy = 3;
 		add(jtfdate, constraints);
 
+		// Bouton pour l'heure
 		JLabel labelheure = new JLabel("heure");
 		constraints.anchor = GridBagConstraints.CENTER;
 		constraints.gridwidth = 1;
@@ -153,7 +163,7 @@ public class PanneauRechercheVol extends JPanel {
 		constraints.gridy = 4;
 		add(jtfheure, constraints);
 
-		// valider
+		// Bouton Valider
 		JButton validerBout = new JButton(new ActionRechercheDeVol());
 		constraints.anchor = GridBagConstraints.LINE_END;
 		validerBout.setPreferredSize(new Dimension(70, 30));
