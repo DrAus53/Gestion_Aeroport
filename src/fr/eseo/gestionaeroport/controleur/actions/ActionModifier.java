@@ -13,7 +13,7 @@ import fr.eseo.gestionaeroport.vue.boitedialogue.BoiteDialogueModifierUtilisateu
  * de dialogue correspondante
  *
  */
-
+@SuppressWarnings("serial")
 public class ActionModifier extends AbstractAction {
 
 	public static final String NOM_ACTION = "Modifier";

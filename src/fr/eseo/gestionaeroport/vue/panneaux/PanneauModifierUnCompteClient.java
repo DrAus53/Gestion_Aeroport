@@ -17,21 +17,17 @@ import fr.eseo.gestionaeroport.controleur.actions.ActionModifierUnCompteClient;
 import fr.eseo.gestionaeroport.vue.ui.FenetreGestionAeroport;
 
 /**
- * 
- * Panneau pour modifier un compter client en entrant son prénom et son nom
+ * Panneau qui contient l'interface utilisateur pour modifier un compter client
+ * en entrant son prénom et son nom
  *
  */
+@SuppressWarnings("serial")
 public class PanneauModifierUnCompteClient extends JPanel {
-	JTextField jtfNom;
-	JTextField jtfPrenom;
-	private static final long serialVersionUID = 1L;
-	private FenetreGestionAeroport fenetre;
-	GridBagConstraints constraints = new GridBagConstraints();
-	private ActionModifierUnCompteClient actionModifierUnCompteClient;
 
-	public ActionModifierUnCompteClient getActionModifierUnCompteClient() {
-		return actionModifierUnCompteClient;
-	}
+	private JTextField jtfNom;
+	private JTextField jtfPrenom;
+
+	private ActionModifierUnCompteClient actionModifierUnCompteClient;
 
 	public PanneauModifierUnCompteClient(int largeur, int hauteur) {
 		super();
@@ -44,6 +40,10 @@ public class PanneauModifierUnCompteClient extends JPanel {
 
 	public PanneauModifierUnCompteClient() {
 		this(FenetreGestionAeroport.LARGEUR_PANNEAU_PAR_DEFAUT, FenetreGestionAeroport.HAUTEUR_PANNEAU_PAR_DEFAUT);
+	}
+
+	public ActionModifierUnCompteClient getActionModifierUnCompteClient() {
+		return actionModifierUnCompteClient;
 	}
 
 	private void initComponents() {
@@ -108,7 +108,7 @@ public class PanneauModifierUnCompteClient extends JPanel {
 		this.add(jtfPrenom, constraints);
 
 		// Valider
-		actionModifierUnCompteClient = new ActionModifierUnCompteClient(this.fenetre);
+		actionModifierUnCompteClient = new ActionModifierUnCompteClient();
 		JButton validerBout = new JButton(actionModifierUnCompteClient);
 		validerBout.setPreferredSize(new Dimension(70, 30));
 		/// couleur du texte

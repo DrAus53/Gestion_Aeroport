@@ -18,15 +18,21 @@ import fr.eseo.gestionaeroport.controleur.actions.ActionEchangeBillet;
 import fr.eseo.gestionaeroport.vue.ui.FenetreGestionAeroport;
 
 @SuppressWarnings("serial")
+/**
+ * Panneau qui contient l'interface utilisateur pour échanger ou rembourser un
+ * billet d'un utilisateur
+ * 
+ * @author Tanguy SUARD
+ *
+ */
 public class PanneauEchangeBillet extends JPanel {
 
-	public JTextField numVolJtf;
-	public JTextField nomPasJtf;
-	public JTextField prenomPasJtf;
-	public JCheckBox rembChB;
-	public FenetreGestionAeroport fenetre;
+	private JTextField numVolJtf;
+	private JTextField nomPasJtf;
+	private JTextField prenomPasJtf;
+	private JCheckBox rembChB;
 
-	public PanneauEchangeBillet(int largeur, int hauteur) {
+	PanneauEchangeBillet(int largeur, int hauteur) {
 		super();
 		this.setSize(largeur, hauteur);
 		this.setBackground(FenetreGestionAeroport.COULEUR_FOND_PANNEAUX);
@@ -37,6 +43,22 @@ public class PanneauEchangeBillet extends JPanel {
 
 	public PanneauEchangeBillet() {
 		this(FenetreGestionAeroport.LARGEUR_PANNEAU_PAR_DEFAUT, FenetreGestionAeroport.HAUTEUR_PANNEAU_PAR_DEFAUT);
+	}
+
+	public JTextField getNumVolJtf() {
+		return numVolJtf;
+	}
+
+	public JTextField getNomPasJtf() {
+		return nomPasJtf;
+	}
+
+	public JTextField getPrenomPasJtf() {
+		return prenomPasJtf;
+	}
+
+	public JCheckBox getRembChB() {
+		return rembChB;
 	}
 
 	private void initialisation() {
@@ -140,7 +162,7 @@ public class PanneauEchangeBillet extends JPanel {
 		this.add(this.rembChB, gbc);
 
 		// valider
-		JButton validerBout = new JButton(new ActionEchangeBillet(this.fenetre));
+		JButton validerBout = new JButton(new ActionEchangeBillet());
 		validerBout.setPreferredSize(new Dimension(70, 30));
 		/// couleur du texte
 		validerBout.setForeground(Color.WHITE);

@@ -16,6 +16,11 @@ import javax.swing.JTextField;
 import fr.eseo.gestionaeroport.controleur.actions.ActionEnregistrerAvion;
 import fr.eseo.gestionaeroport.vue.ui.FenetreGestionAeroport;
 
+/**
+ * Panneau qui contient l'interface utilisateur pour ajouter un nouvel avion
+ * (modèle, constructeur et nombre de places)
+ */
+@SuppressWarnings("serial")
 public class PanneauEnregistrerUnNouvelAvion extends JPanel {
 
 	public JTextField nbrPlaceJtf;
@@ -121,7 +126,7 @@ public class PanneauEnregistrerUnNouvelAvion extends JPanel {
 		this.add(this.nbrPlaceJtf, constraints);
 
 		// valider
-		JButton validerBout = new JButton(new ActionEnregistrerAvion(this.fenetre));
+		JButton validerBout = new JButton(new ActionEnregistrerAvion());
 		validerBout.setPreferredSize(new Dimension(70, 30));
 		/// couleur du texte
 		validerBout.setForeground(Color.WHITE);

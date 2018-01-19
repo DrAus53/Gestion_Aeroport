@@ -39,9 +39,7 @@ public class AeroportDAO extends DAO<Aeroport> {
 		try {
 			state = ConnexionBDD.connexion().createStatement();
 			ResultSet result = state.executeQuery("SELECT * FROM aeroport");
-			ResultSetMetaData resultMeta = result.getMetaData();
 			result = state.executeQuery("SELECT nomaeroport FROM aeroport WHERE idaeroport='" + idaeroport + "';");
-			resultMeta = result.getMetaData();
 			while (result.next()) {
 				aeroport = result.getString("nomaeroport");
 			}

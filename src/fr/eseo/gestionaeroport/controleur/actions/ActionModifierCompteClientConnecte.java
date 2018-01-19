@@ -3,12 +3,14 @@ package fr.eseo.gestionaeroport.controleur.actions;
 import java.awt.event.ActionEvent;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.logging.Level;
 
 import javax.swing.AbstractAction;
 
 import fr.eseo.gestionaeroport.GestionAeroport;
 import fr.eseo.gestionaeroport.controleur.baseDeDonnees.ConnexionBDD;
 import fr.eseo.gestionaeroport.modele.Utilisateur;
+import fr.eseo.gestionaeroport.vue.boitedialogue.BoiteDialogueErreur;
 import fr.eseo.gestionaeroport.vue.ui.FenetreGestionAeroport;
 
 /**
@@ -16,7 +18,7 @@ import fr.eseo.gestionaeroport.vue.ui.FenetreGestionAeroport;
  * Classe pour modifier le compte de l'utilisateur dans la base de donnée
  *
  */
-
+@SuppressWarnings("serial")
 public class ActionModifierCompteClientConnecte extends AbstractAction {
 
 	public static final String NOM_ACTION = "Validé";
@@ -39,13 +41,14 @@ public class ActionModifierCompteClientConnecte extends AbstractAction {
 				idutilisateur = result.getString("idutilisateur");
 			}
 			// Update de la base de donnée de l'ancien avec le nouveau
-			int resultat = state.executeUpdate("UPDATE utilisateur SET nom='" + newUtilisateur.getNom() + "', prenom='"
+			state.executeUpdate("UPDATE utilisateur SET nom='" + newUtilisateur.getNom() + "', prenom='"
 					+ newUtilisateur.getPrenom() + "', login='" + newUtilisateur.getLogin() + "', adressemail='"
 					+ newUtilisateur.getAdresseMail() + "', motdepasse='" + newUtilisateur.getMotDePasse()
 					+ "' WHERE idutilisateur='" + idutilisateur + "';");
 			GestionAeroport.setUtilisateurConnecte(newUtilisateur);
 		} catch (Exception e) {
-
+			new BoiteDialogueErreur();
+			GestionAeroport.getLogger().log(Level.INFO, e.toString());
 		}
 	}
 }

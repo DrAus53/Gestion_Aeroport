@@ -1,11 +1,15 @@
 package fr.eseo.gestionaeroport;
 
+import java.util.logging.Logger;
+
 import javax.swing.SwingUtilities;
 
 import fr.eseo.gestionaeroport.modele.Utilisateur;
 import fr.eseo.gestionaeroport.vue.ui.FenetreConnexion;
 
 public class GestionAeroport {
+
+	private static Logger logger = Logger.getLogger(GestionAeroport.class.getName());
 
 	static FenetreConnexion fenetreConnexion;
 	private static Utilisateur utilisateurConnecte;
@@ -25,7 +29,11 @@ public class GestionAeroport {
 	}
 
 	public static void setUtilisateurConnecte(Utilisateur utilisateurConnecte) {
-		GestionAeroport.getInstance().utilisateurConnecte = utilisateurConnecte;
+		GestionAeroport.utilisateurConnecte = utilisateurConnecte;
+	}
+
+	public static Logger getLogger() {
+		return logger;
 	}
 
 	public static GestionAeroport getInstance() {

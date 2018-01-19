@@ -2,9 +2,9 @@ package fr.eseo.gestionaeroport.controleur.actions;
 
 import java.awt.event.ActionEvent;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
 
 import javax.swing.AbstractAction;
 
@@ -21,23 +21,15 @@ import fr.eseo.gestionaeroport.vue.ui.FenetreConnexion;
  * enregistré dans la base de donnée après clic sur le bouton Connexion
  *
  */
-
+@SuppressWarnings("serial")
 public class ActionConnexion extends AbstractAction {
-	private static final long serialVersionUID = 1L;
 
-	private FenetreConnexion fenetreConnexion;
 	public static final String NOM_ACTION = "Connexion";
 
 	private Utilisateur utilisateurConnecte;
 
-	public ActionConnexion(FenetreConnexion fenetreConnexion) {
-		super(NOM_ACTION);
-		this.fenetreConnexion = fenetreConnexion;
-	}
-
 	public ActionConnexion() {
 		super(NOM_ACTION);
-		this.fenetreConnexion = fenetreConnexion.getInstance();
 	}
 
 	public Utilisateur getUtilisateurConnecte() {
@@ -57,25 +49,23 @@ public class ActionConnexion extends AbstractAction {
 
 					ResultSet result = state.executeQuery(
 							"SELECT * FROM utilisateur WHERE login='" + login + "' AND motdepasse='" + mdp + "'");
-					ResultSetMetaData resultMeta = result.getMetaData();
 					// si on trouve un utilisateur:
 					while (result.next()) {
 						this.utilisateurConnecte = new Utilisateur(Integer.parseInt(result.getString("idutilisateur")),
 								result.getString("prenom"), result.getString("nom"), result.getString("motdepasse"),
 								result.getString("login"), result.getString("adressemail"));
-						// System.out.print("Utilisateur Connecté");
 						GestionAeroport.setUtilisateurConnecte(this.utilisateurConnecte);
 						FenetreConnexion.fermerFenetre();
 					}
 				} catch (SQLException e) {
 					// Boite de dialogue
-					BoiteDialogueErreurBdd jopTrajetErreurBdd = new BoiteDialogueErreurBdd();
-					e.printStackTrace();
+					new BoiteDialogueErreurBdd();
+					GestionAeroport.getLogger().log(Level.INFO, e.toString());
 				}
 			}
 		}
 		if (login.equals("") || login.length() < 1 || mdp.equals("") || mdp.length() < 1) {
-			BoiteDialogueTexteVide jopTrajetTexteVide = new BoiteDialogueTexteVide();
+			new BoiteDialogueTexteVide();
 		}
 	}
 }

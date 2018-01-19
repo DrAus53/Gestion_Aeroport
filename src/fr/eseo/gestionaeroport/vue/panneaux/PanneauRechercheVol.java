@@ -25,15 +25,14 @@ import fr.eseo.gestionaeroport.vue.ui.FenetreGestionAeroport;
 public class PanneauRechercheVol extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	JTextField jtf;
-	JTextField jtfa;
-	JTextField jtfdate;
-	JTextField jtfheure;
-	public FenetreGestionAeroport fenetre;
+	private JTextField jtfAeroportDepart;
+	private JTextField jtfAeroportArrivee;
+	private JTextField jtfDateDepart;
+	private JTextField jtfHeureDepart;
 
-	public PanneauRechercheVol(int largeur, int l) {
+	public PanneauRechercheVol(int largeur, int hauteur) {
 		super();
-		this.setSize(new Dimension(largeur, l));
+		this.setSize(new Dimension(largeur, hauteur));
 		this.setBackground(FenetreGestionAeroport.COULEUR_FOND_PANNEAUX);
 		// ajoute un cadre autour du jpanel (de 4 pixels)
 		this.setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, FenetreGestionAeroport.COULEUR_CADRE_PANNEAUX));
@@ -46,19 +45,19 @@ public class PanneauRechercheVol extends JPanel {
 	}
 
 	public JTextField getJTextFieldAeroportDepart() {
-		return jtf;
+		return jtfAeroportDepart;
 	}
 
 	public JTextField getJTextFielAeroportArrivee() {
-		return jtfa;
+		return jtfAeroportArrivee;
 	}
 
 	public JTextField getJTextFieldDate() {
-		return jtfdate;
+		return jtfDateDepart;
 	}
 
 	public JTextField getJTextFieldHeure() {
-		return jtfheure;
+		return jtfHeureDepart;
 	}
 
 	private void initComponents() {
@@ -81,7 +80,7 @@ public class PanneauRechercheVol extends JPanel {
 		constraints.anchor = GridBagConstraints.CENTER;
 		this.add(zoneTitre, constraints);
 
-		// Bouton pour l'aeroport de départ
+		// Aeroport de départ
 		JLabel label = new JLabel("départ");
 		constraints.anchor = GridBagConstraints.CENTER;
 		constraints.gridx = 0;
@@ -91,18 +90,19 @@ public class PanneauRechercheVol extends JPanel {
 		constraints.weightx = 0.5;
 		this.add(label, constraints);
 
-		jtf = new JTextField();
-		jtf.setColumns(15);
-		jtf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));
+		jtfAeroportDepart = new JTextField();
+		jtfAeroportDepart.setColumns(15);
+		jtfAeroportDepart
+				.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));
 		constraints.anchor = GridBagConstraints.LINE_START;
 		constraints.gridx = 1;
 		constraints.gridy = 1;
 		constraints.gridwidth = 1;
 		constraints.gridheight = 1;
 		constraints.weightx = 0.5;
-		this.add(jtf, constraints);
+		this.add(jtfAeroportDepart, constraints);
 
-		// Bouton pour l'aeroport d'arrivé
+		// Aeroport d'arrivée
 		JLabel labelarrive = new JLabel("arrivee");
 		constraints.anchor = GridBagConstraints.CENTER;
 		constraints.gridx = 0;
@@ -112,16 +112,17 @@ public class PanneauRechercheVol extends JPanel {
 		constraints.weightx = 0.5;
 		this.add(labelarrive, constraints);
 
-		jtfa = new JTextField();
-		jtfa.setColumns(15);
-		jtfa.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));
+		jtfAeroportArrivee = new JTextField();
+		jtfAeroportArrivee.setColumns(15);
+		jtfAeroportArrivee
+				.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));
 		constraints.anchor = GridBagConstraints.LINE_START;
 		constraints.weightx = 0.5;
 		constraints.gridwidth = 1;
 		constraints.gridheight = 1;
 		constraints.gridx = 1;
 		constraints.gridy = 2;
-		add(jtfa, constraints);
+		add(jtfAeroportArrivee, constraints);
 
 		// Bouton pour la date
 		JLabel labeldate = new JLabel("date");
@@ -132,16 +133,17 @@ public class PanneauRechercheVol extends JPanel {
 		constraints.gridy = 3;
 		this.add(labeldate, constraints);
 
-		jtfdate = new JTextField("AAAA-MM-JJ");
-		jtfdate.setColumns(10);
-		jtfdate.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));
+		jtfDateDepart = new JTextField("AAAA-MM-JJ");
+		jtfDateDepart.setColumns(10);
+		jtfDateDepart
+				.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));
 		constraints.anchor = GridBagConstraints.LINE_START;
 		constraints.weightx = 1;
 		constraints.gridwidth = 1;
 		constraints.gridheight = 1;
 		constraints.gridx = 1;
 		constraints.gridy = 3;
-		add(jtfdate, constraints);
+		add(jtfDateDepart, constraints);
 
 		// Bouton pour l'heure
 		JLabel labelheure = new JLabel("heure");
@@ -152,16 +154,17 @@ public class PanneauRechercheVol extends JPanel {
 		constraints.gridy = 4;
 		this.add(labelheure, constraints);
 
-		jtfheure = new JTextField("H:MIN:S");
+		jtfHeureDepart = new JTextField("H:MIN:S");
 		constraints.anchor = GridBagConstraints.LINE_START;
-		jtfheure.setColumns(10);
-		jtfheure.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));
+		jtfHeureDepart.setColumns(10);
+		jtfHeureDepart
+				.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));
 		constraints.weightx = 1;
 		constraints.gridwidth = 1;
 		constraints.gridheight = 1;
 		constraints.gridx = 1;
 		constraints.gridy = 4;
-		add(jtfheure, constraints);
+		add(jtfHeureDepart, constraints);
 
 		// Bouton Valider
 		JButton validerBout = new JButton(new ActionRechercheDeVol());

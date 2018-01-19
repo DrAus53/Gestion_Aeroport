@@ -2,9 +2,11 @@ package fr.eseo.gestionaeroport.controleur.actions;
 
 import java.awt.event.ActionEvent;
 import java.sql.Statement;
+import java.util.logging.Level;
 
 import javax.swing.AbstractAction;
 
+import fr.eseo.gestionaeroport.GestionAeroport;
 import fr.eseo.gestionaeroport.controleur.baseDeDonnees.ConnexionBDD;
 import fr.eseo.gestionaeroport.vue.boitedialogue.BoiteDialogueNewAvionKo;
 import fr.eseo.gestionaeroport.vue.boitedialogue.BoiteDialogueNewAvionOk;
@@ -17,20 +19,13 @@ import fr.eseo.gestionaeroport.vue.ui.FenetreGestionAeroport;
  * bouton validier
  *
  */
-
+@SuppressWarnings("serial")
 public class ActionEnregistrerAvion extends AbstractAction {
 
-	private FenetreGestionAeroport fenetreGestionAeroport;
 	public static final String NOM_ACTION = "Valider";
-
-	public ActionEnregistrerAvion(FenetreGestionAeroport fenetreGestionAeroport) {
-		super(NOM_ACTION);
-		this.fenetreGestionAeroport = fenetreGestionAeroport;
-	}
 
 	public ActionEnregistrerAvion() {
 		super(NOM_ACTION);
-		this.fenetreGestionAeroport = fenetreGestionAeroport.getInstance();
 	}
 
 	@Override
@@ -40,7 +35,7 @@ public class ActionEnregistrerAvion extends AbstractAction {
 				.getText();
 		String nbplace = FenetreGestionAeroport.getInstance().getPanneauEnregistrerUnNouvelAvion().nbrPlaceJtf
 				.getText();
-		System.out.println(nomAvion + "\n" + typeAvion + "\n" + nbplace);
+
 		if (!nomAvion.equals("")) {
 			if (!typeAvion.equals("")) {
 				if (!nbplace.equals("")) {
@@ -48,17 +43,17 @@ public class ActionEnregistrerAvion extends AbstractAction {
 						Statement state = ConnexionBDD.connexion().createStatement();
 						state.execute("INSERT INTO avion (nomavion, typeavion, nombreplaces, idcompagnie) VALUES('"
 								+ nomAvion + "', '" + typeAvion + "','" + nbplace + "','1')");
-						BoiteDialogueNewAvionOk jop1 = new BoiteDialogueNewAvionOk();
+						new BoiteDialogueNewAvionOk();
 						FenetreGestionAeroport.getInstance();
 					} catch (Exception e) {
-						BoiteDialogueNewAvionKo jop2 = new BoiteDialogueNewAvionKo();
-						e.printStackTrace();
+						new BoiteDialogueNewAvionKo();
+						GestionAeroport.getLogger().log(Level.INFO, e.toString());
 					}
 				}
 			}
 		}
 		if (nomAvion.equals("") || typeAvion.equals("") || nbplace.equals("")) {
-			BoiteDialogueTexteVide jop2 = new BoiteDialogueTexteVide();
+			new BoiteDialogueTexteVide();
 		}
 	}
 }

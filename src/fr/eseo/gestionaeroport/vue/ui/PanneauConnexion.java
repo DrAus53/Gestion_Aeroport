@@ -15,10 +15,8 @@ import javax.swing.JTextField;
 
 import fr.eseo.gestionaeroport.controleur.actions.ActionConnexion;
 
+@SuppressWarnings("serial")
 public class PanneauConnexion extends JPanel {
-
-	private static final long serialVersionUID = 1L;
-	public FenetreConnexion fenetre;
 
 	private JTextField jTextFieldLogin;
 	private JTextField jTextFieldMdp;
@@ -77,7 +75,7 @@ public class PanneauConnexion extends JPanel {
 		constraints.gridy = 2;
 		this.add(jTextFieldMdp, constraints);
 
-		JButton jButtonValider = new JButton(new ActionConnexion(this.fenetre));
+		JButton jButtonValider = new JButton(new ActionConnexion());
 		constraints.gridx = 0;
 		constraints.gridy = 3;
 		constraints.gridwidth = 2;

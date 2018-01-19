@@ -21,6 +21,10 @@ import fr.eseo.gestionaeroport.dao.AeroportDAO;
 import fr.eseo.gestionaeroport.dao.AvionDAO;
 import fr.eseo.gestionaeroport.vue.ui.FenetreGestionAeroport;
 
+/**
+ * Panneau qui contient l'interface utilisateur pour proposer un nouveau vol en
+ * renseignant les aéroports, les dates et les heures de départ et d'arrivée
+ */
 public class PanneauProposerVol extends JPanel {
 	private static final long serialVersionUID = 1L;
 

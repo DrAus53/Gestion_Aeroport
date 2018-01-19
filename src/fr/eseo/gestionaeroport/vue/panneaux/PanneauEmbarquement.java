@@ -16,6 +16,13 @@ import javax.swing.JTextField;
 import fr.eseo.gestionaeroport.controleur.actions.ActionEmbarquement;
 import fr.eseo.gestionaeroport.vue.ui.FenetreGestionAeroport;
 
+/**
+ * Panneau qui contient l'interface utilisateur pour afficher la liste des
+ * passagers d'un vol à partir du numero de vol
+ * 
+ * @author Tanguy SUARD
+ *
+ */
 @SuppressWarnings("serial")
 public class PanneauEmbarquement extends JPanel {
 

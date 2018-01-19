@@ -3,6 +3,7 @@ package fr.eseo.gestionaeroport.vue.ui;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
+@SuppressWarnings("serial")
 public class FenetreConnexion extends JFrame {
 
 	private static FenetreConnexion instance;
@@ -34,16 +35,20 @@ public class FenetreConnexion extends JFrame {
 	}
 
 	public static void fermerFenetre() {
-		instance.dispose();
-		FenetreGestionAeroport fenetre = FenetreGestionAeroport.getInstance();
-		fenetre.setVisible(true);
+		FenetreConnexion.getInstance().setVisible(false);
+		FenetreConnexion.getInstance().dispose();
+		FenetreGestionAeroport.getInstance().setVisible(true);
+	}
+
+	public PanneauConnexion getPanneauConnexion() {
+		return panneauConnexion;
 	}
 
 	public static String findLogin() {
-		return FenetreConnexion.getInstance().panneauConnexion.getjTextFieldLogin().getText();
+		return FenetreConnexion.getInstance().getPanneauConnexion().getjTextFieldLogin().getText();
 	}
 
 	public static String findMdp() {
-		return FenetreConnexion.getInstance().panneauConnexion.getjTextFieldMdp().getText();
+		return FenetreConnexion.getInstance().getPanneauConnexion().getjTextFieldMdp().getText();
 	}
 }

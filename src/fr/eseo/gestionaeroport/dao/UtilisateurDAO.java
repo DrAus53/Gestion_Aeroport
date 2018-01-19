@@ -5,14 +5,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 
+import fr.eseo.gestionaeroport.GestionAeroport;
 import fr.eseo.gestionaeroport.modele.Utilisateur;
 
 public class UtilisateurDAO extends DAO<Utilisateur> {
 
 	public UtilisateurDAO(Connection conn) {
 		super(conn);
-		// TODO Auto-generated constructor stub
 	}
 
 	public void create(Utilisateur obj) {
@@ -27,23 +28,21 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
 	public void update(Utilisateur obj, Utilisateur obj1) {
 		if (!obj.getPrenom().equals(obj1.getPrenom())) {
 			try {
-				int result = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)
+				this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)
 						.executeUpdate("UPDATE Utilisateur SET prenom='" + obj1.getPrenom() + "', adressemail='"
 								+ obj1.getNom() + "'" + " WHERE prenom='" + obj.getPrenom() + "';");
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				GestionAeroport.getLogger().log(Level.INFO, e.toString());
 			}
 
 		}
 		if (!obj.getNom().equals(obj1.getNom())) {
 			try {
-				int result = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)
+				this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)
 						.executeUpdate("UPDATE Utilisateur SET nom='" + obj1.getNom() + "', adressemail='"
 								+ obj1.getAdresseMail() + "'" + " WHERE prenom='" + obj.getPrenom() + "';");
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				GestionAeroport.getLogger().log(Level.INFO, e.toString());
 			}
 		}
 
@@ -63,8 +62,7 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
 						result.getString("adressemail")));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			GestionAeroport.getLogger().log(Level.INFO, e.toString());
 		}
 		return utilisateur;
 

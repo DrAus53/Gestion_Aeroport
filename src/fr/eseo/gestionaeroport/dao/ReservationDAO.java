@@ -3,8 +3,11 @@ package fr.eseo.gestionaeroport.dao;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 
+import fr.eseo.gestionaeroport.GestionAeroport;
 import fr.eseo.gestionaeroport.modele.Reservation;
 
 public class ReservationDAO extends DAO<Reservation> {
@@ -16,26 +19,24 @@ public class ReservationDAO extends DAO<Reservation> {
 	// Créer une réservation dans la base de donnée
 	public void create(Reservation obj) {
 		try {
-			int result = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)
+			this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)
 					.executeUpdate("INSERT INTO reservation (datereservation,idtrajet,idutilisateur) VALUES( '"
 							+ obj.getDateReservation() + "'" + "," + "'" + obj.getIdTrajet() + "','"
 							+ +obj.getIdUtilisateur() + "');");
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			GestionAeroport.getLogger().log(Level.INFO, e.toString());
 		}
 	}
 
 	// Supprime une réservation dans la base de donnée
 	public void delete(Reservation obj) {
 		try {
-			int result = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)
+			this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)
 					.executeUpdate("DELETE FROM reservation WHERE datereservation='" + obj.getDateReservation() + "'"
 							+ "AND idtrajet=" + "'" + obj.getIdTrajet() + "'" + "AND idutilisateur=" + "'"
 							+ obj.getIdUtilisateur() + "';");
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			GestionAeroport.getLogger().log(Level.INFO, e.toString());
 		}
 	}
 
@@ -45,7 +46,7 @@ public class ReservationDAO extends DAO<Reservation> {
 	@Override
 	public List<Reservation> find(Reservation obj) {
 		// TODO Auto-generated method stub
-		return null;
+		return new ArrayList<>();
 	}
 
 	@Override

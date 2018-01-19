@@ -11,6 +11,9 @@ import fr.eseo.gestionaeroport.GestionAeroport;
 import fr.eseo.gestionaeroport.controleur.actions.ActionDeconnexion;
 import fr.eseo.gestionaeroport.controleur.actions.ActionModifier;
 
+/**
+ * Classe du menu de la fenêtre principale
+ */
 public class BarreOutils extends JMenuBar {
 
 	private static final long serialVersionUID = 1L;
@@ -64,10 +67,6 @@ public class BarreOutils extends JMenuBar {
 
 		this.add(menuProfil);
 
-		/*
-		 * boutonProfil.setMaximumSize(new Dimension(100, 50));
-		 * boutonProfil.setAlignmentX(RIGHT_ALIGNMENT); this.add(boutonProfil);
-		 */
 		repaint();
 	}
 }

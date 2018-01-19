@@ -6,9 +6,11 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
 
 import javax.swing.AbstractAction;
 
+import fr.eseo.gestionaeroport.GestionAeroport;
 import fr.eseo.gestionaeroport.controleur.baseDeDonnees.ConnexionBDD;
 import fr.eseo.gestionaeroport.dao.VolDAO;
 import fr.eseo.gestionaeroport.modele.Vol;
@@ -23,20 +25,13 @@ import fr.eseo.gestionaeroport.vue.ui.FenetreGestionAeroport;
  * Classe pour proposer un nouveau vol dans la base de donnée
  *
  */
-
+@SuppressWarnings("serial")
 public class ActionProposerVol extends AbstractAction {
 
-	private static final long serialVersionUID = 1L;
 	public static final String NOM_ACTION = "Valider";
-
-	public ActionProposerVol(FenetreGestionAeroport fenetreGestionAeroport) {
-		super(NOM_ACTION);
-
-	}
 
 	public ActionProposerVol() {
 		super(NOM_ACTION);
-
 	}
 
 	@Override
@@ -47,7 +42,6 @@ public class ActionProposerVol extends AbstractAction {
 		String aeroportarrivee = "";
 		int idaeroportdepart = 35;
 		int idaeroportarrivee = 36;
-		String avion = "";
 		int idavion = 50;
 		int anneeD = 0;
 		int anneeA = 0;
@@ -84,8 +78,6 @@ public class ActionProposerVol extends AbstractAction {
 					.getSelectedItem().toString();
 			aeroportarrivee = FenetreGestionAeroport.getInstance().getPanneauProposerVol().getJComboBoxArriveeAeroport()
 					.getSelectedItem().toString();
-			avion = FenetreGestionAeroport.getInstance().getPanneauProposerVol().getJComboBoxAvion().getSelectedItem()
-					.toString();
 
 			// Conversion des dates au format de la BDD
 			SimpleDateFormat dateFormatD = new SimpleDateFormat("yyyy-MM-dd");
@@ -94,14 +86,10 @@ public class ActionProposerVol extends AbstractAction {
 			SimpleDateFormat dateFormatA = new SimpleDateFormat("yyyy-MM-dd");
 			String dateTexteA = "" + anneeA + "-" + moisA + "-" + jourA;
 			dateA = dateFormatA.parse(dateTexteA);
+
 			// récupération des id d'aéroports
 			idaeroportdepart = volproposeDAO.getIdAeroportStr(aeroportdepart);
 			idaeroportarrivee = volproposeDAO.getIdAeroportStr(aeroportarrivee);
-			// récupération de l'id d'avion
-			System.out.println(avion);
-			// int result = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
-			// ResultSet.CONCUR_READ_ONLY)
-			// .executeUpdate("SELECT idavion FROM avion WHERE nomavion='avion'");
 
 			// Vérification que l'aéroport de départ et différent de celui d'arrivée
 			if (idaeroportarrivee != idaeroportdepart) {
@@ -112,21 +100,21 @@ public class ActionProposerVol extends AbstractAction {
 							idavion, "666");
 					// Création du vol dans la base de données
 					volproposeDAO.create(volpropose);
-					BoiteDialogueNewVolOk valid = new BoiteDialogueNewVolOk();
+					new BoiteDialogueNewVolOk();
 					FenetreGestionAeroport.getInstance();
 				} catch (Exception e) {
-					BoiteDialogueNewVolKo error = new BoiteDialogueNewVolKo();
-					e.printStackTrace();
+					new BoiteDialogueNewVolKo();
+					GestionAeroport.getLogger().log(Level.INFO, e.toString());
 				}
 
 			} else {
-				BoiteDialogueNewVolKoAero error = new BoiteDialogueNewVolKoAero();
+				new BoiteDialogueNewVolKoAero();
 			}
 
 		} catch (Exception e) {
 
-			BoiteDialogueNewVolKoDate error = new BoiteDialogueNewVolKoDate();
-			e.printStackTrace();
+			new BoiteDialogueNewVolKoDate();
+			GestionAeroport.getLogger().log(Level.INFO, e.toString());
 		}
 	}
 }
