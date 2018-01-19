@@ -3,6 +3,9 @@ package fr.eseo.gestionaeroport.controleur.baseDeDonnees;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+/**
+ * Classe établissant le lien avec la base de donnée via JDBC
+ */
 public class ConnexionBDD {
 
 	// Variables
