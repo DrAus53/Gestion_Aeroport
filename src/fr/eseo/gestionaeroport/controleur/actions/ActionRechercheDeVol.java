@@ -39,7 +39,7 @@ public class ActionRechercheDeVol extends AbstractAction {
 			// Création d'un objet Statement
 			Statement state = conn.createStatement();
 			VolDAO volDAO = new VolDAO(conn);
-
+			// Récupère les données du panneau
 			String aeroportdepart = FenetreGestionAeroport.getInstance().getPanneauRechercheVol()
 					.getJTextFieldAeroportDepart().getText();
 
@@ -47,19 +47,18 @@ public class ActionRechercheDeVol extends AbstractAction {
 					.getJTextFielAeroportArrivee().getText();
 			String dateTxt = FenetreGestionAeroport.getInstance().getPanneauRechercheVol().getJTextFieldDate()
 					.getText();
-
+			// Vérifie que les données ne soient pas nulles
 			if (!aeroportdepart.equals("") && !aeroportarrivee.equals("") && !dateTxt.equals("")) {
 
 				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 				Date date = new Date();
 				try {
 					date = dateFormat.parse(dateTxt);
-					System.out.print(date);
 				} catch (ParseException e) {
 					// Auto-generated catch block
 					e.printStackTrace();
 				}
-
+				// Créer un nouveau vol
 				Vol vol = new Vol(date,
 						volDAO.getIdAeroport(FenetreGestionAeroport.getInstance().getPanneauRechercheVol()
 								.getJTextFieldAeroportDepart()),

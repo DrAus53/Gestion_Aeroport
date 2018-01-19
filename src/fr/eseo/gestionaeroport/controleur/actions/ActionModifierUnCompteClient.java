@@ -43,12 +43,13 @@ public class ActionModifierUnCompteClient extends AbstractAction {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		// Récupérer le prénom et le nom
 		UtilisateurDAO utilisateurDAO = new UtilisateurDAO(conn);
 		String nom = fenetreGestionAeroport.getInstance().getPanneauModifierUnCompteClient().getJTextFieldNom()
 				.getText();
 		String prenom = fenetreGestionAeroport.getInstance().getPanneauModifierUnCompteClient().getJTextFielPrenom()
 				.getText();
-
+		// Récupère l'utilisateur avec le nom et prénom à modifier
 		if (!nom.equals("") && !prenom.equals("")) {
 			Utilisateur utilisateur = utilisateurDAO.find(new Utilisateur(prenom, nom)).get(0);
 			boiteclient = new BoiteDialogueModifierClient(500, 300, utilisateur);

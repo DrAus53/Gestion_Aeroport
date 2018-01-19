@@ -35,7 +35,7 @@ public class PanneauRechercheVol extends JPanel {
 		super();
 		this.setSize(new Dimension(largeur, l));
 		this.setBackground(FenetreGestionAeroport.COULEUR_FOND_PANNEAUX);
-		/// ajoute un cadre autour du jpanel (de 4 pixels)
+		// ajoute un cadre autour du jpanel (de 4 pixels)
 		this.setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, FenetreGestionAeroport.COULEUR_CADRE_PANNEAUX));
 		initComponents();
 
