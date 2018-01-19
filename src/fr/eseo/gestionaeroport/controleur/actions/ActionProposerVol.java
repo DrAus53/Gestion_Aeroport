@@ -92,12 +92,19 @@ public class ActionProposerVol extends AbstractAction {
 			idaeroportdepart = volproposeDAO.getIdAeroportStr(aeroportdepart);
 			idaeroportarrivee = volproposeDAO.getIdAeroportStr(aeroportarrivee);
 			// récupération de l'id d'avion
+			System.out.println(avion);
+			// int result = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+			// ResultSet.CONCUR_READ_ONLY)
+			// .executeUpdate("SELECT idavion FROM avion WHERE nomavion='avion'");
 
+			// Vérification que l'aéroport de départ et différent de celui d'arrivée
 			if (idaeroportarrivee != idaeroportdepart) {
 
 				try {
+					// Recontruction du vol avec les données modifiées
 					volpropose = new Vol(666, dateD, dateA, idaeroportdepart, idaeroportarrivee, nomPassagers, 666,
 							idavion, "666");
+					// Création du vol dans la base de données
 					volproposeDAO.create(volpropose);
 					BoiteDialogueNewVolOk valid = new BoiteDialogueNewVolOk();
 					FenetreGestionAeroport.getInstance();
