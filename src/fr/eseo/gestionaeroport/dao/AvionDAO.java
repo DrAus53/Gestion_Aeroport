@@ -4,8 +4,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.List;
 
-import fr.eseo.gestionaeroport.modele.baseDeDonnees.Avion;
+import fr.eseo.gestionaeroport.modele.Avion;
 
 public class AvionDAO extends DAO<Avion> {
 
@@ -25,10 +26,11 @@ public class AvionDAO extends DAO<Avion> {
 
 	}
 
-	public Avion find(Avion obj) {
-		return obj;
+	public List<Avion> find(Avion obj) {
+		return (List<Avion>) obj;
 	}
 
+	// Affiche la liste de tous les avions
 	public Object[] affiche() {
 
 		Object[] avions = new Object[30];
@@ -54,5 +56,11 @@ public class AvionDAO extends DAO<Avion> {
 		}
 
 		return avions;
+	}
+
+	@Override
+	public void update(Avion obj, Avion obj1) {
+		// TODO Auto-generated method stub
+
 	}
 }

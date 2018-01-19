@@ -26,7 +26,10 @@ public class ActionUpdateUnCompteClient extends AbstractAction {
 	}
 
 	@Override
+	// Appel de la fonction avec le bouton Valider de la fenetre Modifier Un Compte
+	// Client et modification dans la base donnée
 	public void actionPerformed(ActionEvent arg0) {
+		// Connexion à la base de donnée
 		Connection conn = ConnexionBDD.connexion();
 		// Création d'un objet Statement
 		Utilisateur neww = FenetreGestionAeroport.getInstance().getPanneauModifierUnCompteClient()
@@ -39,15 +42,14 @@ public class ActionUpdateUnCompteClient extends AbstractAction {
 		String idutilisateur;
 		try {
 			Statement state = ConnexionBDD.connexion().createStatement();
+			// Retrouve l'identifiant de l'utilisateur à modifier
 			ResultSet result = state
 					.executeQuery("SELECT idutilisateur FROM utilisateur WHERE idutilisateur ='" + neww.getId() + "';");
 			while (result.next()) {
 				idutilisateur = result.getString("idutilisateur");
 
 			}
-			System.out.println("UPDATE utilisateur SET nom='" + newNom + "', prenom='" + newPrenom + "', login='"
-					+ newLogin + "', adressemail='" + newAdresseMail + "', motdepasse='" + newMdp
-					+ "' WHERE idutilisateur='" + neww.getId() + "';");
+			// Update de la base de donnée
 			int resultat = state.executeUpdate("UPDATE utilisateur SET nom='" + newNom + "', prenom='" + newPrenom
 					+ "', login='" + newLogin + "', adressemail='" + newAdresseMail + "', motdepasse='" + newMdp
 					+ "' WHERE idutilisateur='" + neww.getId() + "';");

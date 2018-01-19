@@ -23,6 +23,7 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
 
 	}
 
+	// Update l'utilisateur obj avec l'utilisateur obj1
 	public void update(Utilisateur obj, Utilisateur obj1) {
 		if (!obj.getPrenom().equals(obj1.getPrenom())) {
 			try {
@@ -48,11 +49,11 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
 
 	}
 
+	// Retourne la liste des utilisateurs dans la base de donnée ayant le même
+	// prénom et nom
 	public List<Utilisateur> find(Utilisateur obj) {
 		List<Utilisateur> utilisateur = new ArrayList<Utilisateur>();
 		try {
-			System.out.println("SELECT * FROM Utilisateur WHERE prenom=" + "'" + obj.getPrenom() + "'" + "AND nom="
-					+ "'" + obj.getNom() + "';");
 			ResultSet result = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)
 					.executeQuery("SELECT * FROM Utilisateur WHERE prenom=" + "'" + obj.getPrenom() + "'" + "AND nom="
 							+ "'" + obj.getNom() + "';");

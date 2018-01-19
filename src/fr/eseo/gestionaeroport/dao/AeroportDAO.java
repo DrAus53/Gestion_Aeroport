@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.List;
 
 import fr.eseo.gestionaeroport.controleur.baseDeDonnees.ConnexionBDD;
-import fr.eseo.gestionaeroport.modele.baseDeDonnees.Aeroport;
+import fr.eseo.gestionaeroport.modele.Aeroport;
 
 public class AeroportDAO extends DAO<Aeroport> {
 
@@ -32,6 +32,7 @@ public class AeroportDAO extends DAO<Aeroport> {
 		return null;
 	}
 
+	// Récupère le nom de l'aeroport
 	public static String getNomAeroport(int idaeroport) {
 		Statement state;
 		String aeroport = "";
@@ -39,7 +40,6 @@ public class AeroportDAO extends DAO<Aeroport> {
 			state = ConnexionBDD.connexion().createStatement();
 			ResultSet result = state.executeQuery("SELECT * FROM aeroport");
 			ResultSetMetaData resultMeta = result.getMetaData();
-			System.out.println("SELECT nomaeroport FROM aeroport WHERE idaeroport='" + idaeroport + "';");
 			result = state.executeQuery("SELECT nomaeroport FROM aeroport WHERE idaeroport='" + idaeroport + "';");
 			resultMeta = result.getMetaData();
 			while (result.next()) {
@@ -53,6 +53,7 @@ public class AeroportDAO extends DAO<Aeroport> {
 		return aeroport;
 	}
 
+	// Affiche tous les aeroports ordonnés par idaeroport
 	public Object[] affiche() {
 
 		Object[] villes = new Object[30];

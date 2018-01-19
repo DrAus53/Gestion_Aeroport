@@ -3,6 +3,7 @@ package fr.eseo.gestionaeroport.dao;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import fr.eseo.gestionaeroport.modele.Reservation;
 
@@ -12,11 +13,9 @@ public class ReservationDAO extends DAO<Reservation> {
 		super(cBdd);
 	}
 
+	// Créer une réservation dans la base de donnée
 	public void create(Reservation obj) {
 		try {
-			System.out.println("INSERT INTO reservation (datereservation,idtrajet,idutilisateur) VALUES( '"
-					+ obj.getDateReservation() + "'" + "," + "'" + obj.getIdTrajet() + "','" + +obj.getIdUtilisateur()
-					+ "');");
 			int result = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)
 					.executeUpdate("INSERT INTO reservation (datereservation,idtrajet,idutilisateur) VALUES( '"
 							+ obj.getDateReservation() + "'" + "," + "'" + obj.getIdTrajet() + "','"
@@ -27,6 +26,7 @@ public class ReservationDAO extends DAO<Reservation> {
 		}
 	}
 
+	// Supprime une réservation dans la base de donnée
 	public void delete(Reservation obj) {
 		try {
 			int result = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)
@@ -43,7 +43,7 @@ public class ReservationDAO extends DAO<Reservation> {
 	}
 
 	@Override
-	public Reservation find(Reservation obj) {
+	public List<Reservation> find(Reservation obj) {
 		// TODO Auto-generated method stub
 		return null;
 	}

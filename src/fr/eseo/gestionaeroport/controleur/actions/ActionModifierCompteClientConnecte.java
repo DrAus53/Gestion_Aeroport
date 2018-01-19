@@ -20,8 +20,10 @@ public class ActionModifierCompteClientConnecte extends AbstractAction {
 	}
 
 	@Override
+	// Appel de la fonction avec le bouton Valider de la fenetre Modifier Un Compte
+	// Client et modification dans la base donnée
 	public void actionPerformed(ActionEvent arg0) {
-		// récupération de l'utilisateur modifié
+		// Récupération de l'utilisateur modifié
 		Utilisateur newUtilisateur = FenetreGestionAeroport.getInstance().getBarreOutils().getActionModifier()
 				.getBoiteDialogueModifierUtilisateur().getUtilisateur();
 		String idutilisateur = "";
@@ -32,6 +34,7 @@ public class ActionModifierCompteClientConnecte extends AbstractAction {
 			while (result.next()) {
 				idutilisateur = result.getString("idutilisateur");
 			}
+			// Update de la base de donnée de l'ancien avec le nouveau
 			int resultat = state.executeUpdate("UPDATE utilisateur SET nom='" + newUtilisateur.getNom() + "', prenom='"
 					+ newUtilisateur.getPrenom() + "', login='" + newUtilisateur.getLogin() + "', adressemail='"
 					+ newUtilisateur.getAdresseMail() + "', motdepasse='" + newUtilisateur.getMotDePasse()
