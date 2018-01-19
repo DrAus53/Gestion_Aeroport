@@ -6,10 +6,13 @@ import java.sql.DriverManager;
 public class ConnexionBDD {
 
 	// Variables
-
+	// Connexion à la BDD avec le type de BDD, l'adresse hote, le port et le nom de
+	// la BDD
 	private static String url = "jdbc:postgresql://192.168.4.127:5432/gestionaeroport";
-	private static String user = "tanguy";
-	private static String mdp = "6c4c4USV";
+	// private static String user = "damien";
+	private static String user = "java";
+	// private static String mdp = "Hkos39H2";
+	private static String mdp = "javaConnectBD986uhGt523because";
 
 	// Methodes
 
