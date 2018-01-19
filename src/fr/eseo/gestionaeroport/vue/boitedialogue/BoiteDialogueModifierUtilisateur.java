@@ -101,7 +101,7 @@ public class BoiteDialogueModifierUtilisateur extends JDialog {
 		constraints.anchor = GridBagConstraints.CENTER;
 		panneau.add(labelPrenom, constraints);
 
-		jtfPrenom = new JTextField(utilisateur.getNom());
+		jtfPrenom = new JTextField(utilisateur.getPrenom());
 		jtfPrenom.setColumns(15);
 		jtfPrenom.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, FenetreGestionAeroport.COULEUR_ACCENTUATION));
 		constraints.weightx = 0.5;
