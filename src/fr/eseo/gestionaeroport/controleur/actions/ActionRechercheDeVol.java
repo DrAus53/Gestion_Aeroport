@@ -60,7 +60,7 @@ public class ActionRechercheDeVol extends AbstractAction {
 								.getJTextFielAeroportArrivee()),
 						1);
 
-				new BoiteDialogueListeDeVols(500, 300, volDAO.find(vol));
+				new BoiteDialogueListeDeVols(700, 300, volDAO.find(vol));
 
 			}
 		} catch (SQLException e) {

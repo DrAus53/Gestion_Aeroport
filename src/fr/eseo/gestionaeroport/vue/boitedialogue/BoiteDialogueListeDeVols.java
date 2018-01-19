@@ -1,6 +1,5 @@
 package fr.eseo.gestionaeroport.vue.boitedialogue;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -8,8 +7,6 @@ import java.awt.Insets;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -34,9 +31,9 @@ public class BoiteDialogueListeDeVols extends JDialog {
 		// au milieu de l'écran
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
-		this.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+		this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		this.setTitle("Liste des vols");
-		this.setUndecorated(true);
+		this.setUndecorated(false);
 
 		this.initialisationComposants();
 
@@ -84,7 +81,7 @@ public class BoiteDialogueListeDeVols extends JDialog {
 		// création d'une scroll barre
 		JScrollPane scroll = new JScrollPane(tableauVol);
 		// le tableau ne se redimmenssionne pas tous seul
-		tableauVol.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		// tableauVol.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
 		constraints.gridx = 0;
 		constraints.gridy = 0;
@@ -95,28 +92,6 @@ public class BoiteDialogueListeDeVols extends JDialog {
 		constraints.weightx = 1;
 		constraints.weighty = 1;
 		panTable.add(scroll, constraints);
-
-		// boutton annuler
-		JButton buttonAnnuler = new JButton("Annuler");
-		constraints.anchor = GridBagConstraints.LINE_END;
-		buttonAnnuler.setPreferredSize(new Dimension(70, 30));
-		/// couleur du texte
-		buttonAnnuler.setForeground(Color.WHITE);
-		/// on peint l'interieur
-		buttonAnnuler.setBackground(FenetreGestionAeroport.COULEUR_ACCENTUATION);
-		/// on peint les bordures
-		buttonAnnuler
-				.setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, FenetreGestionAeroport.COULEUR_ACCENTUATION));
-		/// on enleve l'effet focus
-		buttonAnnuler.setFocusPainted(false);
-		/// on positionne la case
-		constraints.gridx = 0;
-		constraints.gridy = 2;
-		constraints.gridwidth = 1;
-		constraints.gridheight = 1;
-		constraints.weighty = 0;
-		constraints.fill = GridBagConstraints.NONE;
-		panTable.add(buttonAnnuler, constraints);
 
 		this.add(panTable);
 		this.pack();

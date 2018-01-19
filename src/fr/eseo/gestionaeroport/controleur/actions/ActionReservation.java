@@ -43,7 +43,7 @@ public class ActionReservation extends AbstractAction {
 			int jour = Integer.parseInt(FenetreGestionAeroport.getInstance().getPanneauRechercheVol()
 					.getJTextFieldDate().getText().split("-")[2]);
 			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-			System.out.println(new Date(annee, mois, jour));
+
 			String dateTexte = "" + annee + "-" + mois + "-" + jour;
 			Date date = null;
 			try {
@@ -53,7 +53,7 @@ public class ActionReservation extends AbstractAction {
 				// Auto-generated catch block
 				e.printStackTrace();
 			}
-			BoiteDialogueListeDeVols boite = new BoiteDialogueListeDeVols(500, 300,
+			new BoiteDialogueListeDeVols(700, 300,
 					volDAO.find(new Vol(date,
 							volDAO.getIdAeroport(FenetreGestionAeroport.getInstance().getPanneauRechercheVol()
 									.getJTextFieldAeroportDepart()),
