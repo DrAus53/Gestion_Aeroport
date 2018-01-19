@@ -102,7 +102,7 @@ public class PanneauModifierUnCompteClient extends JPanel {
 		constraints.anchor = GridBagConstraints.LINE_START;
 		this.add(jtfPrenom, constraints);
 
-		// valider
+		// Valider
 		actionModifierUnCompteClient = new ActionModifierUnCompteClient(this.fenetre);
 		JButton validerBout = new JButton(actionModifierUnCompteClient);
 		validerBout.setPreferredSize(new Dimension(70, 30));

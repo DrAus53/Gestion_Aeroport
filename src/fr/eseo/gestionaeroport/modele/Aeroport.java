@@ -57,15 +57,12 @@ public class Aeroport {
 	}
 
 	public void ajouter() {
-		// basededonnees.ajouter(new Aeroport(idAeroport,nom,ville,pays,nomTerminal));
 	}
 
 	public void supprimer(Aeroport aeroport) {
-		// basededonnees.supprimer(aeroport);
 	}
 
 	public void modifier() {
-		// basededonnees.modifier(new Aeroport(idAeroport,nom,ville,pays,nomTerminal));
 	}
 
 }

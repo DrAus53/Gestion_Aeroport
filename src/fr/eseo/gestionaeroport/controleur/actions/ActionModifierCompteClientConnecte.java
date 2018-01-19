@@ -20,8 +20,6 @@ public class ActionModifierCompteClientConnecte extends AbstractAction {
 	}
 
 	@Override
-	// Appel de la fonction avec le bouton Valider de la fenetre Modifier Un Compte
-	// Client et modification dans la base donnée
 	public void actionPerformed(ActionEvent arg0) {
 		// Récupération de l'utilisateur modifié
 		Utilisateur newUtilisateur = FenetreGestionAeroport.getInstance().getBarreOutils().getActionModifier()
