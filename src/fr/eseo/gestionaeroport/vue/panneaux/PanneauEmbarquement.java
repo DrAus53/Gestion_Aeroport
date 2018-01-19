@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import fr.eseo.gestionaeroport.controleur.actions.ActionEmbarquement;
 import fr.eseo.gestionaeroport.vue.ui.FenetreGestionAeroport;
 
 @SuppressWarnings("serial")
@@ -67,7 +68,7 @@ public class PanneauEmbarquement extends JPanel {
 		this.add(this.jTextFieldNumVol, constraints);
 
 		// valider
-		JButton jButtonValider = new JButton("Valider");
+		JButton jButtonValider = new JButton(new ActionEmbarquement());
 		jButtonValider.setPreferredSize(new Dimension(70, 30));
 		/// couleur du texte
 		jButtonValider.setForeground(Color.WHITE);
