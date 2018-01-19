@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -39,6 +40,7 @@ public class PanneauConnexion extends JPanel {
 		this.setBackground(FenetreGestionAeroport.COULEUR_FOND_FENETRE);
 		this.setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, FenetreGestionAeroport.COULEUR_ACCENTUATION));
 		GridBagConstraints constraints = new GridBagConstraints();
+		constraints.insets = new Insets(10, 10, 10, 10);
 
 		JLabel labelBienvenu = new JLabel("Bienvenue !");
 		labelBienvenu.setFont(new Font("Berlin Sans FB Demi", 1, 30));

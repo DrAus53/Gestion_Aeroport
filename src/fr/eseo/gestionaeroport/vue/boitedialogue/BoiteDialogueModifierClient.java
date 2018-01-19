@@ -36,8 +36,8 @@ public class BoiteDialogueModifierClient extends JDialog {
 		// au milieu de l'écran
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
-		this.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
-		this.setUndecorated(true);
+		this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+		this.setUndecorated(false);
 
 		this.initialisationComposants();
 
@@ -193,28 +193,6 @@ public class BoiteDialogueModifierClient extends JDialog {
 		constraints.fill = GridBagConstraints.NONE;
 		constraints.anchor = GridBagConstraints.LINE_END;
 		panneau.add(buttonAnnuler, constraints);
-
-		// boutton annuler
-		JButton buttonEnregister = new JButton("Annuler");
-		constraints.anchor = GridBagConstraints.LINE_START;
-		buttonEnregister.setPreferredSize(new Dimension(70, 30));
-		/// couleur du texte
-		buttonEnregister.setForeground(Color.WHITE);
-		/// on peint l'interieur
-		buttonEnregister.setBackground(FenetreGestionAeroport.COULEUR_ACCENTUATION);
-		/// on peint les bordures
-		buttonEnregister
-				.setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, FenetreGestionAeroport.COULEUR_ACCENTUATION));
-		/// on enleve l'effet focus
-		buttonEnregister.setFocusPainted(false);
-		/// on positionne la case
-		constraints.gridx = 1;
-		constraints.gridy = 5;
-		constraints.gridwidth = 1;
-		constraints.gridheight = 1;
-		constraints.weighty = 0;
-		constraints.fill = GridBagConstraints.NONE;
-		panneau.add(buttonEnregister, constraints);
 
 		this.add(panneau);
 		this.pack();

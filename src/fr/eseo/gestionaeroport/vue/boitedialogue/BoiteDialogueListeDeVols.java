@@ -97,6 +97,14 @@ public class BoiteDialogueListeDeVols extends JDialog {
 		this.pack();
 	}
 
+	/**
+	 * Méthode transforme une liste de vols en tableau avec sur chaque ligne un vol
+	 * différent et où les colonnes correspondent à l'affichage voulu.
+	 * 
+	 * @param listeVols
+	 * @return donneesTableau
+	 * @author Tanguy SUARD
+	 */
 	private Object[][] listeVolToTable(List<Vol> listeVols) {
 		if (listeVols != null) {
 			int taille = listeVols.size();
