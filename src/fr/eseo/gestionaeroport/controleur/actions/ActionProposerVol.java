@@ -39,10 +39,10 @@ public class ActionProposerVol extends AbstractAction {
 		// Déclaration des variables
 		String aeroportdepart = "";
 		String aeroportarrivee = "";
-		int idaeroportdepart = 0;
-		int idaeroportarrivee = 0;
+		int idaeroportdepart = 35;
+		int idaeroportarrivee = 36;
 		String avion = "";
-		int idavion = 0;
+		int idavion = 50;
 		int anneeD = 0;
 		int anneeA = 0;
 		int moisD = 0;
@@ -52,9 +52,11 @@ public class ActionProposerVol extends AbstractAction {
 		Date dateD = null;
 		Date dateA = null;
 		List<String> nomPassagers = new ArrayList<String>();
+		nomPassagers.add("Damien");
 		Connection conn = ConnexionBDD.connexion();
 		VolDAO volproposeDAO = new VolDAO(conn);
-		Vol volpropose = new Vol(0, dateD, dateA, idaeroportdepart, idaeroportarrivee, nomPassagers, 0, idavion, "XX");
+		Vol volpropose = new Vol(666, dateD, dateA, idaeroportdepart, idaeroportarrivee, nomPassagers, 666, idavion,
+				"zz");
 
 		try {
 
@@ -89,12 +91,13 @@ public class ActionProposerVol extends AbstractAction {
 			// récupération des id d'aéroports
 			idaeroportdepart = volproposeDAO.getIdAeroportStr(aeroportdepart);
 			idaeroportarrivee = volproposeDAO.getIdAeroportStr(aeroportarrivee);
+			// récupération de l'id d'avion
 
 			if (idaeroportarrivee != idaeroportdepart) {
 
 				try {
-					// volpropose = new Vol(dateD, dateA, idaeroportdepart, idaeroportarrivee,
-					// idavion);
+					volpropose = new Vol(666, dateD, dateA, idaeroportdepart, idaeroportarrivee, nomPassagers, 666,
+							idavion, "666");
 					volproposeDAO.create(volpropose);
 					BoiteDialogueNewVolOk valid = new BoiteDialogueNewVolOk();
 					FenetreGestionAeroport.getInstance();
