@@ -11,6 +11,11 @@ import fr.eseo.gestionaeroport.controleur.baseDeDonnees.ConnexionBDD;
 import fr.eseo.gestionaeroport.modele.Utilisateur;
 import fr.eseo.gestionaeroport.vue.ui.FenetreGestionAeroport;
 
+/**
+ * 
+ * Classe pour mettre à jour l'utilisateur de la base de donnée
+ *
+ */
 public class ActionUpdateUnCompteClient extends AbstractAction {
 	private FenetreGestionAeroport fenetreGestionAeroport;
 	public static final String NOM_ACTION = "Enregistrer";
@@ -53,6 +58,8 @@ public class ActionUpdateUnCompteClient extends AbstractAction {
 			int resultat = state.executeUpdate("UPDATE utilisateur SET nom='" + newNom + "', prenom='" + newPrenom
 					+ "', login='" + newLogin + "', adressemail='" + newAdresseMail + "', motdepasse='" + newMdp
 					+ "' WHERE idutilisateur='" + neww.getId() + "';");
+			FenetreGestionAeroport.getInstance().getPanneauModifierUnCompteClient().getActionModifierUnCompteClient()
+					.getBoiteclient().dispose();
 
 		} catch (Exception e) {
 
