@@ -7,6 +7,13 @@ import javax.swing.AbstractAction;
 import fr.eseo.gestionaeroport.GestionAeroport;
 import fr.eseo.gestionaeroport.vue.boitedialogue.BoiteDialogueModifierUtilisateur;
 
+/**
+ * 
+ * Classe pour trouver le compte de l'utilisateur à modifier et ouvrir la boite
+ * de dialogue correspondante
+ *
+ */
+
 public class ActionModifier extends AbstractAction {
 
 	public static final String NOM_ACTION = "Modifier";

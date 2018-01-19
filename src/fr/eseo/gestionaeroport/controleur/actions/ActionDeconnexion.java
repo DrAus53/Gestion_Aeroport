@@ -6,6 +6,13 @@ import javax.swing.AbstractAction;
 
 import fr.eseo.gestionaeroport.vue.ui.FenetreGestionAeroport;
 
+/**
+ * 
+ * Classe pour déconnecter l'utilisateur et revenir à la fenêtre de connexion
+ * après clic sur le bouton Deconnexion
+ *
+ */
+
 public class ActionDeconnexion extends AbstractAction {
 
 	private static final long serialVersionUID = 1L;

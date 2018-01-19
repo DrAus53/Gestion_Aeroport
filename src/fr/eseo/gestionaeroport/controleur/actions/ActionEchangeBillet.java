@@ -16,6 +16,13 @@ import fr.eseo.gestionaeroport.vue.boitedialogue.BoiteDialogueTrajetNonTrouve;
 import fr.eseo.gestionaeroport.vue.boitedialogue.BoiteDialogueUtilisateurInconnu;
 import fr.eseo.gestionaeroport.vue.ui.FenetreGestionAeroport;
 
+/**
+ * 
+ * Classe pour supprimer une reservation dans la base de donnée après clic sur
+ * le bouton valider
+ *
+ */
+
 public class ActionEchangeBillet extends AbstractAction {
 
 	private FenetreGestionAeroport fenetreGestionAeroport;

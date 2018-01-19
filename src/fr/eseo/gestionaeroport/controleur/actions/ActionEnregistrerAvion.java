@@ -11,6 +11,13 @@ import fr.eseo.gestionaeroport.vue.boitedialogue.BoiteDialogueNewAvionOk;
 import fr.eseo.gestionaeroport.vue.boitedialogue.BoiteDialogueTexteVide;
 import fr.eseo.gestionaeroport.vue.ui.FenetreGestionAeroport;
 
+/**
+ * 
+ * Classe pour enregistrer un avion dans la base de donnée après clic sur le
+ * bouton validier
+ *
+ */
+
 public class ActionEnregistrerAvion extends AbstractAction {
 
 	private FenetreGestionAeroport fenetreGestionAeroport;

@@ -12,6 +12,13 @@ import fr.eseo.gestionaeroport.vue.boitedialogue.BoiteDialogueErreurBdd;
 import fr.eseo.gestionaeroport.vue.boitedialogue.BoiteDialogueTexteVide;
 import fr.eseo.gestionaeroport.vue.ui.FenetreGestionAeroport;
 
+/**
+ * 
+ * Classe pour visualiser les personnes qui embarquent dans un vol après clic
+ * sur le bouton valider
+ *
+ */
+
 public class ActionEmbarquement extends AbstractAction {
 
 	public static final String NOM_ACTION = "Valider";

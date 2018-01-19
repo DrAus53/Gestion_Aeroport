@@ -18,6 +18,12 @@ import fr.eseo.gestionaeroport.vue.boitedialogue.BoiteDialogueNewVolKoDate;
 import fr.eseo.gestionaeroport.vue.boitedialogue.BoiteDialogueNewVolOk;
 import fr.eseo.gestionaeroport.vue.ui.FenetreGestionAeroport;
 
+/**
+ * 
+ * Classe pour proposer un nouveau vol dans la base de donnée
+ *
+ */
+
 public class ActionProposerVol extends AbstractAction {
 
 	private static final long serialVersionUID = 1L;

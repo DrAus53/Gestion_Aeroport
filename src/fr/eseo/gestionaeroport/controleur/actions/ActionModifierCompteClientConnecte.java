@@ -11,6 +11,12 @@ import fr.eseo.gestionaeroport.controleur.baseDeDonnees.ConnexionBDD;
 import fr.eseo.gestionaeroport.modele.Utilisateur;
 import fr.eseo.gestionaeroport.vue.ui.FenetreGestionAeroport;
 
+/**
+ * 
+ * Classe pour modifier le compte de l'utilisateur dans la base de donnée
+ *
+ */
+
 public class ActionModifierCompteClientConnecte extends AbstractAction {
 
 	public static final String NOM_ACTION = "Validé";

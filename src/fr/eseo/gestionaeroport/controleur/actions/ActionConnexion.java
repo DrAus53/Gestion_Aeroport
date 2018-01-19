@@ -15,6 +15,13 @@ import fr.eseo.gestionaeroport.vue.boitedialogue.BoiteDialogueErreurBdd;
 import fr.eseo.gestionaeroport.vue.boitedialogue.BoiteDialogueTexteVide;
 import fr.eseo.gestionaeroport.vue.ui.FenetreConnexion;
 
+/**
+ * 
+ * Classe pour vérifier que l'utilisateur et son mot de passe sont bien
+ * enregistré dans la base de donnée après clic sur le bouton Connexion
+ *
+ */
+
 public class ActionConnexion extends AbstractAction {
 	private static final long serialVersionUID = 1L;
 
